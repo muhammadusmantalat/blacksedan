@@ -1,0 +1,215 @@
+:root {
+  --primary-color: black;
+  --gray-color: #e6e6e6;
+  --drak-gray: #a8a8a8;
+  --lato-font: "Lato", sans-serif;
+}
+
+body {
+  font-size: 16px;
+}
+
+/* Common */
+.font-600 {
+  font-weight: 600;
+}
+.text-black {
+  color: black;
+}
+
+.container-custom {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.btn-4 {
+  background-color: black;
+  color: white;
+  padding: 15px 33px;
+  margin: 0 auto;
+  font-size: 0.9rem;
+  text-decoration: none;
+  position: relative; /* Ensures correct positioning */
+  overflow: hidden;
+  display: inline-block;
+  box-shadow: none; /* Prevent Bootstrap box-shadow */
+}
+
+.btn-4 span {
+  position: relative;
+  z-index: 20;
+}
+
+.btn-4::after {
+  content: "";
+  position: absolute;
+  left: -75px;
+  top: -50px;
+  width: 10px;
+  height: 155px;
+  background: white;
+  opacity: 0.2;
+  transform: rotate(25deg);
+  transition: all 1500ms cubic-bezier(0.19, 1, 0.22, 1);
+  z-index: 10;
+}
+.btn-4:hover {
+  color: white;
+}
+.btn-4:hover::after {
+  left: 120%;
+}
+
+/* Navbar */
+
+
+/* Hide the checkbox */
+#menu_checkbox {
+  display: none;
+}
+
+/* Style the label to look like a button */
+label[for="menu_checkbox"] {
+  display: inline-block;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+/* Style for the divs inside the label to look like a hamburger menu */
+label[for="menu_checkbox"] div {
+  width: 27px;
+  height: 2px;
+  background-color: black;
+  margin: 5px 0;
+  transition: transform 0.3s;
+}
+
+/* Rotate the divs to form a cross when checked */
+#menu_checkbox:checked + label div:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+#menu_checkbox:checked + label div:nth-child(2) {
+  opacity: 0;
+}
+
+#menu_checkbox:checked + label div:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Style the collapse menu to open from left to right */
+
+
+#menu_checkbox:checked ~ .navbar-collapse {
+  transform: translateX(0);
+}
+
+/* Hero section */
+
+.hero-section {
+  width: 100%;
+  height: 94vh;
+}
+.home-page-hero {
+  background-image: url("public/frontend/seedan/pictures/home.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.hero-section .hero-intro-section {
+  background-color: #ffffff9c;
+  max-width: 530px;
+}
+.hero-section .hero-intro-section .intro-content {
+  font-family: var(--lato-font);
+  font-weight: 700;
+  color: black;
+  text-align: center;
+  font-size: 2.2rem;
+}
+
+/* Services Section */
+.services-section {
+  background-color: #f5f3f3;
+}
+.services-section .service-heading-border {
+  width: 3.6rem;
+  height: 3px;
+  background: black;
+}
+.services-section .services-section-para {
+  text-align: justify;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.9rem;
+  font-family: var(--lato-font);
+  color: #383838;
+}
+
+/* Animations */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+@keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 2s ease-in-out;
+}
+.fade-in-delayed {
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards;
+  animation-delay: 1s;
+}
+
+.slide-top {
+  -webkit-animation: slide-top 1s ease-in both;
+  animation: slide-top 1s ease-in both;
+}
+
+
+@media screen and (max-width: 767px) {
+  .hero-section {
+    width: 100%;
+    height: 61vh;
+  }
+  .hero-section .hero-intro-section .intro-content {
+    font-size: 1.8rem;
+  }
+  .services-section .services-section-para {
+    margin-top: 3rem;
+    font-size: 1rem;
+  }
+}

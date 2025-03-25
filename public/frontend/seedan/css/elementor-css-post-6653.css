@@ -1,0 +1,122 @@
+.elementor-6653 .elementor-element.elementor-element-b75cb4e>.elementor-container>.elementor-column>.elementor-widget-wrap {
+    align-content: center;
+    align-items: center;
+}
+
+.elementor-6653 .elementor-element.elementor-element-b75cb4e:not(.elementor-motion-effects-element-type-background),
+.elementor-6653 .elementor-element.elementor-element-b75cb4e>.elementor-motion-effects-container>.elementor-motion-effects-layer {
+    background-image: url(../images/calgary-home1-1.webp);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.elementor-6653 .elementor-element.elementor-element-b75cb4e>.elementor-container {
+    max-width: 1230px;
+    min-height: 400px;
+}
+.elementor-6653 .elementor-element.elementor-element-b75cb4ea>.elementor-container {
+    max-width: 530px;
+    min-height: 400px;
+}
+
+.elementor-6653 .elementor-element.elementor-element-b75cb4e {
+    transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+    padding: 80px 0px 80px 0px;
+}
+
+.elementor-6653 .elementor-element.elementor-element-b75cb4e>.elementor-background-overlay {
+    transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
+}
+
+.elementor-6653 .elementor-element.elementor-element-35b9442:not(.elementor-motion-effects-element-type-background)>.elementor-widget-wrap,
+.elementor-6653 .elementor-element.elementor-element-35b9442>.elementor-widget-wrap>.elementor-motion-effects-container>.elementor-motion-effects-layer {
+    background-color: #FFFFFFC4;
+}
+
+.elementor-6653 .elementor-element.elementor-element-35b9442>.elementor-element-populated {
+    transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+    padding: 30px 25px 30px 25px;
+}
+
+.elementor-6653 .elementor-element.elementor-element-35b9442>.elementor-element-populated>.elementor-background-overlay {
+    transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
+}
+
+.elementor-6653 .elementor-element.elementor-element-2e483d5 .ct-heading {
+    text-align: center;
+}
+
+.elementor-6653 .elementor-element.elementor-element-2e483d5 .ct-heading .item--title {
+    color: #000;
+    font-size: 36px;
+    line-height: 44px;
+    margin-bottom: 16px;
+}
+
+.elementor-6653 .elementor-element.elementor-element-2e483d5 .ct-heading .item--title i {
+    color: var(--e-global-color-94506c9);
+}
+
+.elementor-6653 .elementor-element.elementor-element-2e483d5 .ct-heading .item--sub-title {
+    margin-bottom: 9px;
+}
+
+.elementor-widget-text-editor {
+    color: var(--e-global-color-text);
+    font-family: var(--e-global-typography-text-font-family), Sans-serif;
+    font-weight: var(--e-global-typography-text-font-weight);
+}
+
+.elementor-widget-text-editor.elementor-drop-cap-view-stacked .elementor-drop-cap {
+    background-color: var(--e-global-color-primary);
+}
+
+.elementor-widget-text-editor.elementor-drop-cap-view-framed .elementor-drop-cap,
+.elementor-widget-text-editor.elementor-drop-cap-view-default .elementor-drop-cap {
+    color: var(--e-global-color-primary);
+    border-color: var(--e-global-color-primary);
+}
+
+.elementor-6653 .elementor-element.elementor-element-56c21f9 {
+    text-align: center;
+    color: #000;
+    font-weight: 500;
+    line-height: 27px;
+    /* font-size: 17px; */
+}
+
+.elementor-6653 .elementor-element.elementor-element-a30a1da {
+    padding: 50px 0px 50px 0px;
+}
+
+@media(max-width:1024px) {
+    .elementor-6653 .elementor-element.elementor-element-2e483d5 .ct-heading .item--title {
+        font-size: 28px;
+        line-height: 38px;
+    }
+}
+
+@media(max-width:767px) {
+    .elementor-6653 .elementor-element.elementor-element-b75cb4e {
+        padding: 0px 0px 0px 0px;
+    }
+
+    .elementor-6653 .elementor-element.elementor-element-2e483d5 .ct-heading .item--title {
+        font-size: 24px;
+    }
+}
+
+@media(min-width:768px) {
+    .elementor-6653 .elementor-element.elementor-element-35b9442 {
+        width: 100%;
+    }
+}
+
+@media(min-width:1025px) {
+
+    .elementor-6653 .elementor-element.elementor-element-b75cb4e:not(.elementor-motion-effects-element-type-background),
+    .elementor-6653 .elementor-element.elementor-element-b75cb4e>.elementor-motion-effects-container>.elementor-motion-effects-layer {
+        /* background-attachment: fixed; */
+    }
+}
