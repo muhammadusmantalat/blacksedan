@@ -184,7 +184,7 @@ Route::middleware(['customer.auth'])->group(function () {
     Route::post('/customer-update', [CustomerController::class, 'updateRide'])->name('customer.rides.edit');
     Route::post('/cancel-ride', [CustomerController::class, 'cancleRide'])->name('customer.rides.cancle');
     Route::get('/customer-account', [CustomerController::class, 'getaccountPage'])->name('customer-account');
-    Route::post('/customer/update/{id}', [CustomerController::class, 'updateCustomer'])->name('customer.update');
+    Route::post('/customer/account/update/{id}', [CustomerController::class, 'updateCustomer'])->name('customer.account.update');
     // Change the route to DELETE
    
 

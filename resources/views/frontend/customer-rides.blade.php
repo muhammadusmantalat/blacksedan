@@ -186,6 +186,8 @@
                             role="tab" aria-controls="nav-profile" aria-selected="false">Upcomings Rides</a>
                         <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact"
                             role="tab" aria-controls="nav-contact" aria-selected="false">Past Rides</a>
+                        <a class="nav-item nav-link" id="nav-book-now-tab" data-toggle="tab"         href="#nav-book-now"
+                            role="tab" aria-controls="nav-book-now" aria-selected="false">Book Now</a>
                     </div>
                 </nav>
                 <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
@@ -224,6 +226,14 @@
                         <div class="d-flex align-items-center col-sm-6 mb-3 w-100">
                             <h6 class="titles m-0">Phone Number:</h6>
                             <p class="m-0 ml-3">{{$data->phone_number}}</p>
+                        </div>
+                        <div class="d-flex align-items-center col-sm-6 mb-3 w-100">
+                            <h6 class="titles m-0">Pickup Date:</h6>
+                            <p class="m-0 ml-3">{{$data->pickup_date}}</p>
+                        </div>
+                        <div class="d-flex align-items-center col-sm-6 mb-3 w-100">
+                            <h6 class="titles m-0">Pickup Time:</h6>
+                            <p class="m-0 ml-3">{{$data->pickup_time}}</p>
                         </div>
                         <div class="d-flex align-items-center col-sm-6 mb-3 w-100">
                             <h6 class="titles m-0">Special instructions:</h6>
@@ -293,12 +303,25 @@
                                         <p class="m-0 ml-3">{{$data->phone_number}}</p>
                                     </div>
                                     <div class="d-flex align-items-center col-sm-6 mb-3 w-100">
+                                        <h6 class="titles m-0">Pickup Date:</h6>
+                                        <p class="m-0 ml-3">{{$data->pickup_date}}</p>
+                                    </div>
+                                    <div class="d-flex align-items-center col-sm-6 mb-3 w-100">
+                                        <h6 class="titles m-0">Pickup Time:</h6>
+                                        <p class="m-0 ml-3">{{$data->pickup_time}}</p>
+                                    </div>
+                                    <div class="d-flex align-items-center col-sm-6 mb-3 w-100">
                                         <h6 class="titles m-0">Special instructions:</h6>
                                         <p class="m-0 ml-3">{{$data->instruction}}</p>
                                     </div>
                                 </div>
                             @endforeach
                         @endif
+                    </div>
+                    <div class="tab-pane fade" id="nav-book-now" role="tabpanel"          aria-labelledby="nav-book-now-tab">
+                        <div class="text-center">
+                            <a href="{{url('/')}}" class="btn btn-danger sub">Book Now</a>
+                        </div>
                     </div>
                 </div>
             </div>

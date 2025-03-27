@@ -201,6 +201,7 @@ class CustomerController extends Controller
     }
 
     public function updateCustomer(Request $req, $id) {
+        // return $req->phone;
         $validator = Validator::make($req->all(), [
             'full_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
@@ -226,7 +227,7 @@ class CustomerController extends Controller
         }
     
         $user->save();
-    
+        // return $user;
         return response()->json(['message' => 'Profile updated successfully!']);
     }
     
@@ -299,7 +300,7 @@ public function addCreditCard(Request $request)
 
 public function updateCreditCard(Request $request)
 {
-    return $request;
+    // return $request;
     $validator = Validator::make($request->all(), [
         'card_name' => 'required|string|max:255',
         // 'card_number' => 'required|string|max:255|unique:credit_cards,card_number',
@@ -326,7 +327,7 @@ public function updateCreditCard(Request $request)
         'card_number' => $request->card_number,
         'expiry_date' => $request->expiry_date,
         'cvv'        => $request->cvv,
-        'cvv'        => $request->save_later,
+        'save_later'        => $request->save_later,
     ]);
 
     return response()->json(['message' => 'Credit card details updated successfully!']);

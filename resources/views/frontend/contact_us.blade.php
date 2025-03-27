@@ -138,13 +138,25 @@
                                                             </tr>
                                                         </tbody>
                                                     </table>
+                                                    @php
+                                                            $check = Auth::check();
+                                                            $card = App\Models\CreditCard::where('user_id',Auth::user()->id)->where('save_later','yes')->first();
+                                                            if($card){
+                                                                $expiry = $card->expiry_date; // Example: "03/25"
+                                                                list($month, $year) = explode('/', $expiry);
+                                                                // Store separately
+                                                                $date = $month;
+                                                                $year = $year;
+                                                            }
+                                                            // dd($card);
+                                                    @endphp
                                                     <div class="">
                                                         <div class="creditcardoption">
                                                             <div class="row">
                                                                 <div class="input-filled col-lg-6 col-md-6">
                                                                     <label>Cardholder Name </label>
                                                                     <input class="wpcf7-form-control" placeholder=""
-                                                                        value="" type="text"
+                                                                        value="{{isset($card) ? $card->name : ''}}" type="text"
                                                                         name="card_holder_number" />
                                                                 </div>
                                                                 <div class="input-filled col-lg-6 col-md-6">
@@ -152,66 +164,63 @@
                                                                     <input class="wpcf7-form-control"
                                                                         placeholder="1234123412341234" type="number"
                                                                         id="creditCard" name="card_number" maxlength="16"
-                                                                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                                                                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" value="{{ isset($card) ? $card->card_number : '' }}"
+                                                                        >
                                                                 </div>
                                                                 <div class="input-filled col-lg-4 col-md-4">
                                                                     <label>Expiration Month </label>
                                                                     <select class="wpcf7-form-control" name="exp_month">
-                                                                        <option value="-- Month --" selected disabled>--
-                                                                            Month
-                                                                            --</option>
-                                                                        <option value="1">1</option>
-                                                                        <option value="2">2</option>
-                                                                        <option value="3">3</option>
-                                                                        <option value="4">4</option>
-                                                                        <option value="5">5</option>
-                                                                        <option value="6">6</option>
-                                                                        <option value="7">7</option>
-                                                                        <option value="8">8</option>
-                                                                        <option value="9">9</option>
-                                                                        <option value="10">10</option>
-                                                                        <option value="11">11</option>
-                                                                        <option value="12">12</option>
+                                                                        <option value="" selected disabled>-- Month --</option>
+                                                                        <option value="1" {{ isset($date) && in_array($date, ['01', '1']) ? 'selected' : '' }}>1</option>
+                                                                        <option value="2" {{ isset($date) && in_array($date, ['02', '2']) ? 'selected' : '' }}>2</option>
+                                                                        <option value="3" {{ isset($date) && in_array($date, ['03', '3']) ? 'selected' : '' }}>3</option>
+                                                                        <option value="4" {{ isset($date) && in_array($date, ['04', '4']) ? 'selected' : '' }}>4</option>
+                                                                        <option value="5" {{ isset($date) && in_array($date, ['05', '5']) ? 'selected' : '' }}>5</option>
+                                                                        <option value="6" {{ isset($date) && in_array($date, ['06', '6']) ? 'selected' : '' }}>6</option>
+                                                                        <option value="7" {{ isset($date) && in_array($date, ['07', '7']) ? 'selected' : '' }}>7</option>
+                                                                        <option value="8" {{ isset($date) && in_array($date, ['08', '8']) ? 'selected' : '' }}>8</option>
+                                                                        <option value="9" {{ isset($date) && in_array($date, ['09', '9']) ? 'selected' : '' }}>9</option>
+                                                                        <option value="10" {{ isset($date) && $date == '10' ? 'selected' : '' }}>10</option>
+                                                                        <option value="11" {{ isset($date) && $date == '11' ? 'selected' : '' }}>11</option>
+                                                                        <option value="12" {{ isset($date) && $date == '12' ? 'selected' : '' }}>12</option>
                                                                     </select>
                                                                 </div>
+                                                                
                                                                 <div class="input-filled col-lg-4 col-md-4">
-                                                                    <label>Expiration Year </label>
+                                                                    <label>Expiration Year </label>   
                                                                     <select class="wpcf7-form-control" name="exp_year">
-                                                                        <option value="-- Year --" selected disabled>--
-                                                                            Year --
-                                                                        </option>
-                                                                        <option value="20">20</option>
-                                                                        <option value="21">21</option>
-                                                                        <option value="22">22</option>
-                                                                        <option value="23">23</option>
-                                                                        <option value="24">24</option>
-                                                                        <option value="25">25</option>
-                                                                        <option value="26">26</option>
-                                                                        <option value="27">27</option>
-                                                                        <option value="28">28</option>
-                                                                        <option value="29">29</option>
-                                                                        <option value="30">30</option>
+                                                                        <option value="" selected disabled>-- Year --</option>
+                                                                        <option value="20" {{ isset($year) && $year == '20' ? 'selected' : '' }}>20</option>
+                                                                        <option value="21" {{ isset($year) && $year == '21' ? 'selected' : '' }}>21</option>
+                                                                        <option value="22" {{ isset($year) && $year == '22' ? 'selected' : '' }}>22</option>
+                                                                        <option value="23" {{ isset($year) && $year == '23' ? 'selected' : '' }}>23</option>
+                                                                        <option value="24" {{ isset($year) && $year == '24' ? 'selected' : '' }}>24</option>
+                                                                        <option value="25" {{ isset($year) && $year == '25' ? 'selected' : '' }}>25</option>
+                                                                        <option value="26" {{ isset($year) && $year == '26' ? 'selected' : '' }}>26</option>
+                                                                        <option value="27" {{ isset($year) && $year == '27' ? 'selected' : '' }}>27</option>
+                                                                        <option value="28" {{ isset($year) && $year == '28' ? 'selected' : '' }}>28</option>
+                                                                        <option value="29" {{ isset($year) && $year == '29' ? 'selected' : '' }}>29</option>
+                                                                        <option value="30" {{ isset($year) && $year == '30' ? 'selected' : '' }}>30</option>
                                                                     </select>
                                                                 </div>
+                                                                
                                                                 <div class="input-filled col-lg-4 col-md-4">
                                                                     <label>CVV<span></span></label>
-                                                                    <input class="wpcf7-form-control" placeholder="---"
-                                                                        value="" name="cvv"
-                                                                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                                                        type="number" maxlength="3" />
+                                                                    <input class="wpcf7-form-control" 
+                                                                           placeholder="---"
+                                                                           name="cvv"
+                                                                           type="number"
+                                                                           maxlength="3"
+                                                                           value="{{ isset($card) ? $card->cvv : '' }}"
+                                                                           oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
+                                                                    
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             @endif
-                                                @php
-                                                    $check = Auth::check();
-                                                    if($check){
-                                                        $card = App\Models\
-                                                    }
-                                                    // @dd($check);
-                                                @endphp
+                                             
                                             {{-- Contact Us Details --}}
                                             <div class="getaquoteform">
                                                 <hr />

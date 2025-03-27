@@ -42,22 +42,23 @@
 
     @php
         // Extract user phone data (prefix + number)
-        $userPhone = $user->phone ?? '';
-        $defaultPrefix = '+1'; // Default country code
-        $phoneNumber = '';
+        $phone = $user->phone; // Example: "+44 1234567890"
 
-        if ($userPhone) {
-            // e.g. "+1XXXXXXXXXX"
-            preg_match('/(\+\d{1,4})(\d+)/', $userPhone, $matches);
-            $defaultPrefix = $matches[1] ?? $defaultPrefix;
-            $phoneNumber = $matches[2] ?? '';
+        // Define available country codes
+        $countryCodes = ['+1', '+44', '+91'];
+
+        $defaultPrefix = '+1'; // Default prefix
+        $phoneNumber = ''; // Default phone number without prefix
+
+        foreach ($countryCodes as $code) {
+            if (str_starts_with($phone, $code)) {
+                $defaultPrefix = $code;
+                $phoneNumber = substr($phone, strlen($code)); // Extract number after prefix
+                break;
+            }
         }
-
-        // $testing = Auth::guard('web')->user()->id;
-
-        // dd($testing); 
-
     @endphp
+
 
     <div class="d-flex justify-content-center align-items-center my-5">
         <!-- SINGLE FORM FOR ALL TABS -->
@@ -123,21 +124,22 @@
                     <div class="form-group">
                         <label for="phone" class="mb-1">Phone Number</label>
                         <div class="d-flex">
-                            <select class="form-select rounded" style="width: 30%;" id="phone_prefix">
+                            <select class="form-select rounded" style="width: 30%;" id="phone_prefix" name="phone_prefix">
                                 <option value="+1" {{ $defaultPrefix == '+1' ? 'selected' : '' }}>+1</option>
                                 <option value="+44" {{ $defaultPrefix == '+44' ? 'selected' : '' }}>+44</option>
                                 <option value="+91" {{ $defaultPrefix == '+91' ? 'selected' : '' }}>+91</option>
                             </select>
-                            <input type="text" class="form-control rounded ml-2" id="phone"
+                            <input type="text" class="form-control rounded ml-2" id="phone" name="phone"
                                 placeholder="Enter phone number" value="{{ $phoneNumber }}">
                         </div>
                     </div>
 
+
                     <div class="d-flex justify-content-between mt-3">
                         <!-- Delete Button -->
 
-                        <button type="button" class="btn btn-primary text-white px-1 px-sm-3 bg-danger" id="deleteButton"
-                            onclick="deleteCustomer()">
+                        <button type="button" class="btn btn-primary text-white px-1 px-sm-3 bg-danger"
+                            id="deleteButton" onclick="deleteCustomer()">
                             Delete Account
                         </button>
 
@@ -187,13 +189,14 @@
                     </div>
                     <div class="row">
                         <div class="col-12 form-group d-flex align-items-center">
-                            <input class="form-check-input me-2" type="checkbox" id="saveForLater" name="save_for_later" value=""  {{ ($cards->save_later ?? '') == 'yes' ? 'checked' : '' }}>
+                            <input class="form-check-input me-2" type="checkbox" id="saveForLater" name="save_for_later"
+                                value="" {{ ($cards->save_later ?? '') == 'yes' ? 'checked' : '' }}>
                             <label class="form-check-label fw-bold" for="saveForLater">
                                 Save for later use
                             </label>
                         </div>
                     </div>
-                    
+
                     @php
                         $hasCreditCard = \App\Models\CreditCard::where('user_id', auth()->id())->exists();
                     @endphp
@@ -201,22 +204,22 @@
                         <!-- Add this message container somewhere in your credit card tab -->
                         <div id="cardMessages"></div>
                         @if (!$hasCreditCard)
-                        <!-- Show Add Credit Card button if user has no credit card -->
-                        <button type="button" id="addCardBtn"
-                            class="btn btn-primary text-white px-1 px-sm-3 py-3 bg-success mt-3"
-                            onclick="addCreditCard()">
-                            Add Credit Card
-                        </button>
+                            <!-- Show Add Credit Card button if user has no credit card -->
+                            <button type="button" id="addCardBtn"
+                                class="btn btn-primary text-white px-1 px-sm-3 py-3 bg-success mt-3"
+                                onclick="addCreditCard()">
+                                Add Credit Card
+                            </button>
                         @else
-                        <!-- Show Update button if user has a credit card -->
-                        <button type="button" class="btn btn-primary bg-white" id="updateCardBtn" style="color:black"
-                            onclick="updateCreditCard()">
-                            Update
-                        </button>
+                            <!-- Show Update button if user has a credit card -->
+                            <button type="button" class="btn btn-primary bg-white" id="updateCardBtn"
+                                style="color:black" onclick="updateCreditCard()">
+                                Update
+                            </button>
                         @endif
                     </div>
 
-                  
+
                 </div>
 
                 <!-- Notifications Tab -->
@@ -312,9 +315,9 @@
             let phone_prefix = $('#phone_prefix').val();
             let phone = $('#phone').val().trim();
             let fullPhone = phone_prefix + phone;
-
+            // alert(fullPhone);
             $.ajax({
-                url: "{{ url('/customer/update') }}/" + userId,
+                url: "{{ url('/customer/account/update') }}/" + userId,
                 method: "POST",
                 data: {
                     _token: "{{ csrf_token() }}",
@@ -418,43 +421,43 @@
             }
         }
 
-                // add crediet detials
-                function addCreditCard() {
-                    // Form values
-                    let cardName = $('#card_name').val().trim();
-                    let cardNumber = $('#card_number').val().trim();
-                    let cvv = $('#cvv').val().trim();
-                    let expiryDate = $('#expiry_date').val().trim();
-                    let saveForLater = $('#saveForLater').is(':checked') ? 'yes' : 'no';
+        // add crediet detials
+        function addCreditCard() {
+            // Form values
+            let cardName = $('#card_name').val().trim();
+            let cardNumber = $('#card_number').val().trim();
+            let cvv = $('#cvv').val().trim();
+            let expiryDate = $('#expiry_date').val().trim();
+            let saveForLater = $('#saveForLater').is(':checked') ? 'yes' : 'no';
+            // alert(saveForLater);
+            // Button and message elements
+            let addButton = $("#addCardBtn");
+            let messageContainer = $("#cardMessages");
 
-                    // Button and message elements
-                    let addButton = $("#addCardBtn");
-                    let messageContainer = $("#cardMessages");
+            // Add loading state
+            addButton.prop("disabled", true).html('<span class="spinner-border spinner-border-sm"></span> Adding...');
 
-                    // Add loading state
-                    addButton.prop("disabled", true).html('<span class="spinner-border spinner-border-sm"></span> Adding...');
-
-                    // AJAX request
-                    $.ajax({
-                        url: "{{ url('/add-credit-card') }}",
-                        method: "POST",
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        contentType: 'application/json',
-                        processData: false,
-                        data: JSON.stringify({
-                            card_name: cardName,
-                            card_number: cardNumber,
-                            cvv: cvv,
-                            expiry_date: expiryDate,
-                            save_later: saveForLater,
-                        }),
-                        success: function(response) {
-                            addButton.prop("disabled", false).html('Add Credit Card');
-                            window.location.reload();
-                            // Success message
-                            messageContainer.html(`
+            // AJAX request
+            $.ajax({
+                url: "{{ url('/add-credit-card') }}",
+                method: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                contentType: 'application/json',
+                processData: false,
+                data: JSON.stringify({
+                    card_name: cardName,
+                    card_number: cardNumber,
+                    cvv: cvv,
+                    expiry_date: expiryDate,
+                    save_later: saveForLater,
+                }),
+                success: function(response) {
+                    addButton.prop("disabled", false).html('Add Credit Card');
+                    window.location.reload();
+                    // Success message
+                    messageContainer.html(`
                         <div class="alert alert-success alert-dismissible fade show">
                             ${response.message} <strong>Refresh your page now.</strong>
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
@@ -499,7 +502,7 @@
         function updateCreditCard() {
             const btn = $('#updateCardBtn');
             btn.prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Updating...');
-
+            let saveForLater = $('#saveForLater').is(':checked') ? 'yes' : 'no';
             $.ajax({
                 url: "{{ route('update.credit.card') }}",
                 type: "POST",
@@ -509,6 +512,7 @@
                     card_number: $('#card_number').val().replace(/\s/g, ''), // Remove spaces
                     expiry_date: $('#expiry_date').val(),
                     cvv: $('#cvv').val(),
+                    save_later: saveForLater
                 },
                 success: function(response) {
                     // return;
