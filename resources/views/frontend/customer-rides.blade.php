@@ -128,13 +128,13 @@
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <label>Pickup Location:</label>
-                            <input type="text" class="form-control autocomplete" id="pickupLocation" name="pickup_location">
+                            <input type="text" class="form-control autocomplete" id="pickupLocation" name="pickup_location" readonly>
                             <input type="hidden" id="pickupLat" name="pickup_latitude">
                             <input type="hidden" id="pickupLng" name="pickup_longitude">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Dropoff Location:</label>
-                            <input type="text" class="form-control autocomplete" id="dropoffLocation" name="dropOff_location">
+                            <input type="text" class="form-control autocomplete" id="dropoffLocation" name="dropOff_location" readonly>
                             <input type="hidden" id="dropoffLat" name="dropoff_latitude">
                             <input type="hidden" id="dropoffLng" name="dropoff_longitude">
                         </div>
@@ -150,7 +150,16 @@
                             <input type="email" class="form-control" id="email" name="email">
                         </div>
                     </div>
-
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label>Pickup Date:</label>
+                            <input type="date" class="form-control" id="pickupdate" name="pickup_date" readonly>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Pickup Time:</label>
+                            <input type="time" class="form-control" id="pickuptime" name="pickup_time">
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <label>Phone Number:</label>
@@ -350,6 +359,9 @@
             document.getElementById("flightNumber").value = bookingData.flight_number;
             document.getElementById("email").value = bookingData.email;
             document.getElementById("phoneNumber").value = bookingData.phone_number;
+            document.getElementById("pickupdate").value = bookingData.pickup_date;
+            const pickupTime = bookingData.pickup_time?.slice(0, 5);
+            document.getElementById("pickuptime").value = pickupTime;
             document.getElementById("instructions").value = bookingData.instruction;
 
             // Show Bootstrap Modal

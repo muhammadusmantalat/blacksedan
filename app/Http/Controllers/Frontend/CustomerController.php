@@ -37,15 +37,16 @@ class CustomerController extends Controller
         $booking = Booking::find($request->booking_id);
         $booking->first_name = $request->fname;
         $booking->last_name = $request->lname;
-        $booking->pickup_location = $request->pickup_location;
-        $booking->pickup_latitude = $request->pickup_latitude;
-        $booking->pickup_longitude = $request->pickup_longitude;
-        $booking->dropOff_location = $request->dropOff_location;
-        $booking->dropoff_latitude = $request->dropoff_latitude;
-        $booking->dropoff_longitude = $request->dropoff_longitude;
+        // $booking->pickup_location = $request->pickup_location;
+        // $booking->pickup_latitude = $request->pickup_latitude;
+        // $booking->pickup_longitude = $request->pickup_longitude;
+        // $booking->dropOff_location = $request->dropOff_location;
+        // $booking->dropoff_latitude = $request->dropoff_latitude;
+        // $booking->dropoff_longitude = $request->dropoff_longitude;
         $booking->flight_number = $request->flight_number;
         $booking->email = $request->email;
         $booking->phone_number = $request->phone_number;
+        $booking->pichup_time = $request->pichup_time;
         $booking->instruction = $request->instruction;
         $booking->save();
         $isChanged = (
