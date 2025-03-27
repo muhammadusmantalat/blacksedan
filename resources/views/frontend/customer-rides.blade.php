@@ -57,7 +57,7 @@
 
     .modal-setting{
         background-color: rgba(0, 0, 0, 0.308);
-        position: absolute !important;
+        position: fixed !important;
         overflow: auto !important;
         scrollbar-width: none;
     }
@@ -256,11 +256,12 @@
                                 Edit Ride
                             </button>
                             {{-- <button class="rounded py-3 text-nowrap button-text cancel-ride" data-id="{{ $data->id }}">Cancel Ride</button> --}}
-
+                            
                             <a href="{{ route('cancelRideIndex', ['id' => $data->id]) }}" 
-                                class="btn btn-danger" 
                                 onclick="return confirmCancelRide(event, this);">
+                                <button class="edit-ride-btn rounded py-3 text-nowrap button-text mr-3" >
                                 Cancel Ride
+                            </button>
                              </a>
                         </div>
                     </div>
@@ -329,7 +330,11 @@
                     </div>
                     <div class="tab-pane fade" id="nav-book-now" role="tabpanel"          aria-labelledby="nav-book-now-tab">
                         <div class="text-center">
-                            <a href="{{url('/')}}" class="btn btn-danger sub">Book Now</a>
+                            <a href="{{url('/')}}">
+                                <button class="edit-ride-btn rounded py-3 text-nowrap button-text mr-3" >
+                                Book Now
+                            </button>
+                        </a>
                         </div>
                     </div>
                 </div>

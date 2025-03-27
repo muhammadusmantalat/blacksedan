@@ -189,7 +189,7 @@
                     </div>
                     <div class="row">
                         <div class="col-12 form-group d-flex align-items-center">
-                            <input class="form-check-input me-2" type="checkbox" id="saveForLater" name="save_for_later"
+                            <input style="margin-left: 0!important;" class="ms-0 me-2 form-check-input" type="checkbox" id="saveForLater" name="save_for_later"
                                 value="" {{ ($cards->save_later ?? '') == 'yes' ? 'checked' : '' }}>
                             <label class="form-check-label fw-bold" for="saveForLater">
                                 Save for later use

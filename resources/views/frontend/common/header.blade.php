@@ -106,16 +106,16 @@
                                             </li>
                                             <li id="menu-item-4968"
                                                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4968">
-                                                <a href="https://blacksedans.ca/about-us/"><span>About Us</span></a>
+                                                <a href="https://blacksedans.ca/about-us/"><span>About </span></a>
                                             </li>
                                             <li id="menu-item-4967"
                                                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4967">
-                                                <a href="https://blacksedans.ca/our-services/"><span>Our
+                                                <a href="https://blacksedans.ca/our-services/"><span>
                                                         Services</span></a>
                                             </li>
                                             <li id="menu-item-4966"
                                                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4966">
-                                                <a href="https://blacksedans.ca/our-fleet/"><span>Our Fleet</span></a>
+                                                <a href="https://blacksedans.ca/our-fleet/"><span> Fleet</span></a>
                                             </li>
                                             <li id="menu-item-7240"
                                                 class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7240">
@@ -124,7 +124,7 @@
                                             </li>
                                             <li id="menu-item-4965"
                                                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4965">
-                                                <a href="https://blacksedans.ca/contact-us/"><span>Contact Us</span></a>
+                                                <a href="https://blacksedans.ca/contact-us/"><span>Contact</span></a>
                                             </li>
                                         </ul>
 
@@ -170,6 +170,12 @@
                                 <div class="elementor-widget-container">
                                     <div id="ct_button-58e1b26"
                                         class="ct-button-wrapper ct-button-layout1 icon- btn--inline ">
+                                        <a href="#bookNowModal"
+                                    class="btn btn-effect2 icon-active btn-inline-block" data-toggle="modal"
+                                    data-wow-delay="ms">
+                                    <span class="ct-button-icon ct-align-icon-">
+                                    </span> <span class="ct-button-text">Book Now</span> </a>
+                                <span class="ct-icon-active"></span> 
                                         @if(!$customerCheck && !$chaufferCheck)
                                         <span class="ct-icon-active"></span> <a href="#signinModal"
                                             class="btn btn-effect2 icon-active btn-inline-block" data-toggle="modal"
@@ -219,9 +225,16 @@
                         data-widget_type="ct_button.default">
                         <div class="elementor-widget-container">
                             <div id="ct_button-58e1b26" class="ct-button-wrapper ct-button-layout1 icon- btn--inline ">
+
+                                <a href="#bookNowModal"
+                                    class="btn btn-effect2 icon-active btn-inline-block" data-toggle="modal"
+                                    data-wow-delay="ms">
+                                    <span class="ct-button-icon ct-align-icon-">
+                                    </span> <span class="ct-button-text">Book Now</span> </a>
+                                <span class="ct-icon-active"></span> 
                                 @if(!$customerCheck && !$chaufferCheck)
 
-                                <span class="ct-icon-active"></span> 
+                                
                                 <a href="#signinModal"
                                     class="btn btn-effect2 icon-active btn-inline-block" data-toggle="modal"
                                     data-wow-delay="ms">
@@ -254,7 +267,32 @@
                 <p style="font-size: 0.8rem" class="mx-3 mb-5 text-dark text-center">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste architecto illum error voluptatum? Beatae, qui aut ullam deserunt iste non?</p>
                 <div class="py-2 mb-3">
                 <a  style="text-decoration: none; color:#fff" href="{{route('customer.login')}}" type="button" class="py-3 btn btn-primary"><span style="font-size:3rem" class="fa-solid fa-user"></span><p style="line-height: normal;" class="m-0 mt-2 p-0">Customer Sign IN</p></a>
-                <a  style="text-decoration: none; color:#fff" href="{{route('chauffeur.login')}}" type="button" class="ml-3 py-3 btn btn-primary"><span style="font-size:3rem" class="fa-solid fa-car"></span><p style="line-height: normal;" class="m-0 mt-2 p-0">Chauffeur Sign IN</p></a>
+                <a  style="text-decoration: none; color:#fff" href="{{route('chauffeur.login')}}" type="button" class="mt-3 mt-sm-0 ml-sm-3 py-3 btn btn-primary"><span style="font-size:3rem" class="fa-solid fa-car"></span><p style="line-height: normal;" class="m-0 mt-2 p-0">Chauffeur Sign IN</p></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Booking Modal -->
+<div class="modal fade" id="bookNowModal" tabindex="-1" role="dialog" aria-labelledby="bookNowModalLabel" aria-hidden="true">
+    <div class="modal-dialog d-flex align-items-center h-75" role="document">
+        <div class="px-5 modal-content">
+            <div class="modal-header border-0 d-flex justify-content-end">
+                <button type="button"  data-dismiss="modal" aria-label="Close" class="d-flex justify-content-center align-items-center" style="min-height: 3rem;
+                width: 1rem; position: absolute; top:0.5rem; right:0.5rem;">
+                <span class="fa-solid fa-xmark"></span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <h4 class="font-font-weight-bolder text-center mt-3">Select Booking Type</h4>
+                <p style="font-size: 0.8rem" class="mx-3 mb-5 text-dark text-center">
+                    <strong>In Guest Booking</strong> you don't need to sign in. 
+                    <strong>In Login to Book</strong> you will have history of all your bookings.
+                </p>
+                <div class="d-flex flex-wrap align-items-center py-2 mb-3">
+                <a  style="text-decoration: none; color:#fff" href="{{route('customer.login')}}" type="button" class="py-3 btn btn-primary"><span style="font-size:3rem" class="fa-solid fa-user"></span><p style="line-height: normal;" class="m-0 mt-2 p-0">Continue as guest</p></a>
+                <a  style="text-decoration: none; color:#fff" href="{{route('chauffeur.login')}}" type="button" class="mt-3 mt-sm-0 ml-sm-3 py-3 btn btn-primary"><span style="font-size:3rem" class="fa-solid fa-car"></span><p style="line-height: normal;" class="m-0 mt-2 p-0">Login to Book</p></a>
                 </div>
             </div>
         </div>
