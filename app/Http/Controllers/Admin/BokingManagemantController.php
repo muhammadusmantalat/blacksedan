@@ -22,7 +22,7 @@ class BokingManagemantController extends Controller
     }
     public function upComingRidesIndex(){
         $bookings = Booking::with('vehicle')->orderBy('id' , 'DESC')
-        ->where('status','Accepted')
+        ->whereIn('status',['Accepted','On The Way'])
         // ->where('chauffeurs_response','accepted')
         ->get();
         return view('admin.upComingRides.index',compact('bookings'));
@@ -51,7 +51,7 @@ class BokingManagemantController extends Controller
     }
 
     public function getUpComingCount(){
-       $orderCount = Booking::whereIn('status', ['Accepted'])->count();
+       $orderCount = Booking::whereIn('status', ['Accepted','On The Way'])->count();
         return response()->json(['count' => $orderCount]);
     }
 

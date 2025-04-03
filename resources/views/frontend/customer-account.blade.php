@@ -67,27 +67,27 @@
 
             <!-- Nav Tabs -->
             <ul class="nav nav-tabs mb-3 ul-border" id="myTab" role="tablist">
-                <li style="width: 33.3%;" class="nav-item" role="presentation">
+                <li style="width: 50%;" class="nav-item" role="presentation">
                     <button class="w-100 nav-link active tab-button" id="account-info-tab" data-bs-toggle="tab"
                         data-bs-target="#account_info" type="button" role="tab" aria-controls="account_info"
                         aria-selected="true">
                         Account Info
                     </button>
                 </li>
-                <li style="width: 33.3%;" class="nav-item" role="presentation">
+                <li style="width: 50%;" class="nav-item" role="presentation">
                     <button class="w-100 nav-link tab-button" id="credit-card-tab" data-bs-toggle="tab"
                         data-bs-target="#credit_card" type="button" role="tab" aria-controls="credit_card"
                         aria-selected="false">
                         Add Credit Card
                     </button>
                 </li>
-                <li style="width: 33.3%;" class="nav-item" role="presentation">
+                {{-- <li style="width: 33.3%;" class="nav-item" role="presentation">
                     <button class="w-100 nav-link tab-button" id="notifications-tab" data-bs-toggle="tab"
                         data-bs-target="#notifications" type="button" role="tab" aria-controls="notifications"
                         aria-selected="false">
                         Notifications
                     </button>
-                </li>
+                </li> --}}
             </ul>
 
             <!-- Tab Content -->
@@ -223,7 +223,7 @@
                 </div>
 
                 <!-- Notifications Tab -->
-                <div class="tab-pane fade" id="notifications" role="tabpanel" aria-labelledby="notifications-tab">
+                {{-- <div class="tab-pane fade" id="notifications" role="tabpanel" aria-labelledby="notifications-tab">
                     <h6 class="text-white mt-4 mb-3">Notifications</h6>
                     <div class="form-group">
                         <label for="marketing" class="mb-1">Marketing Emails</label>
@@ -243,7 +243,7 @@
                             </select>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </form>
     </div>

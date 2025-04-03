@@ -13,28 +13,35 @@
             chauffeur is currently en route to your location and will arrive
             shortly.
         </p>
+    </div>
+    <div>
         <p>
             Your {{ $data['vehicle'] }} will be ready and waiting to provide you
             with a comfortable and luxurious ride. 
         </p>
-        <p>
-            If you have any questions or need assistance, feel free to contact
-            your chauffeur at {{ $data['phone'] }} or Black Sedan
-            dispatch services at +1(825) 735-5538. 
-        </p>
-        <p>
-            Thank you for choosing Black Sedan. We look forward to serving
-            you.
-        </p>
-        <p>
-            Safe travels!
-        </p>
     </div>
-
+     <div>
+         <p>
+             If you have any questions or need assistance, feel free to contact
+             your chauffeur at {{ $data['phone'] }} or Black Sedan
+             dispatch services at +1(825) 735-5538. 
+         </p>
+    </div>
+     <div>
+         <p>
+             Thank you for choosing Black Sedan. We look forward to serving
+             you.
+         </p>
+    </div>
+     <div>
+         <p>
+         Safe travels!
+     </p>
+    </div>
     <div style="padding-top: 10px;">
         Best regards,<br>
             Black Sedan INC Dispatch Services<br>
             +1(825) 735-5538 <br>
-            nfo@blacksedans.ca
-    </div>
+            info@blacksedans.ca
+        </div>
 @endcomponent

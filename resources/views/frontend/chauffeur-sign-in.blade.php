@@ -87,10 +87,10 @@
                 <span id="phoneNumber-error" class="error-message"></span>
             </div>
             <button type="submit" class="btn btn-primary bg-white mt-3" style="color:black">Submit</button>
-            <div id="loader" style="display:none;">
+            <div id="loader1" style="display:none;">
                 <div class="spinner"></div>
             </div>
-            <div id="cardMessages" class="mt-3"></div>
+            <div id="cardMessages1" class="mt-3"></div>
         </form>
     </div>
 
@@ -195,8 +195,8 @@
                 });
 
                 if (hasErrors) return;
-
-                $('#loader').removeClass('d-none');
+                
+                $('#loader1').removeClass('d-none');
 
                 $.ajax({
                     url: form.attr('action'),
@@ -205,26 +205,25 @@
                     success: function(response) {
                         // alert('ew');
                         // return;
-                        $('#cardMessages').html(`
-        <div class="alert alert-success alert-dismissible fade show" role="alert" id="successAlert">
-            ${response.message} <strong>Success!</strong>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    `);
-
+                        $('#cardMessages1').html(`
+                                <div class="alert alert-success alert-dismissible fade show" role="alert" id="successAlert">
+                                    ${response.message} <strong>Success!</strong>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            `);
                         // Hide alert after 5 seconds (5000 milliseconds)
                         setTimeout(function() {
                             $("#successAlert").fadeOut("slow");
                         }, 2000);
                         setTimeout(() => {
-                            $('#loader').addClass('d-none');
+                            $('#loader1').addClass('d-none');
                             showMessage('Request submitted successfully!', 'success',
                                 '#successMsg');
                             form[0].reset();
                         }, 1000);
                     },
                     error: function(xhr) {
-                        $('#loader').addClass('d-none');
+                        $('#loader1').addClass('d-none');
                         showMessage('An error occurred. Please try again.', 'danger',
                             '#successMsg');
                     }

@@ -36,7 +36,7 @@
 Best regards,<br>
     Black Sedan INC Dispatch Services<br>
     +1(825) 735-5538 <br>
-    nfo@blacksedans.ca
+    info@blacksedans.ca
 </div>
 <div>
     <p>P.S. Don’t forget to follow us on our social media for the latest updates and 

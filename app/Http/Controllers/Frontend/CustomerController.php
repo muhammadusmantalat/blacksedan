@@ -46,7 +46,7 @@ class CustomerController extends Controller
         $booking->flight_number = $request->flight_number;
         $booking->email = $request->email;
         $booking->phone_number = $request->phone_number;
-        $booking->pichup_time = $request->pichup_time;
+        $booking->pickup_time = $request->pickup_time;
         $booking->instruction = $request->instruction;
         $booking->save();
         $isChanged = (

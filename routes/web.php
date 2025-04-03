@@ -17,7 +17,17 @@ use App\Http\Controllers\Frontend\ChaufferController;
 use App\Http\Controllers\Frontend\CustomerController;
 use App\Http\Controllers\Frontend\BlackSedaanController;
 use App\Http\Controllers\Admin\BookingController as AdminBookingController;
-
+Route::get('/store-session-db', function () {
+    DB::table('sessions')->insert([
+        'id' => session()->getId(),
+        'user_id' => 1,
+        'ip_address' => request()->ip(),
+        'user_agent' => request()->header('User-Agent'),
+        'payload' => base64_encode(serialize(['key' => 'value'])),
+        'last_activity' => now()->timestamp,
+    ]);
+    return 'Session stored manually!';
+});
 /* 
 |--------------------------------------------------------------------------
 | Web Routes
@@ -130,6 +140,8 @@ Route::post('confirmBooking', [BookingController::class, 'storeCreditcard'])->na
 Route::get('/home', [HeaderPagesController::class, 'home'])->name('home');
 Route::get('/about-us', [HeaderPagesController::class, 'about'])->name('aboutus');
 Route::get('/our-services', [HeaderPagesController::class, 'services'])->name('our-services');
+Route::get('/fleet', [HeaderPagesController::class, 'fleet'])->name('fleet');
+Route::get('/contact-us', [HeaderPagesController::class, 'contact'])->name('contact-us');
 
 // Contact us
 Route::get('getContact', [BlackSedaanController::class, 'getContact'])->name('getContact');

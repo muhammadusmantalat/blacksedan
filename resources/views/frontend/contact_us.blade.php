@@ -1,7 +1,21 @@
 @extends('frontend.layout.app')
 @section('title', 'index')
 @section('content')
-
+@php
+$check = false;
+$card = false;
+$check = Auth::guard('web')->check();
+if($check){
+    $card = App\Models\CreditCard::where('user_id',Auth::user()->id)->where('save_later','yes')->first();
+    if($card){
+        $expiry = $card->expiry_date; // Example: "03/25"
+        list($month, $year) = explode('/', $expiry);
+        // Store separately
+        $date = $month;
+        $year = $year;
+    }
+}
+@endphp
     {{-- <body --}}
     {{-- class="page-template-default page page-id-5439 redux-page  site-h16 body-default-font heading-default-font header-sticky  btn-type-gradient  fixed-footer  mobile-header-light elementor-default elementor-kit-4700 elementor-page elementor-page-5439"> --}}
     <div id="page" class="site">
@@ -138,18 +152,6 @@
                                                             </tr>
                                                         </tbody>
                                                     </table>
-                                                    @php
-                                                            $check = Auth::check();
-                                                            $card = App\Models\CreditCard::where('user_id',Auth::user()->id)->where('save_later','yes')->first();
-                                                            if($card){
-                                                                $expiry = $card->expiry_date; // Example: "03/25"
-                                                                list($month, $year) = explode('/', $expiry);
-                                                                // Store separately
-                                                                $date = $month;
-                                                                $year = $year;
-                                                            }
-                                                            // dd($card);
-                                                    @endphp
                                                     <div class="">
                                                         <div class="creditcardoption">
                                                             <div class="row">

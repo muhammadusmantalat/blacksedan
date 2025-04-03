@@ -39,7 +39,12 @@
     }
     }
 </style>
-
+@php
+$flage = Auth::guard('chauffeur')->user();
+$chaufferCheck = Auth::guard('chauffeur')->check();
+$customerCheck = Auth::guard('web')->check();
+$signIn = $chaufferCheck || $chaufferCheck;
+@endphp
 <div id="ct-loadding" class="ct-loader style1">
     <div class="loading-spin">
         <div class="spinner">
@@ -66,7 +71,7 @@
             <div class="container">
                 <div class="row">
                     <div class="ct-header-branding">
-                        <div class="ct-header-branding-inner"> <a class="logo-dark" href="https://blacksedans.ca/"
+                        <div class="ct-header-branding-inner"> <a class="logo-dark" href="https://blacksedans.ca/" 
                                 title="Black Sedan Limousine Services" rel="home"><img
                                     src="{{ asset('public/frontend/seedan/images/2020-10-Black_Sedan_logo.png') }}"
                                     alt="Black Sedan Limousine Services" /></a> <a class="logo-light"
@@ -95,36 +100,36 @@
                             <nav class="ct-main-navigation">
                                 <div class="ct-main-navigation-inner">
                                     <div class="ct-logo-mobile"> <a href="" title="" rel="home"><img
-                                                src="{{ asset('public/frontend/seedan/images/2020-10-Black_Sedan_logo.png') }}"
+                                                src="{{ asset('public/header/seedan/images/2020-10-Black_Sedan_logo.png') }}"
                                                 alt="" /></a> </div>
                                     <div class="ct-main-navigation-filter">
                                         <ul id="menu-blacksedan-menu"
                                             class="align-items-center ct-main-menu sub-hover children-plus clearfix">
                                             <li id="menu-item-4988"
                                                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-4988">
-                                                <a href="https://blacksedans.ca/"><span>Home</span></a>
+                                                <a href="{{url('/home')}}"><span>Home</span></a>
                                             </li>
                                             <li id="menu-item-4968"
                                                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4968">
-                                                <a href="https://blacksedans.ca/about-us/"><span>About </span></a>
+                                                <a href="{{url('/about-us')}}"><span>About </span></a>
                                             </li>
                                             <li id="menu-item-4967"
                                                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4967">
-                                                <a href="https://blacksedans.ca/our-services/"><span>
+                                                <a href="{{url('/our-services')}}"><span>
                                                         Services</span></a>
                                             </li>
                                             <li id="menu-item-4966"
                                                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4966">
-                                                <a href="https://blacksedans.ca/our-fleet/"><span> Fleet</span></a>
+                                                <a href="{{url('/fleet')}}"><span> Fleet</span></a>
                                             </li>
                                             <li id="menu-item-7240"
                                                 class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7240">
-                                                <a href="https://reservation.blacksedans.ca/"><span>Fare
+                                                <a href="{{url('/')}}"><span>Fare
                                                         Estimator</span></a>
                                             </li>
                                             <li id="menu-item-4965"
                                                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4965">
-                                                <a href="https://blacksedans.ca/contact-us/"><span>Contact</span></a>
+                                                <a href="{{url('/contact-us')}}contact-us"><span>Contact</span></a>
                                             </li>
                                         </ul>
 
@@ -170,8 +175,9 @@
                                 <div class="elementor-widget-container">
                                     <div id="ct_button-58e1b26"
                                         class="ct-button-wrapper ct-button-layout1 icon- btn--inline ">
-                                        <a href="#bookNowModal"
-                                    class="btn btn-effect2 icon-active btn-inline-block" data-toggle="modal"
+                                        <a href="{{ $customerCheck ? 'https://reservation.blacksedans.ca/' : '#bookNowModal' }}" 
+                                        data-toggle="{{ !$customerCheck ? 'modal' : '' }}" 
+                                    class="btn btn-effect2 icon-active btn-inline-block" 
                                     data-wow-delay="ms">
                                     <span class="ct-button-icon ct-align-icon-">
                                     </span> <span class="ct-button-text">Book Now</span> </a>
@@ -225,16 +231,15 @@
                         data-widget_type="ct_button.default">
                         <div class="elementor-widget-container">
                             <div id="ct_button-58e1b26" class="ct-button-wrapper ct-button-layout1 icon- btn--inline ">
-
-                                <a href="#bookNowModal"
-                                    class="btn btn-effect2 icon-active btn-inline-block" data-toggle="modal"
+ 
+                                <a href="{{ $customerCheck ? 'https://reservation.blacksedans.ca/' : '#bookNowModal' }}" 
+                                data-toggle="{{ !$customerCheck ? 'modal' : '' }}" 
+                                    class="btn btn-effect2 icon-active btn-inline-block"
                                     data-wow-delay="ms">
                                     <span class="ct-button-icon ct-align-icon-">
                                     </span> <span class="ct-button-text">Book Now</span> </a>
                                 <span class="ct-icon-active"></span> 
                                 @if(!$customerCheck && !$chaufferCheck)
-
-                                
                                 <a href="#signinModal"
                                     class="btn btn-effect2 icon-active btn-inline-block" data-toggle="modal"
                                     data-wow-delay="ms">
@@ -291,8 +296,8 @@
                     <strong>In Login to Book</strong> you will have history of all your bookings.
                 </p>
                 <div class="d-flex flex-wrap align-items-center py-2 mb-3">
-                <a  style="text-decoration: none; color:#fff" href="{{route('customer.login')}}" type="button" class="py-3 btn btn-primary"><span style="font-size:3rem" class="fa-solid fa-user"></span><p style="line-height: normal;" class="m-0 mt-2 p-0">Continue as guest</p></a>
-                <a  style="text-decoration: none; color:#fff" href="{{route('chauffeur.login')}}" type="button" class="mt-3 mt-sm-0 ml-sm-3 py-3 btn btn-primary"><span style="font-size:3rem" class="fa-solid fa-car"></span><p style="line-height: normal;" class="m-0 mt-2 p-0">Login to Book</p></a>
+                <a  style="text-decoration: none; color:#fff" href="{{url('/')}}" type="button" class="py-3 btn btn-primary"><span style="font-size:3rem" class="fa-solid fa-user"></span><p style="line-height: normal;" class="m-0 mt-2 p-0">Continue as guest</p></a>
+                <a  style="text-decoration: none; color:#fff" href="{{route('customer.login')}}" type="button" class="mt-3 mt-sm-0 ml-sm-3 py-3 btn btn-primary"><span style="font-size:3rem" class="fa-solid fa-car"></span><p style="line-height: normal;" class="m-0 mt-2 p-0">Login to Book</p></a>
                 </div>
             </div>
         </div>

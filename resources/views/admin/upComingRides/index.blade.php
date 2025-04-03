@@ -97,11 +97,11 @@
                                                 </td>
                                                 <td>{{ $booking->first_name }}</td>
                                                 <td>{{ $booking->last_name }}</td>
-                                                <td>
-                                                    @if ($booking->status == 'Booked')
-                                                        <span class="text-success">Booked</span>
-                                                    @else
+                                                <td> 
+                                                    @if ($booking->status == 'Accepted' ||$booking->status == 'On The Way')
                                                         <span class="text-success">On The Way</span>
+                                                    @else
+                                                        <span class="text-danger">not found</span>
                                                     @endif
                                                 </td>
                                                 <td>
