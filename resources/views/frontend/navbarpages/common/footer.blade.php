@@ -2,7 +2,7 @@
 $flage = Auth::guard('chauffeur')->user();
 $chaufferCheck = Auth::guard('chauffeur')->check();
 $customerCheck = Auth::guard('web')->check();
-$signIn = $chaufferCheck || $chaufferCheck;
+$signIn = $chaufferCheck || $customerCheck;
 @endphp
 <footer class="footer">
     <div class="footer-upper-portion">
@@ -43,8 +43,8 @@ $signIn = $chaufferCheck || $chaufferCheck;
                                     </div>
                                 </div>
                                 <div class="mt-4 pt-2">
-                                    <a href="{{ $customerCheck ? 'https://reservation.blacksedans.ca/' : '#bookNowModal' }}" 
-                                    data-bs-toggle="{{ !$customerCheck ? 'modal' : '' }}" 
+                                    <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal' }}" 
+                                    data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" 
                                     class="btn-4 rounded">
                                     <span class="fw-bold">Book Now</span>
                                   </a>

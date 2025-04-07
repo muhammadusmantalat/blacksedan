@@ -195,8 +195,8 @@
                             role="tab" aria-controls="nav-profile" aria-selected="false">Upcomings Rides</a>
                         <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact"
                             role="tab" aria-controls="nav-contact" aria-selected="false">Past Rides</a>
-                        <a class="nav-item nav-link" id="nav-book-now-tab" data-toggle="tab"         href="#nav-book-now"
-                            role="tab" aria-controls="nav-book-now" aria-selected="false">Book Now</a>
+                        {{-- <a class="nav-item nav-link" id="nav-book-now-tab" data-toggle="tab"         href="#nav-book-now"
+                            role="tab" aria-controls="nav-book-now" aria-selected="false">Book Now</a> --}}
                     </div>
                 </nav>
                 <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
@@ -328,7 +328,7 @@
                             @endforeach
                         @endif
                     </div>
-                    <div class="tab-pane fade" id="nav-book-now" role="tabpanel"          aria-labelledby="nav-book-now-tab">
+                    {{-- <div class="tab-pane fade" id="nav-book-now" role="tabpanel"          aria-labelledby="nav-book-now-tab">
                         <div class="text-center">
                             <a href="{{url('/')}}">
                                 <button class="edit-ride-btn rounded py-3 text-nowrap button-text mr-3" >
@@ -336,7 +336,7 @@
                             </button>
                         </a>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

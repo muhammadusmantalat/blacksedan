@@ -164,71 +164,65 @@
                         window.location.href = "{{ route('chauffeur.rides') }}";
                     },
                     error: function(xhr) {
-                        $('#loginMsg').html(
-                            `<div class="alert alert-danger">Invalid credentials. Please try again.</div>`
-                        );
-                    }
+                    $('#cardMessages').html(
+                        `<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            ${xhr.responseJSON.message || 'Invalid credentials. Please try again.'}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>`
+                    );
+                }
+
                 });
             });
-
             $('#chauffeurForm').on('submit', function(e) {
-                e.preventDefault();
-                let form = $(this);
-                let hasErrors = false;
+    e.preventDefault();
+    let form = $(this);
 
-                form.find('.error-message').text('');
-                form.find('.input-field').removeClass('input-error');
+    // Clear previous errors
+    form.find('.error-message').text('');
+    form.find('.input-field').removeClass('input-error');
+    $('#loader1').removeClass('d-none');
 
-                form.find('input').each(function() {
-                    let input = $(this);
-                    let value = input.val().trim();
-                    if (!value) {
-                        showError(input, 'Please fill this field');
-                        hasErrors = true;
-                    }
-                    if (input.attr('name') === 'email' && value) {
-                        if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)) {
-                            showError(input, 'Please enter a valid email');
-                            hasErrors = true;
-                        }
-                    }
+    $.ajax({
+        url: form.attr('action'),
+        method: 'POST',
+        data: form.serialize(),
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function(response) {
+            $('#cardMessages1').html(`
+                <div class="alert alert-success alert-dismissible fade show" role="alert" id="successAlert">
+                    ${response.message} <strong>Success!</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            `);
+            setTimeout(function() {
+                $("#successAlert").fadeOut("slow");
+            }, 2000);
+
+            $('#loader1').addClass('d-none');
+            form[0].reset();
+        },
+        error: function(xhr) {
+            $('#loader1').addClass('d-none');
+
+            if (xhr.status === 422) {
+                let errors = xhr.responseJSON.errors;
+                $.each(errors, function(field, messages) {
+                    let input = $(`[name="${field}"]`);
+                    input.addClass('input-error');
+                    input.siblings('.error-message').text(messages[0]);
                 });
+            } else {
+                $('#cardMessages1').html(`
+                    <div class="alert alert-danger">An error occurred. Please try again.</div>
+                `);
+            }
+        }
+    });
+});
 
-                if (hasErrors) return;
-                
-                $('#loader1').removeClass('d-none');
-
-                $.ajax({
-                    url: form.attr('action'),
-                    method: 'POST',
-                    data: form.serialize(),
-                    success: function(response) {
-                        // alert('ew');
-                        // return;
-                        $('#cardMessages1').html(`
-                                <div class="alert alert-success alert-dismissible fade show" role="alert" id="successAlert">
-                                    ${response.message} <strong>Success!</strong>
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                </div>
-                            `);
-                        // Hide alert after 5 seconds (5000 milliseconds)
-                        setTimeout(function() {
-                            $("#successAlert").fadeOut("slow");
-                        }, 2000);
-                        setTimeout(() => {
-                            $('#loader1').addClass('d-none');
-                            showMessage('Request submitted successfully!', 'success',
-                                '#successMsg');
-                            form[0].reset();
-                        }, 1000);
-                    },
-                    error: function(xhr) {
-                        $('#loader1').addClass('d-none');
-                        showMessage('An error occurred. Please try again.', 'danger',
-                            '#successMsg');
-                    }
-                });
-            });
 
             function showError(input, message) {
                 input.addClass('input-error');

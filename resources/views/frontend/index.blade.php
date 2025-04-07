@@ -7,6 +7,10 @@
     @php
         $user = Auth::user();
         // @dd($check);
+        $flage = Auth::guard('chauffeur')->user();
+  $chaufferCheck = Auth::guard('chauffeur')->check();
+  $customerCheck = Auth::guard('web')->check();
+  $signIn = $chaufferCheck || $customerCheck;
     @endphp
     <div id="page" class="site">
         <!-- #content -->
@@ -33,8 +37,12 @@
                                 </div>
                                 <div class="elementor-element elementor-element-58e1b26 elementor-align-center animated-slow elementor-widget elementor-widget-ct_button animated fadeIn" data-id="58e1b26" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;,&quot;_animation_delay&quot;:2800}" data-widget_type="ct_button.default">
                                     <div class="elementor-widget-container">
-                                        <div id="ct_button-58e1b26" class="ct-button-wrapper ct-button-layout1 icon- btn--inline "> <span class="ct-icon-active"></span> <a href="#bookNowModal" data-toggle="modal"
-                                    data-wow-delay="ms"  class="btn btn-effect2 icon-active btn-inline-block  " data-wow-delay="ms"> <span class="ct-button-icon ct-align-icon-"> </span> <span class="ct-button-text">Book Now</span> </a> </div>
+                                        <div id="ct_button-58e1b26" class="ct-button-wrapper ct-button-layout1 icon- btn--inline "> <span class="ct-icon-active"></span> <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal' }}" 
+                                            data-toggle="{{ !$signIn ? 'modal' : '' }}" 
+                                                class="btn btn-effect2 icon-active btn-inline-block"
+                                                data-wow-delay="ms">
+                                                <span class="ct-button-icon ct-align-icon-">
+                                                </span> <span class="ct-button-text">Book Now</span> </a> </div>
                                     </div>
                                 </div>
                             </div>

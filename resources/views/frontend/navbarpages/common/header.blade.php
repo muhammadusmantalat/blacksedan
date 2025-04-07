@@ -3,7 +3,7 @@
 $flage = Auth::guard('chauffeur')->user();
 $chaufferCheck = Auth::guard('chauffeur')->check();
 $customerCheck = Auth::guard('web')->check();
-$signIn = $chaufferCheck || $chaufferCheck;
+$signIn = $chaufferCheck || $customerCheck;
 @endphp
 <header id="mainHeader" class="scroll-header bg-white">
   <nav class="navbar navbar-expand-xl navbar-light p-0 m-0">
@@ -53,13 +53,13 @@ $signIn = $chaufferCheck || $chaufferCheck;
           </div> 
           @endif
 
-          <a href="{{ $customerCheck ? 'https://reservation.blacksedans.ca/' : '#bookNowModal' }}" 
-            data-bs-toggle="{{ !$customerCheck ? 'modal' : '' }}" 
+          <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal1' }}" 
+            data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" 
             class="btn-4 rounded">
             <span class="fw-bold">Book Now</span>
           </a>
 
-          @if (!$customerCheck)
+          @if (!$signIn)
               <a href="#signinModal" data-bs-toggle="modal" class="btn-4 rounded">
                 <span class="fw-bold">Sign In</span>
               </a>
@@ -95,7 +95,7 @@ $signIn = $chaufferCheck || $chaufferCheck;
             >
           </li> 
           <li class="nav-item border-bottom py-3">
-            <a class="p-0 nav-link" aria-current="page" href="{{url('/our-fleet')}}"
+            <a class="p-0 nav-link" aria-current="page" href="{{url('/fleet')}}"
               >Our Fleet</a
             >
           </li>
@@ -105,7 +105,7 @@ $signIn = $chaufferCheck || $chaufferCheck;
             >
           </li>
           <li class="nav-item border-bottom py-3">
-            <a class="p-0 nav-link" aria-current="page" href="{{url('/contact-us')}}"
+            <a class="p-0 nav-link" aria-current="page" href="{{ route('contact-us') }}"
               >Contact Us</a
             >
           </li>
@@ -146,11 +146,11 @@ $signIn = $chaufferCheck || $chaufferCheck;
               <span class="link-bg"></span>
             </li>
             <li class="position-relative nav-item">
-              <a class="p-0 nav-link" href="{{url('/our-fleet')}}">Fleet</a>
+              <a class="p-0 nav-link" href="{{url('/fleet')}}">Fleet</a>
               <span class="link-bg"></span>
             </li>
             <li class="position-relative nav-item">
-              <a class="p-0 nav-link" href="#">Fare Estimator</a>
+              <a class="p-0 nav-link" href="{{url('/')}}">Fare Estimator</a>
               <span class="link-bg"></span>
             </li>
             <li class="position-relative nav-item">
@@ -183,12 +183,12 @@ $signIn = $chaufferCheck || $chaufferCheck;
             </div>
             @endif
             
-              <a href="{{ $customerCheck ? 'https://reservation.blacksedans.ca/' : '#bookNowModal' }}" 
-                  data-bs-toggle="{{ !$customerCheck ? 'modal' : '' }}" 
+              <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal1' }}" 
+                  data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" 
                   class="btn-4 rounded">
                   <span class="fw-bold">Book Now</span>
               </a>
-              @if (!$customerCheck)
+              @if (!$signIn)
                 <a href="#signinModal" data-bs-toggle="modal" class="btn-4 rounded">
                   <span class="fw-bold">Sign In</span>
                 </a>
@@ -214,7 +214,8 @@ $signIn = $chaufferCheck || $chaufferCheck;
           <div class="modal-body text-center">
               <h3 class="fw-bold font-lato text-black text-center">Select Role</h3>
               <p style="font-size: 0.8rem" class="mx-3 mb-5 text-dark text-center">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste architecto illum error voluptatum? Beatae, qui aut ullam deserunt iste non?
+                Please select your role to continue. If you are a customer looking for a ride, choose "Customer Sign In."  
+                If you are a chauffeur providing services, select "Chauffeur Sign In."
               </p>
               <div class="py-2 mb-3">
                   <a href="{{route('customer.login')}}" class="py-3 px-4 btn bg-black text-white">

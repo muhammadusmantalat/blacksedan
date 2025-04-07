@@ -43,7 +43,7 @@
 $flage = Auth::guard('chauffeur')->user();
 $chaufferCheck = Auth::guard('chauffeur')->check();
 $customerCheck = Auth::guard('web')->check();
-$signIn = $chaufferCheck || $chaufferCheck;
+$signIn = $chaufferCheck || $customerCheck;
 @endphp
 <div id="ct-loadding" class="ct-loader style1">
     <div class="loading-spin">
@@ -120,7 +120,7 @@ $signIn = $chaufferCheck || $chaufferCheck;
                                             </li>
                                             <li id="menu-item-4966"
                                                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4966">
-                                                <a href="{{url('/fleet')}}"><span> Fleet</span></a>
+                                                <a href="{{ route('fleet')}}"><span> Fleet</span></a>
                                             </li>
                                             <li id="menu-item-7240"
                                                 class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7240">
@@ -129,7 +129,7 @@ $signIn = $chaufferCheck || $chaufferCheck;
                                             </li>
                                             <li id="menu-item-4965"
                                                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4965">
-                                                <a href="{{url('/contact-us')}}contact-us"><span>Contact</span></a>
+                                                <a href="{{url('/contact-us')}}"><span>Contact</span></a>
                                             </li>
                                         </ul>
 
@@ -141,7 +141,7 @@ $signIn = $chaufferCheck || $chaufferCheck;
                             $flage = Auth::guard('chauffeur')->user();
                             $chaufferCheck = Auth::guard('chauffeur')->check();
                             $customerCheck = Auth::guard('web')->check();
-                            $signIn = $chaufferCheck || $chaufferCheck;
+                            $signIn = $chaufferCheck || $customerCheck;
                             // dd($chaufferCheck);
                             // dd($customerCheck);
                             @endphp
@@ -175,8 +175,8 @@ $signIn = $chaufferCheck || $chaufferCheck;
                                 <div class="elementor-widget-container">
                                     <div id="ct_button-58e1b26"
                                         class="ct-button-wrapper ct-button-layout1 icon- btn--inline ">
-                                        <a href="{{ $customerCheck ? 'https://reservation.blacksedans.ca/' : '#bookNowModal' }}" 
-                                        data-toggle="{{ !$customerCheck ? 'modal' : '' }}" 
+                                        <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal' }}" 
+                                        data-toggle="{{ !$signIn ? 'modal' : '' }}" 
                                     class="btn btn-effect2 icon-active btn-inline-block" 
                                     data-wow-delay="ms">
                                     <span class="ct-button-icon ct-align-icon-">
@@ -232,8 +232,8 @@ $signIn = $chaufferCheck || $chaufferCheck;
                         <div class="elementor-widget-container">
                             <div id="ct_button-58e1b26" class="ct-button-wrapper ct-button-layout1 icon- btn--inline ">
  
-                                <a href="{{ $customerCheck ? 'https://reservation.blacksedans.ca/' : '#bookNowModal' }}" 
-                                data-toggle="{{ !$customerCheck ? 'modal' : '' }}" 
+                                <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal' }}" 
+                                data-toggle="{{ !$signIn ? 'modal' : '' }}" 
                                     class="btn btn-effect2 icon-active btn-inline-block"
                                     data-wow-delay="ms">
                                     <span class="ct-button-icon ct-align-icon-">
@@ -269,7 +269,11 @@ $signIn = $chaufferCheck || $chaufferCheck;
             </div>
             <div class="modal-body text-center">
                 <h4 class="font-font-weight-bolder text-center">Select Role</h4>
-                <p style="font-size: 0.8rem" class="mx-3 mb-5 text-dark text-center">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste architecto illum error voluptatum? Beatae, qui aut ullam deserunt iste non?</p>
+                <p style="font-size: 0.8rem" class="mx-3 mb-5 text-dark text-center"><p style="font-size: 0.8rem" class="mx-3 mb-5 text-dark text-center">
+                    Please select your role to continue. If you are a customer looking for a ride, choose "Customer Sign In."  
+                    If you are a chauffeur providing services, select "Chauffeur Sign In."
+                </p>
+                </p>
                 <div class="py-2 mb-3">
                 <a  style="text-decoration: none; color:#fff" href="{{route('customer.login')}}" type="button" class="py-3 btn btn-primary"><span style="font-size:3rem" class="fa-solid fa-user"></span><p style="line-height: normal;" class="m-0 mt-2 p-0">Customer Sign IN</p></a>
                 <a  style="text-decoration: none; color:#fff" href="{{route('chauffeur.login')}}" type="button" class="mt-3 mt-sm-0 ml-sm-3 py-3 btn btn-primary"><span style="font-size:3rem" class="fa-solid fa-car"></span><p style="line-height: normal;" class="m-0 mt-2 p-0">Chauffeur Sign IN</p></a>

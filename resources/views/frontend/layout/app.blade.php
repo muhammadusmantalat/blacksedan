@@ -9,12 +9,12 @@
     
     <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' /> <!-- This site is optimized with the Yoast SEO plugin v20.13 - https://yoast.com/wordpress/plugins/seo/ -->
     <title>Limo Service in Calgary | Calgary Limousine | Online Limo Reservation</title>
-    <link rel="canonical" href="https://reservation.blacksedans.ca/" />
+    <link rel="canonical" href="https://ranglerzbeta.in/bs-reservation/" />
     <meta name='description' content='Experience premium limo service in Calgary with easy online limo reservation options. Whether you need luxurious transportation from Calgary to Banff or nearby destinations, our limousine services offer comfort and reliability. Skip the hassle of public transport and enjoy a smooth ride from Calgary airport to Fairmont Château Lake Louise or even transportation from Calgary to Cranbrook BC. With limo booking made simple, access top-tier, convenient travel for any occasion, anytime. Book now and elevate your journey!' />
     <meta name='keywords' content='limo service in Calgary, online limo reservation, Calgary Limo, Calgary airport to Fairmont Château Lake Louise, transportation from Calgary to Cranbrook BC, transportation from Calgary to Waterton, suv limo Calgary, canmore limo' />
     <meta name='url' content='https://reservation.blacksedans.ca'>
     <meta name="og:title" content="Limo Service in Calgary | Calgary Limousine | Online Limo Reservation" />
-    <meta name="og:url" content="https://reservation.blacksedans.ca/" />
+    <meta name="og:url" content="https://ranglerzbeta.in/bs-reservation/" />
     <meta property="og:image" content=" https://blacksedans.ca/wp-content/uploads/2020/10/Black_Sedan_loader-1.png">
     <meta name="og:image" content="https://blacksedans.ca/wp-content/uploads/2020/10/Black_Sedan_loader-1.png" />
     <link rel="icon" href="./images/cropped-Asset-1-32x32.png" sizes="32x32" />

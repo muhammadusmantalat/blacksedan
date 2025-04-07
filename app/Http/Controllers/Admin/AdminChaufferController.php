@@ -22,8 +22,8 @@ class AdminChaufferController extends Controller
         $user = User::find($id);
         // return $user;
         $data['name'] = $user->fname;
-        $data['email'] = $user->email;
-        if($status == '1'){ 
+        $data['email'] = $user->id;
+        if($status == '1'){  
             $url = asset('chauffeur-sign-up');
             $data['url'] = $url;
             Mail::to($user->email)->send(new RequestStatus($data));

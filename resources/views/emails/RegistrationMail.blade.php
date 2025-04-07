@@ -8,7 +8,7 @@
     <p>Dear {{ $data['name'] }},</p>
 </div>
 <div>
-    <p>I hope this email finds you well! I’m pleased to welcome you to the Black Sedan 
+    <p>We hope this email finds you well! I’m pleased to welcome you to the Black Sedan 
         team. We are excited to have you on board as a chauffeur and look forward to 
         working with you.</p>
 </div>
@@ -34,6 +34,6 @@
 Best regards,<br>
     Black Sedan INC Dispatch Services<br>
     +1(825) 735-5538 <br>
-    nfo@blacksedans.ca
+    info@blacksedans.ca
 </div>
 @endcomponent

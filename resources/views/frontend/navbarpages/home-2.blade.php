@@ -1171,7 +1171,7 @@
                                                                 Fleet</span></a></li>
                                                     <li id="menu-item-7240"
                                                         class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7240">
-                                                        <a href="https://reservation.blacksedans.ca/"><span>Fare
+                                                        <a href="https://ranglerzbeta.in/bs-reservation/"><span>Fare
                                                                 Estimator</span></a></li>
                                                     <li id="menu-item-4965"
                                                         class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4965">
@@ -1228,7 +1228,7 @@
                                             <div id="ct_button-bf95e8a" class="ct-button-wrapper ct-button-layout1 icon- btn--inline ">
                             
                                     <span class="ct-icon-active"></span>
-                                <a href="https://reservation.blacksedans.ca/" class="btn btn-effect2 icon-active btn-inline-block  " data-wow-delay="ms">
+                                <a href="https://ranglerzbeta.in/bs-reservation/" class="btn btn-effect2 icon-active btn-inline-block  " data-wow-delay="ms">
                                                     <span class="ct-button-icon ct-align-icon-">
                                                     </span>
                                         <span class="ct-button-text">Book Now</span>
@@ -1343,7 +1343,7 @@
                                                                                                     <h3
                                                                                                         class="item--title">
                                                                                                         <a
-                                                                                                            href="https://reservation.blacksedans.ca/">Airport
+                                                                                                            href="https://ranglerzbeta.in/bs-reservation/">Airport
                                                                                                             Limo
                                                                                                             Service</a>
                                                                                                     </h3>
@@ -1361,7 +1361,7 @@
                                                                                                     </div>
                                                                                                     <div
                                                                                                         class="item-readmore">
-                                                                                                        <a href="https://reservation.blacksedans.ca/"
+                                                                                                        <a href="https://ranglerzbeta.in/bs-reservation/"
                                                                                                             class="btn btn-effect2 icon-active btn-inline-block">
                                                                                                             <span> Book
                                                                                                                 Now
@@ -1377,7 +1377,7 @@
                                                                                                     <h3
                                                                                                         class="item--title">
                                                                                                         <a
-                                                                                                            href="https://reservation.blacksedans.ca/">Canmore/Banff/Lake
+                                                                                                            href="https://ranglerzbeta.in/bs-reservation/">Canmore/Banff/Lake
                                                                                                             Louise</a>
                                                                                                     </h3>
                                                                                                     <div
@@ -1399,7 +1399,7 @@
                                                                                                     </div>
                                                                                                     <div
                                                                                                         class="item-readmore">
-                                                                                                        <a href="https://reservation.blacksedans.ca/"
+                                                                                                        <a href="https://ranglerzbeta.in/bs-reservation/"
                                                                                                             class="btn btn-effect2 icon-active btn-inline-block">
                                                                                                             <span> Book
                                                                                                                 Now
@@ -1415,7 +1415,7 @@
                                                                                                     <h3
                                                                                                         class="item--title">
                                                                                                         <a
-                                                                                                            href="https://reservation.blacksedans.ca/">City
+                                                                                                            href="https://ranglerzbeta.in/bs-reservation/">City
                                                                                                             Trip</a>
                                                                                                     </h3>
                                                                                                     <div
@@ -1434,7 +1434,7 @@
                                                                                                     </div>
                                                                                                     <div
                                                                                                         class="item-readmore">
-                                                                                                        <a href="https://reservation.blacksedans.ca/"
+                                                                                                        <a href="https://ranglerzbeta.in/bs-reservation/"
                                                                                                             class="btn btn-effect2 icon-active btn-inline-block">
                                                                                                             <span> Book
                                                                                                                 Now
@@ -1450,7 +1450,7 @@
                                                                                                     <h3
                                                                                                         class="item--title">
                                                                                                         <a
-                                                                                                            href="https://reservation.blacksedans.ca/">Corporate
+                                                                                                            href="https://ranglerzbeta.in/bs-reservation/">Corporate
                                                                                                             Car
                                                                                                             Service</a>
                                                                                                     </h3>
@@ -1477,7 +1477,7 @@
                                                                                                         services. </div>
                                                                                                     <div
                                                                                                         class="item-readmore">
-                                                                                                        <a href="https://reservation.blacksedans.ca/"
+                                                                                                        <a href="https://ranglerzbeta.in/bs-reservation/"
                                                                                                             class="btn btn-effect2 icon-active btn-inline-block">
                                                                                                             <span> Book
                                                                                                                 Now
@@ -1493,7 +1493,7 @@
                                                                                                     <h3
                                                                                                         class="item--title">
                                                                                                         <a
-                                                                                                            href="https://reservation.blacksedans.ca/">Special
+                                                                                                            href="https://ranglerzbeta.in/bs-reservation/">Special
                                                                                                             Events</a>
                                                                                                     </h3>
                                                                                                     <div
@@ -1514,7 +1514,7 @@
                                                                                                     </div>
                                                                                                     <div
                                                                                                         class="item-readmore">
-                                                                                                        <a href="https://reservation.blacksedans.ca/"
+                                                                                                        <a href="https://ranglerzbeta.in/bs-reservation/"
                                                                                                             class="btn btn-effect2 icon-active btn-inline-block">
                                                                                                             <span> Book
                                                                                                                 Now
@@ -1530,7 +1530,7 @@
                                                                                                     <h3
                                                                                                         class="item--title">
                                                                                                         <a
-                                                                                                            href="https://reservation.blacksedans.ca/">Surrounding
+                                                                                                            href="https://ranglerzbeta.in/bs-reservation/">Surrounding
                                                                                                             Areas</a>
                                                                                                     </h3>
                                                                                                     <div
@@ -1548,7 +1548,7 @@
                                                                                                     </div>
                                                                                                     <div
                                                                                                         class="item-readmore">
-                                                                                                        <a href="https://reservation.blacksedans.ca/"
+                                                                                                        <a href="https://ranglerzbeta.in/bs-reservation/"
                                                                                                             class="btn btn-effect2 icon-active btn-inline-block">
                                                                                                             <span> Book
                                                                                                                 Now
@@ -1614,11 +1614,11 @@
                                                                                  <div class="grid-item-inner ">
                                                                                     <div class="item--featured">
                                                                                        <div class="item--featured-image">
-                                                                                          <a href="https://reservation.blacksedans.ca/" tabindex="-1"><img fetchpriority="high" decoding="async" class="" src="https://blacksedans.ca/wp-content/uploads/2025/01/lincoln-aviator-sedan-500x315.webp" width="500" height="315" alt="lincoln-aviator-sedan" title="lincoln-aviator-sedan"></a>
+                                                                                          <a href="https://ranglerzbeta.in/bs-reservation/" tabindex="-1"><img fetchpriority="high" decoding="async" class="" src="https://blacksedans.ca/wp-content/uploads/2025/01/lincoln-aviator-sedan-500x315.webp" width="500" height="315" alt="lincoln-aviator-sedan" title="lincoln-aviator-sedan"></a>
                                                                                        </div>
                                                                                     </div>
                                                                                     <div class="item--meta" style="height: 345px;">
-                                                                                       <h3 class="item--title"><a href="https://reservation.blacksedans.ca/" tabindex="-1">Lincoln Aviator Sedan</a></h3>
+                                                                                       <h3 class="item--title"><a href="https://ranglerzbeta.in/bs-reservation/" tabindex="-1">Lincoln Aviator Sedan</a></h3>
                                                                                        <div class="item--desc">
                                                                                           <ul>
                                                                                              <li>3 pieces of luggage</li>
@@ -1629,7 +1629,7 @@
                                                                                           </ul>
                                                                                        </div>
                                                                                        <div class="entry-readmore">
-                                                                                          <a href="https://reservation.blacksedans.ca/" class="btn btn-effect2 icon-active btn-inline-block" tabindex="-1">
+                                                                                          <a href="https://ranglerzbeta.in/bs-reservation/" class="btn btn-effect2 icon-active btn-inline-block" tabindex="-1">
                                                                                              <span>
                                                                                              Book Now                                    </span>
                                                                                              <!-- <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 414.165 414.165" xml:space="preserve">
@@ -1647,11 +1647,11 @@
                                                                                  <div class="grid-item-inner ">
                                                                                     <div class="item--featured">
                                                                                        <div class="item--featured-image">
-                                                                                          <a href="https://reservation.blacksedans.ca/" tabindex="-1"><img decoding="async" class="" src="https://blacksedans.ca/wp-content/uploads/2025/01/cadillac-lyriq-sedan-500x315.webp" width="500" height="315" alt="cadillac-lyriq-sedan" title="cadillac-lyriq-sedan"></a>
+                                                                                          <a href="https://ranglerzbeta.in/bs-reservation/" tabindex="-1"><img decoding="async" class="" src="https://blacksedans.ca/wp-content/uploads/2025/01/cadillac-lyriq-sedan-500x315.webp" width="500" height="315" alt="cadillac-lyriq-sedan" title="cadillac-lyriq-sedan"></a>
                                                                                        </div>
                                                                                     </div>
                                                                                     <div class="item--meta" style="height: 345px;">
-                                                                                       <h3 class="item--title"><a href="https://reservation.blacksedans.ca/" tabindex="-1">Cadillac Lyriq Sedan</a></h3>
+                                                                                       <h3 class="item--title"><a href="https://ranglerzbeta.in/bs-reservation/" tabindex="-1">Cadillac Lyriq Sedan</a></h3>
                                                                                        <div class="item--desc">
                                                                                           <ul>
                                                                                              <li>3 pieces of luggage</li>
@@ -1663,7 +1663,7 @@
                                                                                           </ul>
                                                                                        </div>
                                                                                        <div class="entry-readmore">
-                                                                                          <a href="https://reservation.blacksedans.ca/" class="btn btn-effect2 icon-active btn-inline-block" tabindex="-1">
+                                                                                          <a href="https://ranglerzbeta.in/bs-reservation/" class="btn btn-effect2 icon-active btn-inline-block" tabindex="-1">
                                                                                              <span>
                                                                                              Book Now                                    </span>
                                                                                              <!-- <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 414.165 414.165" xml:space="preserve">
@@ -1681,11 +1681,11 @@
                                                                                  <div class="grid-item-inner ">
                                                                                     <div class="item--featured">
                                                                                        <div class="item--featured-image">
-                                                                                          <a href="https://reservation.blacksedans.ca/" tabindex="-1"><img decoding="async" class="" src="https://blacksedans.ca/wp-content/uploads/2025/01/gmc-yukon-denali-xl-suv-500x315.webp" width="500" height="315" alt="gmc-yukon-denali-xl-suv" title="gmc-yukon-denali-xl-suv"></a>
+                                                                                          <a href="https://ranglerzbeta.in/bs-reservation/" tabindex="-1"><img decoding="async" class="" src="https://blacksedans.ca/wp-content/uploads/2025/01/gmc-yukon-denali-xl-suv-500x315.webp" width="500" height="315" alt="gmc-yukon-denali-xl-suv" title="gmc-yukon-denali-xl-suv"></a>
                                                                                        </div>
                                                                                     </div>
                                                                                     <div class="item--meta" style="height: 345px;">
-                                                                                       <h3 class="item--title"><a href="https://reservation.blacksedans.ca/" tabindex="-1">GMC Yukon Denali Xl SUV</a></h3>
+                                                                                       <h3 class="item--title"><a href="https://ranglerzbeta.in/bs-reservation/" tabindex="-1">GMC Yukon Denali Xl SUV</a></h3>
                                                                                        <div class="item--desc">
                                                                                           <ul>
                                                                                              <li>6 pieces of luggage</li>
@@ -1697,7 +1697,7 @@
                                                                                           </ul>
                                                                                        </div>
                                                                                        <div class="entry-readmore">
-                                                                                          <a href="https://reservation.blacksedans.ca/" class="btn btn-effect2 icon-active btn-inline-block" tabindex="-1">
+                                                                                          <a href="https://ranglerzbeta.in/bs-reservation/" class="btn btn-effect2 icon-active btn-inline-block" tabindex="-1">
                                                                                              <span>
                                                                                              Book Now                                    </span>
                                                                                              <!-- <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 414.165 414.165" xml:space="preserve">
@@ -1715,11 +1715,11 @@
                                                                                  <div class="grid-item-inner ">
                                                                                     <div class="item--featured">
                                                                                        <div class="item--featured-image">
-                                                                                          <a href="https://reservation.blacksedans.ca/" tabindex="0"><img loading="lazy" decoding="async" class="" src="https://blacksedans.ca/wp-content/uploads/2025/01/chevrolet-suburban-suv-500x315.webp" width="500" height="315" alt="chevrolet-suburban-suv" title="chevrolet-suburban-suv"></a>
+                                                                                          <a href="https://ranglerzbeta.in/bs-reservation/" tabindex="0"><img loading="lazy" decoding="async" class="" src="https://blacksedans.ca/wp-content/uploads/2025/01/chevrolet-suburban-suv-500x315.webp" width="500" height="315" alt="chevrolet-suburban-suv" title="chevrolet-suburban-suv"></a>
                                                                                        </div>
                                                                                     </div>
                                                                                     <div class="item--meta" style="height: 345px;">
-                                                                                       <h3 class="item--title"><a href="https://reservation.blacksedans.ca/" tabindex="0">Chevrolet Suburban SUV</a></h3>
+                                                                                       <h3 class="item--title"><a href="https://ranglerzbeta.in/bs-reservation/" tabindex="0">Chevrolet Suburban SUV</a></h3>
                                                                                        <div class="item--desc">
                                                                                           <ul>
                                                                                              <li>6 pieces of luggage</li>
@@ -1730,7 +1730,7 @@
                                                                                           </ul>
                                                                                        </div>
                                                                                        <div class="entry-readmore">
-                                                                                          <a href="https://reservation.blacksedans.ca/" class="btn btn-effect2 icon-active btn-inline-block" tabindex="0">
+                                                                                          <a href="https://ranglerzbeta.in/bs-reservation/" class="btn btn-effect2 icon-active btn-inline-block" tabindex="0">
                                                                                              <span>
                                                                                              Book Now                                    </span>
                                                                                              <!-- <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 414.165 414.165" xml:space="preserve">
@@ -1748,11 +1748,11 @@
                                                                                  <div class="grid-item-inner ">
                                                                                     <div class="item--featured">
                                                                                        <div class="item--featured-image">
-                                                                                          <a href="https://reservation.blacksedans.ca/" tabindex="0"><img loading="lazy" decoding="async" class="" src="https://blacksedans.ca/wp-content/uploads/2025/01/ford-transit-sprinter-500x315.jpg" width="500" height="315" alt="ford-transit-sprinter" title="ford-transit-sprinter"></a>
+                                                                                          <a href="https://ranglerzbeta.in/bs-reservation/" tabindex="0"><img loading="lazy" decoding="async" class="" src="https://blacksedans.ca/wp-content/uploads/2025/01/ford-transit-sprinter-500x315.jpg" width="500" height="315" alt="ford-transit-sprinter" title="ford-transit-sprinter"></a>
                                                                                        </div>
                                                                                     </div>
                                                                                     <div class="item--meta" style="height: 345px;">
-                                                                                       <h3 class="item--title"><a href="https://reservation.blacksedans.ca/" tabindex="0">Ford Transit Sprinter</a></h3>
+                                                                                       <h3 class="item--title"><a href="https://ranglerzbeta.in/bs-reservation/" tabindex="0">Ford Transit Sprinter</a></h3>
                                                                                        <div class="item--desc">
                                                                                           <ul>
                                                                                              <li>8 pieces of luggage</li>
@@ -1763,7 +1763,7 @@
                                                                                           <strong>Please note: 2 days in advance booking and advance payment required!</strong>                            
                                                                                        </div>
                                                                                        <div class="entry-readmore">
-                                                                                          <a href="https://reservation.blacksedans.ca/" class="btn btn-effect2 icon-active btn-inline-block" tabindex="0">
+                                                                                          <a href="https://ranglerzbeta.in/bs-reservation/" class="btn btn-effect2 icon-active btn-inline-block" tabindex="0">
                                                                                              <span>
                                                                                              Book Now                                    </span>
                                                                                              <!-- <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 414.165 414.165" xml:space="preserve">
@@ -1781,11 +1781,11 @@
                                                                                  <div class="grid-item-inner ">
                                                                                     <div class="item--featured">
                                                                                        <div class="item--featured-image">
-                                                                                          <a href="https://reservation.blacksedans.ca/" tabindex="0"><img loading="lazy" decoding="async" class="" src="https://blacksedans.ca/wp-content/uploads/2025/01/dodge-ram-stretch-limousine-500x315.webp" width="500" height="315" alt="dodge-ram-stretch-limousine" title="dodge-ram-stretch-limousine"></a>
+                                                                                          <a href="https://ranglerzbeta.in/bs-reservation/" tabindex="0"><img loading="lazy" decoding="async" class="" src="https://blacksedans.ca/wp-content/uploads/2025/01/dodge-ram-stretch-limousine-500x315.webp" width="500" height="315" alt="dodge-ram-stretch-limousine" title="dodge-ram-stretch-limousine"></a>
                                                                                        </div>
                                                                                     </div>
                                                                                     <div class="item--meta" style="height: 345px;">
-                                                                                       <h3 class="item--title"><a href="https://reservation.blacksedans.ca/" tabindex="0">Dodge Ram Stretch Limousine</a></h3>
+                                                                                       <h3 class="item--title"><a href="https://ranglerzbeta.in/bs-reservation/" tabindex="0">Dodge Ram Stretch Limousine</a></h3>
                                                                                        <div class="item--desc">
                                                                                           <ul>
                                                                                              <li>half ton of luggage</li>
@@ -1797,7 +1797,7 @@
                                                                                           <strong>Please note: 2 days in advance booking and advance payment required!</strong>                            
                                                                                        </div>
                                                                                        <div class="entry-readmore">
-                                                                                          <a href="https://reservation.blacksedans.ca/" class="btn btn-effect2 icon-active btn-inline-block" tabindex="0">
+                                                                                          <a href="https://ranglerzbeta.in/bs-reservation/" class="btn btn-effect2 icon-active btn-inline-block" tabindex="0">
                                                                                              <span>
                                                                                              Book Now                                    </span>
                                                                                              <!-- <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 414.165 414.165" xml:space="preserve">
@@ -1932,7 +1932,7 @@
                                                             class="ct-button-wrapper ct-button-layout1 icon- btn--inline">
                                                             <div class="ct-inline-css" data-css="          "> </div>
                                                             <span class="ct-icon-active"></span> <a
-                                                                href="https://reservation.blacksedans.ca/"
+                                                                href="https://ranglerzbeta.in/bs-reservation/"
                                                                 class="btn btn-effect2 icon-active btn-inline-block"
                                                                 data-wow-delay="ms"> <span
                                                                     class="ct-button-icon ct-align-icon-"> </span>
@@ -2036,7 +2036,7 @@
                                                                     </div> <a class="ct-contact-link"
                                                                         href="info@blacksedan.com"></a>
                                                                 </div> <br> <a
-                                                                    href="https://reservation.blacksedans.ca/"
+                                                                    href="https://ranglerzbeta.in/bs-reservation/"
                                                                     class="btn btn-effect2 icon-active btn-inline-block">
                                                                     <span>Book Now</span> </a>
                                                             </div>

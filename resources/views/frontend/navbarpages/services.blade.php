@@ -5,7 +5,7 @@
 $flage = Auth::guard('chauffeur')->user();
 $chaufferCheck = Auth::guard('chauffeur')->check();
 $customerCheck = Auth::guard('web')->check();
-$signIn = $chaufferCheck || $chaufferCheck;
+$signIn = $chaufferCheck || $customerCheck;
 @endphp
 <div>
   <div class="d-flex justify-content-center align-items-center home-page-hero hero-section services-hero">
@@ -14,8 +14,8 @@ $signIn = $chaufferCheck || $chaufferCheck;
         TOP-TIER LIMO SERVICE, TAILORED TO YOUR BUDGET
       </h1>
       <div class="d-flex pb-2 justify-content-center mt-3 fade-in-delayed">
-        <a href="{{ $customerCheck ? 'https://reservation.blacksedans.ca/' : '#bookNowModal' }}" 
-              data-bs-toggle="{{ !$customerCheck ? 'modal' : '' }}" 
+        <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal' }}" 
+              data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" 
               class="btn-4 rounded">
               <span class="fw-bold">Book Now</span>
             </a>
@@ -51,8 +51,8 @@ $signIn = $chaufferCheck || $chaufferCheck;
         <p class="text-white fw-medium font-lato service-para animate-from-bottom">Travel to and from Calgary International Airport (YYC) in luxury and comfort with our <strong>professional and proficient</strong> chauffeurs. Our dedicated staff constantly <strong>monitors your flight status</strong> in order to make sure that you are provided with the <strong>utmost level of service and quality.</strong> We offer <strong>complimentary airport meet and greet service.</strong> A chauffeur bearing a printed meet and greet sign will meet in one of two places, depending on the flight. <strong>For domestic flights,</strong> the chauffeur will meet the customers just prior to baggage claim. <strong>For international flights,</strong> the chauffeurs will meet the customers after customs and baggage claim.</p>
         <p class="text-white fw-medium font-lato mt-3 service-para animate-from-bottom"><strong>PLEASE NOTE:</strong> airport pickups include additional charges.</p>
         
-        <a href="{{ $customerCheck ? 'https://reservation.blacksedans.ca/' : '#bookNowModal' }}" 
-              data-bs-toggle="{{ !$customerCheck ? 'modal' : '' }}" 
+        <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal' }}" 
+              data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" 
               class="btn-4-white rounded pointer animate-from-bottom">
               <span class="fw-bold">Book Now</span>
             </a>
@@ -65,8 +65,8 @@ $signIn = $chaufferCheck || $chaufferCheck;
       <div class="col-md-6 pt-5 pb-4 pb-md-5 service-content">
         <h3 class="font-600 mb-4 font-lato text-black animate-from-bottom">Corporate Car Service</h3>
         <p class="fw-medium font-lato service-para animate-from-bottom">Over the years, Black Sedan has <strong>built strong professional relationships</strong> with existing corporate partners. Black Sedan offers drive as directed car service, <strong>provides special rates</strong> to corporate partners, and caters towards the needs of corporate events whether inside the city or outside.</p>
-        <a href="{{ $customerCheck ? 'https://reservation.blacksedans.ca/' : '#bookNowModal' }}" 
-        data-bs-toggle="{{ !$customerCheck ? 'modal' : '' }}" 
+        <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal' }}" 
+        data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" 
         class="btn-4 rounded pointer animate-from-bottom">
         <span class="fw-bold">Book Now</span>
       </a>
@@ -79,8 +79,8 @@ $signIn = $chaufferCheck || $chaufferCheck;
       <div class="col-md-6 pt-5 pb-4 pb-md-5 service-content">
         <h3 class="text-white font-600 font-lato mb-4 animate-from-bottom">City Trip</h3>
         <p class="text-white fw-medium font-lato service-para animate-from-bottom">There is a lot to see and do in the city of Calgary and we can make it possible. Hotel reservation? Need to go to your residence? Calgary Tower? Restaurant Booking? Just name it! Black Sedan will be there!</p>
-         <a href="{{ $customerCheck ? 'https://reservation.blacksedans.ca/' : '#bookNowModal' }}" 
-              data-bs-toggle="{{ !$customerCheck ? 'modal' : '' }}" 
+         <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal' }}" 
+              data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" 
               class="btn-4-white rounded pointer animate-from-bottom">
               <span class="fw-bold">Book Now</span>
             </a>
@@ -93,8 +93,8 @@ $signIn = $chaufferCheck || $chaufferCheck;
       <div class="col-md-6 pt-5 pb-4 pb-md-5 service-content">
         <h3 class="font-600 mb-4 font-lato text-black animate-from-bottom">Special Events</h3>
         <p class="fw-medium font-lato service-para animate-from-bottom">Black Sedan helps <strong>create unforgettable moments,</strong> without the price tag at your special events, whether it’s a <strong>wedding, graduation, anniversary or more!</strong></p>
-        <a href="{{ $customerCheck ? 'https://reservation.blacksedans.ca/' : '#bookNowModal' }}" 
-        data-bs-toggle="{{ !$customerCheck ? 'modal' : '' }}" 
+        <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal' }}" 
+        data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" 
         class="btn-4 rounded pointer animate-from-bottom">
         <span class="fw-bold">Book Now</span>
       </a>
@@ -107,8 +107,8 @@ $signIn = $chaufferCheck || $chaufferCheck;
       <div class="col-md-6 pt-5 pb-4 pb-md-5 service-content">
         <h3 class="text-white font-600 font-lato mb-4 animate-from-bottom">Canmore/Banff/Lake Louise</h3>
         <p class="text-white fw-medium font-lato service-para animate-from-bottom">Black Sedan has <strong>experienced chauffeurs</strong> that can guide you through the <strong>scenic Rocky Mountains</strong> in your cozy and comfortable limo on your way to one of the <strong>world’s most popular vacation destinations.</strong></p>
-        <a href="{{ $customerCheck ? 'https://reservation.blacksedans.ca/' : '#bookNowModal' }}" 
-        data-bs-toggle="{{ !$customerCheck ? 'modal' : '' }}" 
+        <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal' }}" 
+        data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" 
         class="btn-4-white rounded pointer animate-from-bottom">
         <span class="fw-bold">Book Now</span>
       </a>
@@ -121,8 +121,8 @@ $signIn = $chaufferCheck || $chaufferCheck;
       <div class="col-md-6 pt-5 pb-4 pb-md-5 service-content">
         <h3 class="font-600 mb-4 font-lato text-black animate-from-bottom">Surrounding Areas</h3>
         <p class="fw-medium font-lato service-para animate-from-bottom">We <strong>cater to all your needs.</strong> Travel to and from Calgary to other locations such as <strong>Lethbridge, Edmonton, Red Deer, Medicine Hat, and more!</strong></p>
-        <a href="{{ $customerCheck ? 'https://reservation.blacksedans.ca/' : '#bookNowModal' }}" 
-        data-bs-toggle="{{ !$customerCheck ? 'modal' : '' }}" 
+        <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal' }}" 
+        data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" 
         class="btn-4 rounded pointer animate-from-bottom">
         <span class="fw-bold">Book Now</span>
       </a>
@@ -131,5 +131,32 @@ $signIn = $chaufferCheck || $chaufferCheck;
     </div>
   </div>
 </div>
-
+{{-- Book Now modal --}}
+<div class="modal fade" id="bookNowModal" tabindex="-1" role="dialog" aria-labelledby="bookNowModalLabel1" aria-hidden="true">
+  <div class="modal-dialog d-flex align-items-center h-75" role="document">
+      <div class="modal-content">
+          <div class="modal-header border-0 d-flex justify-content-end">
+              <button type="button" data-bs-dismiss="modal" aria-label="Close" class="d-flex justify-content-center bg-black border-0 text-white rounded align-items-center" style="height: 3rem; width: 4rem; position: absolute; top:0.5rem; right:0.5rem;">
+                  <span class="fa-solid fa-xmark"></span>
+              </button>
+          </div>
+          <div class="modal-body text-center">
+              <h3 class="fw-bold font-lato text-black text-center">Select Booking Type</h3>
+              <p style="font-size: 0.8rem" class="mx-3 my-3 text-dark text-center">
+                <strong>In Guest Booking</strong> you don't need to create an account. <br> <strong>In Login to Book</strong> You will have history of all your bookings.
+              </p>
+              <div class="py-2 mb-3 d-flex gap-3 justify-content-center align-items-center flex-wrap">
+                <a href="{{url('/')}}" style="width: 10rem;"  class="py-3 btn bg-black text-white">
+                      <span style="font-size:3rem" class="fa-solid fa-user"></span>
+                      <p style="line-height: normal;" class="m-0 mt-2 p-0">Continue as guest</p>
+                </a>
+                  <a href="{{route('customer.login')}}" style="width: 10rem;" class="py-3 btn bg-black text-white">
+                      <span style="font-size:3rem" class="fa-solid fa-car"></span>
+                      <p style="line-height: normal;" class="m-0 mt-2 p-0">Login to Book</p>
+                  </a>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
 @endsection

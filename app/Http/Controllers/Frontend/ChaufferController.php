@@ -119,9 +119,12 @@ class ChaufferController extends Controller
             // if (!$user || !Hash::check($request->password, $user->password)) {
             //     return response()->json(['message' => 'Invalid credentials.'], 401);
             // }
-            if (!auth()->guard('chauffeur')->attempt(['email' => $request->email, 'password' => $request->password])) {
-                return back()->with('message', 'Invalid email or password');
-            }
+            if (!auth()->guard('chauffeur')->attempt([
+                'email' => $request->email, 
+                'password' => $request->password])) 
+                {
+                    return response()->json(['message' => 'Invalid email or password.'], 401);
+                }
             // return "k";
             // Agar login successful ho to success message return karein
             return response()->json(['message' => 'Login successful!'], 200);
@@ -297,7 +300,7 @@ class ChaufferController extends Controller
     }
 
     public function getsignUpPage($email){
-        $user = User::where('email',$email)->first();
+        $user = User::where('id',$email)->first();
         return view('frontend.chauffeur-sign-up',compact('user'));
     }
 

@@ -158,7 +158,7 @@ if($check){
                                                                 <div class="input-filled col-lg-6 col-md-6">
                                                                     <label>Cardholder Name </label>
                                                                     <input class="wpcf7-form-control" placeholder=""
-                                                                        value="{{isset($card) ? $card->name : ''}}" type="text"
+                                                                        value="{{isset($card) && $card ? $card->name : ''}}" type="text"
                                                                         name="card_holder_number" />
                                                                 </div>
                                                                 <div class="input-filled col-lg-6 col-md-6">
@@ -166,7 +166,7 @@ if($check){
                                                                     <input class="wpcf7-form-control"
                                                                         placeholder="1234123412341234" type="number"
                                                                         id="creditCard" name="card_number" maxlength="16"
-                                                                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" value="{{ isset($card) ? $card->card_number : '' }}"
+                                                                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" value="{{ isset($card) && $card ? $card->card_number : '' }}"
                                                                         >
                                                                 </div>
                                                                 <div class="input-filled col-lg-4 col-md-4">
@@ -213,7 +213,7 @@ if($check){
                                                                            name="cvv"
                                                                            type="number"
                                                                            maxlength="3"
-                                                                           value="{{ isset($card) ? $card->cvv : '' }}"
+                                                                           value="{{ isset($card) && $card ? $card->cvv : '' }}"
                                                                            oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
                                                                     
                                                                 </div>

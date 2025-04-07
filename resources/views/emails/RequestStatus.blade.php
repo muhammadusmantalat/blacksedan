@@ -7,7 +7,7 @@
 <p>Dear {{ $data['name'] }},</p>
 
 <div>
-@if ($data['url'] !== null)
+    @if (!empty($data['url']))
     <div>
         <p>Your registration request has been approved.</p>
     </div>

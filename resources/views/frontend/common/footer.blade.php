@@ -2,7 +2,7 @@
 $flage = Auth::guard('chauffeur')->user();
 $chaufferCheck = Auth::guard('chauffeur')->check();
 $customerCheck = Auth::guard('web')->check();
-$signIn = $chaufferCheck || $chaufferCheck;
+$signIn = $chaufferCheck || $customerCheck;
 @endphp
 <footer id="colophon" class="site-footer-custom">
             <div class="footer-custom-inner">
@@ -74,9 +74,7 @@ $signIn = $chaufferCheck || $chaufferCheck;
                                                     <div class="elementor-widget-container">
                                                         <div id="ct_button-ade08fe" class="ct-button-wrapper ct-button-layout1 icon- btn--inline">
                                                             <div class="ct-inline-css" data-css=""> </div> <span class="ct-icon-active"></span> 
-                                                            <a href="{{ $customerCheck ? 'https://reservation.blacksedans.ca/' : '#bookNowModal' }}" 
-                                                                        data-bs-toggle="{{ !$customerCheck ? 'modal' : '' }}"
-                                                                data-wow-delay="ms" class="btn btn-effect2 icon-active btn-inline-block"> <span>Book Now</span> </a>
+                                                            <a href="#bookNowModal" data-toggle="modal" data-wow-target="#bookNowModal" class="btn btn-primary">Book Now</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -144,8 +142,8 @@ $signIn = $chaufferCheck || $chaufferCheck;
                                                                         <h4 class="item--title"></h4>
                                                                         <div class="item--content"> <a href="mailto:info@blacksedans.ca">info@blacksedans.ca</a> </div>
                                                                     </div> <a class="ct-contact-link" href="info@blacksedan.com"></a>
-                                                                </div> <br> <a href="{{ $customerCheck ? 'https://reservation.blacksedans.ca/' : '#bookNowModal' }}" 
-                                                                        data-bs-toggle="{{ !$customerCheck ? 'modal' : '' }}"
+                                                                </div> <br> <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal' }}" 
+                                                                        data-toggle="{{ !$signIn ? 'modal' : '' }}"
                                                                 data-wow-delay="ms" class="btn btn-effect2 icon-active btn-inline-block"> <span>Book Now</span> </a>
                                                             </div>
                                                         </div>
@@ -280,30 +278,9 @@ $signIn = $chaufferCheck || $chaufferCheck;
                 </div>
             </div> 
 
-            <!-- Booking Modal -->
-<div class="modal fade" id="bookNowModal" tabindex="-1" role="dialog" aria-labelledby="bookNowModalLabel" aria-hidden="true">
-    <div class="modal-dialog d-flex align-items-center h-75" role="document">
-        <div class="px-5 modal-content">
-            <div class="modal-header border-0 d-flex justify-content-end">
-                <button type="button"  data-dismiss="modal" aria-label="Close" class="d-flex justify-content-center align-items-center" style="min-height: 3rem;
-                width: 1rem; position: absolute; top:0.5rem; right:0.5rem;">
-                <span class="fa-solid fa-xmark"></span>
-                </button>
-            </div>
-            <div class="modal-body text-center">
-                <h4 class="font-font-weight-bolder text-center mt-3">Select Booking Type</h4>
-                <p style="font-size: 0.8rem" class="mx-3 mb-5 text-dark text-center">
-                    <strong>In Guest Booking</strong> you don't need to sign in. 
-                    <strong>In Login to Book</strong> you will have history of all your bookings.
-                </p>
-                <div class="d-flex flex-wrap align-items-center py-2 mb-3">
-                <a  style="text-decoration: none; color:#fff" href="{{url('/')}}" type="button" class="py-3 btn btn-primary"><span style="font-size:3rem" class="fa-solid fa-user"></span><p style="line-height: normal;" class="m-0 mt-2 p-0">Continue as guest</p></a>
-                <a  style="text-decoration: none; color:#fff" href="{{route('customer.login')}}" type="button" class="mt-3 mt-sm-0 ml-sm-3 py-3 btn btn-primary"><span style="font-size:3rem" class="fa-solid fa-car"></span><p style="line-height: normal;" class="m-0 mt-2 p-0">Login to Book</p></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
+
+
         </footer> <a href="#" class="scroll-top"><i class="zmdi zmdi-long-arrow-up"></i></a>
         <!-- <a href="https://api.whatsapp.com/send?phone=+18257355538&text=Hi. How can we help you?" class="whatsapp-button" target="_blank" style="position: fixed;  left: 20px; bottom: 20px; z-index: 999999;">
         <img src="https://i.ibb.co/VgSspjY/whatsapp-button.png" alt="botão whatsapp"> -->
