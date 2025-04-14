@@ -49,7 +49,11 @@
                 <span toggle="#login-password" class="fa fa-fw fa-eye field-icon toggle-password eye-icon"></span>
                 <span id="login-password-error" class="error-message"></span>
             </div>
-            <button type="submit" class="btn btn-primary bg-white mt-3" style="color:black">Submit</button>
+       
+            <div class="d-flex justify-content-between align-items-center mt-3">
+                <button type="submit" class="btn btn-primary bg-white mt-3" style="color:black">Submit</button>
+                <a href="{{ route('chauffeur-forget-email-page') }}" class="text-primary ms-3" style="font-size: 14px;">Forgot Password?</a>
+            </div>
             <div id="cardMessages" class="mt-3"></div>
         </form>
     </div>

@@ -158,6 +158,12 @@ Route::post('chauffeur-store',[ChaufferController::class,'chaufferData'])->name(
 Route::post('Chauffersigup',[ChaufferController::class,'Chauffersigup'])->name('Chauffersigup');
 Route::post('chauffeurLogin',[ChaufferController::class,'chauffeurLogin'])->name('chauffeur.sign-in');
 Route::post('/chauffeur-email-check', [ChaufferController::class, 'chaufferEmail'])->name('checkEmail.chauffer');
+
+Route::get('/chauffeur-forget-email-page', [ChaufferController::class, 'forgetEmailPage'])->name('chauffeur-forget-email-page');
+Route::post('/chauffeur-forget-email', [ChaufferController::class, 'forgetEmailSend'])->name('chauffeur-forget-email');
+Route::get('/chauffeur_change_password_page/{id}', [ChaufferController::class, 'changePassowrd'])->name('chauffeur_change_password_page');
+Route::post('/chauffeur-change-password', [ChaufferController::class, 'resetPassword'])->name('chauffeur_change_password'); 
+
 Route::middleware(['chauffeur.auth'])->group(function () {
     Route::get('/chauffeur-rides', [ChaufferController::class, 'chauffeurRides'])->name('chauffeur.rides');
     Route::post('/chauffeur-rides/accept', [ChaufferController::class, 'chauffeurRidesAccept'])->name('chauffer.rides.accept');
@@ -191,6 +197,12 @@ Route::get('customer-sign-up',[CustomerController::class,'getRegisterPage'])->na
 Route::post('/customer/register', [CustomerController::class, 'registerCustomer'])->name('registerCustomer');
 Route::post('/customer-login', [CustomerController::class, 'loginCustomer'])->name('login');
 Route::post('/check-email', [CustomerController::class, 'checkEmail'])->name('checkEmail');
+
+Route::get('/customer-forget-email-page', [CustomerController::class, 'forgetEmailPage'])->name('customer-forget-email-page');
+Route::post('/customer-forget-email', [CustomerController::class, 'forgetEmailSend'])->name('customer-forget-email');
+Route::get('/customer_change_password_page/{id}', [CustomerController::class, 'changePassowrd'])->name('customer_change_password_page');
+Route::post('/customer-change-password', [CustomerController::class, 'resetPassword'])->name('customer_change_password');          
+
 Route::middleware(['customer.auth'])->group(function () {
     Route::get('/customer-rides', [CustomerController::class, 'customerRides'])->name('customer.rides');
     Route::post('/customer-update', [CustomerController::class, 'updateRide'])->name('customer.rides.edit');

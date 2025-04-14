@@ -8,10 +8,12 @@ use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Chauffer;
 use App\Models\Booking;
+use Illuminate\Support\Str;
 use App\Models\DeleteRequest;
 use App\Models\AdminNotification;
 use App\Mail\CustomerRegistrationMail;
 use App\Mail\UpdateRideNotifyChauffe;
+use App\Mail\CustomerForgetPassswordLink;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -26,6 +28,117 @@ class CustomerController extends Controller
     public function getRegisterPage(){
         return view('frontend.customer-sign-up');
     }
+
+    public function forgetEmailPage(){
+        return view('frontend.customer-reset-email');
+    }
+
+    public function forgetEmailSend(Request $request){
+       
+        try {
+            // Validate input manually so we can catch it properly
+            $validator = Validator::make($request->all(), [
+                'email' => 'required|email|exists:users,email',
+            ]);
+    
+            if ($validator->fails()) {
+                // Return proper 422 error response
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Validation failed',
+                    'errors' => $validator->errors()
+                ], 422);
+            }
+    
+            // Check if reset already exists
+            $exists = DB::table('password_resets')->where('email', $request->email)->first();
+    
+            if ($exists) {
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'Reset Password link has already been sent.'
+                ]);
+            }
+    
+            // Send reset link
+            $token = Str::random(30);
+            DB::table('password_resets')->insert([
+                'email' => $request->email,
+                'token' => $token,
+                'created_at' => now()
+            ]);
+    
+            $data['url'] = url('customer_change_password_page', $token);
+    
+            Mail::to($request->email)->send(new CustomerForgetPassswordLink($data));
+    
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Reset Password link sent successfully. Please check your email.'
+            ]);
+    
+        } catch (ValidationException $e) {
+            // Handle validation errors separately
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Validation error occurred.',
+                'errors' => $e->errors()
+            ], 422);
+        } catch (\Exception $e) {
+            // Handle other errors
+            return response()->json([
+                'status' => 'error',
+                'message' => 'An error occurred while sending the reset link. Please try again later.',
+                'debug' => $e->getMessage() // Remove in production
+            ], 500);
+        }
+        return view('frontend.customer-reset-email');
+    }
+
+    public function changePassowrd($id)
+    {
+
+        $user = DB::table('password_resets')->where('token', $id)->first();
+
+        if (isset($user)) {
+            return view('frontend.customer-changePassowrd', compact('user'));
+        }
+    }
+
+    public function resetPassword(Request $request)
+    {
+        try {
+            $validated = $request->validate([
+                'password' => 'required|min:8',
+                'confirmed' => 'required|same:password',
+            ]);
+
+            // Update password
+            User::where('email', $request->email)->update([
+                'password' => bcrypt($request->password)
+            ]);
+
+            // Remove token from resets table
+            DB::table('password_resets')->where('email', $request->email)->delete();
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Password changed successfully!'
+            ]);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Validation failed.',
+                'errors' => $e->errors(),
+            ], 422);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Something went wrong. Please try again later.',
+            ], 500);
+        }
+    }
+
 
     public function customerRides() {
         $completeBookings = Booking::where('customer_id',Auth::user()->id)->where('status','Completed')->latest()->get();

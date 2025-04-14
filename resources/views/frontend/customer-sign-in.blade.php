@@ -52,7 +52,11 @@
             <span class="error-message" id="passwordError"></span>
         </div>
         
-        <button type="button" class="btn btn-primary bg-white mt-3" style="color:black" onclick="loginCustomer()">Submit</button>
+        <div class="d-flex justify-content-between align-items-center mt-3">
+            <button type="button" class="btn btn-primary bg-white" style="color:black" onclick="loginCustomer()">Submit</button>
+            <a href="{{ route('customer-forget-email-page') }}" class="text-primary ms-3" style="font-size: 14px;">Forgot Password?</a>
+        </div>
+        
         <p class="mt-3 text-center">Don't have an account? 
             <a href="{{ route('customer.register') }}" style="text-decoration: none; color:white;" class="text-primary">Sign up</a>
         </p>

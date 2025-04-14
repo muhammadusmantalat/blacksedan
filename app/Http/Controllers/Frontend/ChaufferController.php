@@ -10,8 +10,10 @@ use App\Models\Chauffer;
 use App\Models\Vehicle;
 use App\Models\DeleteRequest;
 use App\Models\Vehicledetail;
+use App\Mail\ChaufferForgetPassswordLink;
+use Illuminate\Support\Facades\DB;
 use App\Mail\RegistrationMail;
-
+use Illuminate\Support\Str;
 use App\Mail\CustomerRideOnTheWayMail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
@@ -29,6 +31,116 @@ class ChaufferController extends Controller
         $vehicles =  Vehicle::latest()->get();
         // return $vehicle;
         return view('frontend.chauffeur-account', compact('user','userVehicle','vehicles'));
+    }
+
+    public function forgetEmailPage(){
+        return view('frontend.chauffeur-reset-email');
+    }
+
+    public function forgetEmailSend(Request $request){
+       
+        try {
+            // Validate input manually so we can catch it properly
+            $validator = Validator::make($request->all(), [
+                'email' => 'required|email|exists:chauffers,email',
+            ]);
+    
+            if ($validator->fails()) {
+                // Return proper 422 error response
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Validation failed',
+                    'errors' => $validator->errors()
+                ], 422);
+            }
+    
+            // Check if reset already exists
+            $exists = DB::table('password_resets')->where('email', $request->email)->first();
+    
+            if ($exists) {
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'Reset Password link has already been sent.'
+                ]);
+            }
+    
+            // Send reset link
+            $token = Str::random(30);
+            DB::table('password_resets')->insert([
+                'email' => $request->email,
+                'token' => $token,
+                'created_at' => now()
+            ]);
+    
+            $data['url'] = url('chauffeur_change_password_page', $token);
+    
+            Mail::to($request->email)->send(new ChaufferForgetPassswordLink($data));
+    
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Reset Password link sent successfully. Please check your email.'
+            ]);
+    
+        } catch (ValidationException $e) {
+            // Handle validation errors separately
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Validation error occurred.',
+                'errors' => $e->errors()
+            ], 422);
+        } catch (\Exception $e) {
+            // Handle other errors
+            return response()->json([
+                'status' => 'error',
+                'message' => 'An error occurred while sending the reset link. Please try again later.',
+                'debug' => $e->getMessage() // Remove in production
+            ], 500);
+        }
+        return view('frontend.chauffeur-reset-email');
+    }
+
+    public function changePassowrd($id)
+    {
+
+        $user = DB::table('password_resets')->where('token', $id)->first();
+
+        if (isset($user)) {
+            return view('frontend.chauffeur-changePassowrd', compact('user'));
+        }
+    }
+
+    public function resetPassword(Request $request)
+    {
+        try {
+            $validated = $request->validate([
+                'password' => 'required|min:8',
+                'confirmed' => 'required|same:password',
+            ]);
+
+            // Update password
+            User::where('email', $request->email)->update([
+                'password' => bcrypt($request->password)
+            ]);
+
+            // Remove token from resets table
+            DB::table('password_resets')->where('email', $request->email)->delete();
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Password changed successfully!'
+            ]);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Validation failed.',
+                'errors' => $e->errors(),
+            ], 422);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Something went wrong. Please try again later.',
+            ], 500);
+        }
     }
 
     public function chaufferData(Request $request)
