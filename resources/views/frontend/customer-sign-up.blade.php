@@ -23,14 +23,18 @@
         position: relative;
     }
 
+    .password-wrapper input {
+        padding-right: 40px; /* Prevent text from going under the icon */
+    }
+
     .toggle-password {
-    position: absolute;
-    right: 28%;
-    top: 71%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    color: gray;
-}
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: #aaa;
+    }
 </style>
 
 <div class="d-flex justify-content-center align-items-center my-5">
@@ -43,10 +47,11 @@
         </div>
         <div class="form-group">
             <label for="password" class="mb-1">Password</label>
-            <input type="password" class="form-control rounded" id="password" name="password" placeholder="Password" >
-            <i class="fa fa-eye toggle-password" onclick="togglePassword()"></i>
+            <div class="password-wrapper">
+                <input type="password" class="form-control rounded" id="password" name="password" placeholder="Password">
+                <i class="fa fa-eye toggle-password" onclick="togglePassword()"></i>
+            </div>
             <span class="error-message" id="passwordError"></span>
-
         </div>
         <button type="button" class="btn btn-primary bg-white mt-3" style="color:black" onclick="showAdditionalForm()">Next</button>
     </form>
@@ -58,14 +63,8 @@
 <form id="additionalForm" style="background-color: black; display: none;" class="text-white p-4 rounded auth-form">
     <!-- Add proper name attributes and fix field structure -->
     <div class="form-group">
-        <label for="full_name" class="mb-1">Full Name</label>
-        <div class="d-flex">
-            <select class="form-select rounded" id="salutation" style="width: 30%;">
-                <option>Mr.</option>
-                <option>Mrs.</option>
-            </select>
-            <input type="text" class="form-control ml-2" id="full_name" name="full_name" placeholder="Enter full name">
-        </div>
+        <label for="full_name" class="mb-1">First Name</label>
+        <input type="text" class="form-control" id="full_name" name="full_name" placeholder="Enter first name">
     </div>
     <div class="form-group">
         <label for="last_name" class="mb-1">Last Name</label>

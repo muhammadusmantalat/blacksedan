@@ -232,7 +232,7 @@ class BookingController extends Controller
                 'duration_hours' => $bookingData['duration_hours'] ?? null,
                 'distance' => $bookingData['distance'] ?? null,
                 'total_amount' => $bookingData['totalAmount'],
-                'card_type' => $request->card_type,
+                'card_type' => $request->card_type, 
                 'card_holder_number' => $request->card_holder_number,
                 'card_number' => $request->card_number,
                 'exp_month' => $request->exp_month,
@@ -245,10 +245,10 @@ class BookingController extends Controller
                 'gratuity' => $bookingData['gratuityAmount'] ?? 0,
                 'base_price' => $bookingData['base_price']
             ]);
-            Mail::to($request->email)->send(new BookingConfirmationEmail($booking));
+            // Mail::to($request->email)->send(new BookingConfirmationEmail($booking));
             $recipients = ['booking@blacksedans.ca'];
             // $recipients = ['farhan.ranglerz@gmail.com'];
-            Mail::to($recipients)->send(new AdminMail($booking));
+            // Mail::to($recipients)->send(new AdminMail($booking));
             return response()->json(['status' => true, 'message' => 'Ride booking successfully completed']);
         } catch (\Exception $e) {
             // Return JSON response with error

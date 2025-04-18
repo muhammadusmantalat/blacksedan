@@ -28,8 +28,6 @@
             <li><strong>New Time:</strong> {{ $data['pickup_time'] }}</li>
             <li><strong>Special Instructions:</strong> {{ $data['instruction'] }}</li>
         </ul>
-       <p>Please make sure to follow the new details when performing the ride.</p>
-       <p>Thank you for your attention to this matter, and let us know if you have any questions.</p>
     </div>
 
 <div style="padding-top: 10px;">

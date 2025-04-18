@@ -6,9 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use App\Models\Chauffer;
 use App\Models\User;
-use App\Models\DeleteRequest;   
+use App\Models\DeleteRequest; 
+use App\Mail\ChaufferAssignRideMail;  
 use App\Models\AdminNotification;   
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+
 
 
 class BokingManagemantController extends Controller
@@ -35,18 +38,27 @@ class BokingManagemantController extends Controller
         // return $bookings;
         return view('admin.pastRides.index',compact('bookings'));
     }
-
+  
     public function assign(Request $request, $id){
         $booking = Booking::find($id);
         $booking->update([
             'chauffer_id'=>$request->chauffeur_id
         ]);
+        $chauffer = Chauffer::find($request->chauffeur_id);
+        $data['pickup_location'] = $booking->pickup_location;
+        $data['dropOff_location'] = $booking->dropOff_location;
+        $data['pickup_date'] = $booking->pickup_date;
+        $data['pickup_time'] = $booking->pickup_time;
+        $data['instruction'] = $booking->instruction;
+        $data['name'] = $chauffer->fname;
+        Mail::to($chauffer->email)->send(new ChaufferAssignRideMail($data));
         return redirect()->route('getBooking')->with(['status' => true, 'message' => 'Chauffeur Assigned Successfully']);
     }
 
     
     public function getOfferCount(){
-       $orderCount = Booking::whereIn('status', ['Booked','On The Way'])->count();
+       $orderCount = Booking::whereIn('status', ['Booked','On The Way'])
+       ->count();
         return response()->json(['count' => $orderCount]);
     }
 

@@ -148,8 +148,8 @@ $signIn = $chaufferCheck || $customerCheck;
                             <!-- Chauffeur Dropdown -->
                             @if ($chaufferCheck)
                                 <div class="dropdown">
-                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqafzhnwwYzuOTjTlaYMeQ7hxQLy_Wq8dnQg&s" class="dropdown-btn" onclick="toggleDropdown()">
-                                    <div class="dropdown-content" id="dropdownContent">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqafzhnwwYzuOTjTlaYMeQ7hxQLy_Wq8dnQg&s" class="dropdown-btn" onclick="toggleDropdown('chauffeurDropdown')">
+                                    <div class="dropdown-content" id="chauffeurDropdown">
                                         <a href="{{route('chauffeur.rides')}}">Rides</a>
                                         <a href="{{route('chauffeur-account')}}">Account</a>
                                         <a href="{{route('chauffeur.logout')}}" id="{{route('customer.logout')}}">Logout</a>
@@ -159,8 +159,8 @@ $signIn = $chaufferCheck || $customerCheck;
                             <!-- Customer Dropdown -->
                             @if ($customerCheck)
                                 <div class="dropdown">
-                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqafzhnwwYzuOTjTlaYMeQ7hxQLy_Wq8dnQg&s" class="dropdown-btn" onclick="toggleDropdown()">
-                                    <div class="dropdown-content" id="dropdownContent">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqafzhnwwYzuOTjTlaYMeQ7hxQLy_Wq8dnQg&s" class="dropdown-btn" onclick="toggleDropdown('customerDropdown')">
+                                    <div class="dropdown-content" id="customerDropdown">
                                         <a href="{{route('customer.rides')}}">Rides</a>
                                     <a href="{{route('customer-account')}}">Account</a>
                                     <a href="{{route('customer.logout')}}" id="customerLogout">Logout</a>
@@ -204,8 +204,8 @@ $signIn = $chaufferCheck || $customerCheck;
                             @if ($chaufferCheck)
 
                             <div class="d-xl-none dropdown">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqafzhnwwYzuOTjTlaYMeQ7hxQLy_Wq8dnQg&s" class="dropdown-btn" onclick="toggleDropdown()">
-                                <div class="dropdown-content" id="dropdownContent">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqafzhnwwYzuOTjTlaYMeQ7hxQLy_Wq8dnQg&s" class="dropdown-btn" onclick="toggleDropdown('mobileChauffeurDropdown')">
+                                <div class="dropdown-content" id="mobileChauffeurDropdown">
                                     <a href="{{route('chauffeur.rides')}}">Rides</a>
                                     <a href="{{route('chauffeur-account')}}">Account</a>
                                     <a href="{{route('chauffeur.logout')}}" id="logoutTrigger">Logout</a>
@@ -216,8 +216,8 @@ $signIn = $chaufferCheck || $customerCheck;
                             @if ($customerCheck)
                             <!-- Customer Dropdown -->
                             <div class="d-xl-none dropdown">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqafzhnwwYzuOTjTlaYMeQ7hxQLy_Wq8dnQg&s" class="dropdown-btn" onclick="toggleDropdown()">
-                                <div class="dropdown-content" id="dropdownContent">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqafzhnwwYzuOTjTlaYMeQ7hxQLy_Wq8dnQg&s" class="dropdown-btn" onclick="toggleDropdown('mobileCustomerDropdown')">
+                                <div class="dropdown-content" id="mobileCustomerDropdown">
                                     <a href="{{route('customer.rides')}}">Rides</a>
                                     <a href="{{route('customer-account')}}">Account</a>
                                     <a href="{{route('customer.logout')}}" id="customerLogout">Logout</a>
@@ -310,8 +310,8 @@ $signIn = $chaufferCheck || $customerCheck;
 
 <script src="https://kit.fontawesome.com/f65646d495.js" crossorigin="anonymous"></script>
 <script>
-    function toggleDropdown() {
-        var dropdownContent = document.getElementById('dropdownContent');
+    function toggleDropdown(dropdownId) {
+        var dropdownContent = document.getElementById(dropdownId);
         if (dropdownContent.style.display === 'block') {
             dropdownContent.style.display = 'none';
         } else {
@@ -331,26 +331,5 @@ $signIn = $chaufferCheck || $customerCheck;
             }
         }
     }
-
-    // $(document).ready(function () {
-    //     $("#logoutTrigger").click(function (e) {
-    //         e.preventDefault(); // Prevent default link behavior
-
-    //         if (confirm("Are you sure you want to logout?")) {
-    //             $.ajax({
-    //                 url: "{{ route('customer.logout') }}", // Laravel logout route
-    //                 type: "POST",
-    //                 headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content") },
-    //                 success: function (response) {
-    //                     alert(response.message);
-    //                     window.location.href = response.redirect; // Redirect to login page
-    //                 },
-    //                 error: function (xhr) {
-    //                     alert("Logout failed! Please try again.");
-    //                 }
-    //             });
-    //         }
-    //     });
-    // });
 </script>
 

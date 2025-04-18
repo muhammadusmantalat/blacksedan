@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use App\Models\Vehicle;
 use App\Models\Chauffer;
 use App\Models\Booking;
 use Illuminate\Support\Str;
@@ -13,6 +14,8 @@ use App\Models\DeleteRequest;
 use App\Models\AdminNotification;
 use App\Mail\CustomerRegistrationMail;
 use App\Mail\UpdateRideNotifyChauffe;
+use App\Mail\UpdateRideNofifyCustomer;
+use App\Mail\UpdateRideNofifyAdmin;
 use App\Mail\CustomerForgetPassswordLink;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
@@ -146,7 +149,7 @@ class CustomerController extends Controller
         $cancleBookings = Booking::where('customer_id',Auth::user()->id)->whereIn('status',['cancelled','Completed'])->latest()->get();
         return view('frontend.customer-rides',compact('completeBookings','upComingBookings','cancleBookings'));
     }
-    public function updateRide(Request $request){
+    public function updateRide1(Request $request){
         $booking = Booking::find($request->booking_id);
         $booking->first_name = $request->fname;
         $booking->last_name = $request->lname;
@@ -162,6 +165,7 @@ class CustomerController extends Controller
         $booking->pickup_time = $request->pickup_time;
         $booking->instruction = $request->instruction;
         $booking->save();
+        // return $booking;
         $isChanged = (
             $booking->first_name == $request->fname ||
             $booking->last_name == $request->lname ||
@@ -196,38 +200,354 @@ class CustomerController extends Controller
         }
         return redirect()->back();
     }
+    // update ride
+    public function updateRide(Request $request)
+    {
+        // return $request;
+        try {
+            $booking = Booking::find($request->booking_id);
+            $vehicle = Vehicle::find($booking->vehicle_id);
+            if (!$vehicle) {
+                return redirect()->back()->with(['status' => false, 'error' => 'Invalid vehicle selected']);
+            }
+            $basePrice = $vehicle->base_price;
+            $airportSurcharge = 0;
+            $gratuityAmount = 0;
+            $taxAmount = 0;
+            $totalAmount = 0;
+            if ($booking->airport_pickup === 'yes') {
+                if ($vehicle->id === 3) {
+                    $airportSurcharge = number_format(15, 2, '.', '');
+                } else if ($vehicle->id === 2) {
+                    $airportSurcharge = number_format(10, 2, '.', '');
+                } else if ($vehicle->id === 4) {
+                    $airportSurcharge = number_format(15, 2, '.', '');
+                } else if ($vehicle->id === 5) {
+                    $airportSurcharge = number_format(20, 2, '.', '');
+                }
+            }
+            if ($booking->trip_type === 'one_way') {
+                $pickupLatitude = $request->pickup_latitude;
+                $pickupLongitude = $request->pickup_longitude;
+                $dropoffLatitude = $request->dropoff_latitude;
+                $dropoffLongitude = $request->dropoff_longitude;
+                $apiKey = env('GOOGLE_MAP_KEY');
+                $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins={$pickupLatitude},{$pickupLongitude}&destinations={$dropoffLatitude},{$dropoffLongitude}&key={$apiKey}";
+                $response = file_get_contents($url);
+                if ($response === false) {
+                    return redirect()->back()->with(['status' => false, 'message' => 'Error fetching data from Google API']);
+                }
+                $data = json_decode($response);
+                
+                if ($data->status === 'OK' && isset($data->rows[0]->elements[0]->distance->value)) {
+                    $distance = $data->rows[0]->elements[0]->distance->value / 1000;
+                    $pricePerKilometer = $vehicle->price_per_kilometer;
+                    $amount = number_format($distance * $pricePerKilometer, 2, '.', '');
+                    $subTotal = number_format($amount + $basePrice + $airportSurcharge, 2, '.', '');
+                    $gratuityAmount =  number_format($subTotal * 0.15, 2, '.', '');
+                    $taxAmount =  number_format($subTotal * 0.05, 2, '.', '');
+                    $totalAmount = number_format($subTotal + $gratuityAmount + $taxAmount, 2, '.', '');
+                    if ($vehicle->id === 3 &&  $totalAmount < 150) {
+                        $totalAmount = number_format(150, 2, '.', '');
+                        $subTotals = number_format($totalAmount - $amount, 2, '.', '');
+                        $gratuityAmount1 = number_format($subTotals * 0.15, 2, '.', '');
+                        $taxAmount1 = number_format($subTotals * 0.05, 2,'.', '');
+                        $basePrice = number_format($subTotals - $gratuityAmount1 - $taxAmount1, 2, '.', '');
+                        $subTotal = number_format($amount + $basePrice + $airportSurcharge, 2, '.', '');
+                        $gratuityAmount =   number_format($subTotal * 0.15, 2, '.', '');
+                        $taxAmount =  number_format($subTotal * 0.05, 2, '.', '');
+                        $totalAmount = number_format($subTotal + $gratuityAmount + $taxAmount, 2, '.', '');
+                    } elseif ($vehicle->id === 2 &&  $totalAmount < 110) {
+                        $totalAmount = number_format(110, 2, '.', '');
+                        $subTotals = number_format($totalAmount - $amount, 2, '.', '');
+                        $gratuityAmount1 = number_format($subTotals * 0.15, 2, '.', '');
+                        $taxAmount1 = number_format($subTotals * 0.05, 2,'.', '');
+                        $basePrice = number_format($subTotals - $gratuityAmount1 - $taxAmount1, 2, '.', '');
+                        $subTotal = number_format($amount + $basePrice + $airportSurcharge, 2, '.', '');
+                        $gratuityAmount =   number_format($subTotal * 0.15, 2, '.', '');
+                        $taxAmount =  number_format($subTotal * 0.05, 2, '.', '');
+                        $totalAmount = number_format($subTotal + $gratuityAmount + $taxAmount, 2, '.', '');
+                    }
+                    try {
+                        $booking->first_name = $request->fname;
+                        $booking->last_name = $request->lname;
+
+                        $booking->pickup_location = $request->pickup_location;
+                        $booking->pickup_latitude = $request->pickup_latitude;
+                        $booking->pickup_longitude = $request->pickup_longitude;
+                        $booking->dropOff_location = $request->dropOff_location;
+                        $booking->dropoff_latitude = $request->dropoff_latitude;
+                        $booking->dropoff_longitude = $request->dropoff_longitude;
+
+                        $booking->flight_number = $request->flight_number;
+                        $booking->email = $request->email;
+                        $booking->phone_number = $request->phone_number;
+                        $booking->pickup_time = $request->pickup_time;
+                        $booking->instruction = $request->instruction;
+
+                        $booking->distance = $distance;
+                        $booking->base_price = $basePrice;
+                        $booking->subtotal = $subTotal;
+                        $booking->gratuity = $gratuityAmount;
+                        $booking->tax = $taxAmount;
+                        $booking->air_port_charges = $airportSurcharge;
+                        $booking->total_amount = $totalAmount;
+
+                        $booking->save();
+                    } catch (\Exception $e) {
+                        return $e->getMessage();
+                    }
+                    if ($booking->chauffer_id !== NULL) {
+                        $user = Chauffer::find($booking->chauffer_id);
+                        $customer = User::find($booking->customer_id);
+                        if ($user) {
+                            $data1 = [
+                                'name' => $user->fname,
+                                'pickup_location' => $booking->pickup_location,
+                                'dropOff_location' => $booking->dropOff_location,
+                                'pickup_date' => $booking->pickup_date,
+                                'pickup_time' => $booking->pickup_time,
+                                'instruction' => $booking->instruction,
+                                'trip_type'=> $booking->trip_type,
+                            ];
+                            $data2 = [
+                                'name' => $customer->fname,
+                                'pickup_location' => $booking->pickup_location,
+                                'dropOff_location' => $booking->dropOff_location,
+                                'pickup_date' => $booking->pickup_date,
+                                'pickup_time' => $booking->pickup_time,
+                                'instruction' => $booking->instruction,
+                                'distance' => $booking->distance,
+                                'total_amount' => $booking->total_amount,
+                                'trip_type'=> $booking->trip_type,
+                            ];
+                            $data3 = [
+                                'name' => 'Admin',
+                                'pickup_location' => $booking->pickup_location,
+                                'dropOff_location' => $booking->dropOff_location,
+                                'pickup_date' => $booking->pickup_date,
+                                'pickup_time' => $booking->pickup_time,
+                                'instruction' => $booking->instruction,
+                                'distance' => $booking->distance,
+                                'total_amount' => $booking->total_amount,
+                                'trip_type'=> $booking->trip_type,
+                            ];
+                            try {
+                                Mail::to($user->email)->send(new UpdateRideNotifyChauffe($data1));
+                                Mail::to($customer->email)->send(new UpdateRideNofifyCustomer($data2));
+                                Mail::to('booking@blacksedans.ca')->send(new UpdateRideNofifyAdmin($data3));
+                            } catch (\Exception $e) {
+                                return $e->getMessage();
+                            }
+                        }
+                    }else if ($booking->chauffer_id == NULL){
+                        $customer = User::find($booking->customer_id);
+                        if ($customer) {
+                            $data2 = [
+                                'name' => $customer->fname,
+                                'pickup_location' => $booking->pickup_location,
+                                'dropOff_location' => $booking->dropOff_location,
+                                'pickup_date' => $booking->pickup_date,
+                                'pickup_time' => $booking->pickup_time,
+                                'instruction' => $booking->instruction,
+                                'distance' => $booking->distance,
+                                'total_amount' => $booking->total_amount,
+                                'trip_type'=> $booking->trip_type,
+                            ];
+                            $data3 = [
+                                'name' => 'Admin',
+                                'pickup_location' => $booking->pickup_location,
+                                'dropOff_location' => $booking->dropOff_location,
+                                'pickup_date' => $booking->pickup_date,
+                                'pickup_time' => $booking->pickup_time,
+                                'instruction' => $booking->instruction,
+                                'distance' => $booking->distance,
+                                'total_amount' => $booking->total_amount,
+                                'trip_type'=> $booking->trip_type,
+                            ];
+                            try {
+                                Mail::to($customer->email)->send(new UpdateRideNofifyCustomer($data2));
+                                Mail::to('booking@blacksedans.ca')->send(new UpdateRideNofifyAdmin($data3));
+                            } catch (\Exception $e) {
+                                return $e->getMessage();
+                            }
+                    }}
+                    return redirect()->back();
+                } else {
+                    return redirect()->back()->with(['status' => false, 'message' => 'Error processing distance data']);
+                }
+            } else if ($booking->trip_type === 'by_hour') {
+                // return $request;
+                $duration = $request->duration_hours;
+
+                if ($vehicle->id === 3) {
+                    $basePrice = number_format(140, 2, '.', '');
+                } else if ($vehicle->id === 2) {
+                    $basePrice = number_format(110, 2, '.', '');
+                }
+                else if($vehicle->id === 4){
+                    $basePrice = number_format(175, 2, '.', '');
+                }
+                else if($vehicle->id === 5){
+                    $basePrice = number_format(250, 2, '.', '');
+                }
+                $subTotal = number_format($basePrice * $duration + $airportSurcharge, 2, '.', '');
+                $gratuityAmount =  number_format($subTotal * 0.15, 2, '.', '');
+                $taxAmount = number_format($subTotal * 0.05, 2, '.', '');
+                $totalAmount = number_format($subTotal + $gratuityAmount + $taxAmount, 2, '.', '');
+                try {
+                    $booking->first_name = $request->fname;
+                    $booking->last_name = $request->lname;
+
+                    $booking->pickup_location = $request->pickup_location;
+                    $booking->pickup_latitude = $request->pickup_latitude;
+                    $booking->pickup_longitude = $request->pickup_longitude;
+                    // $booking->dropOff_location = $request->dropOff_location;
+                    // $booking->dropoff_latitude = $request->dropoff_latitude;
+                    // $booking->dropoff_longitude = $request->dropoff_longitude;
+
+                    $booking->flight_number = $request->flight_number;
+                    $booking->email = $request->email;
+                    $booking->phone_number = $request->phone_number;
+                    $booking->pickup_time = $request->pickup_time;
+                    $booking->instruction = $request->instruction;
+
+                    $booking->duration_hours = $duration;
+                    $booking->base_price = $basePrice;
+                    $booking->subtotal = $subTotal;
+                    $booking->gratuity = $gratuityAmount;
+                    $booking->tax = $taxAmount;
+                    $booking->air_port_charges = $airportSurcharge;
+                    $booking->total_amount = $totalAmount;
+
+                    $booking->save();
+                } catch (\Exception $e) {
+                    return $e->getMessage();
+                }
+                if ($booking->chauffer_id !== NULL) {
+                    $user = Chauffer::find($booking->chauffer_id);
+                    $customer = User::find($booking->customer_id);
+                    if ($user) {
+                        $data1 = [
+                            'name' => $user->fname,
+                            'pickup_location' => $booking->pickup_location,
+                            // 'dropOff_location' => $booking->dropOff_location,
+                            'pickup_date' => $booking->pickup_date,
+                            'pickup_time' => $booking->pickup_time,
+                            'instruction' => $booking->instruction,
+                            'duration_hours'=> $request->duration_hours,
+                            'trip_type'=> $booking->trip_type,
+                        ];
+                        $data2 = [
+                            'name' => $customer->fname,
+                            'pickup_location' => $booking->pickup_location,
+                            // 'dropOff_location' => $booking->dropOff_location,
+                            'pickup_date' => $booking->pickup_date,
+                            'pickup_time' => $booking->pickup_time,
+                            'instruction' => $booking->instruction,
+                            'distance' => $booking->distance,
+                            'total_amount' => $booking->total_amount,
+                            'trip_type'=> $booking->trip_type,
+                            'duration_hours'=> $request->duration_hours,
+                        ];
+                        $data3 = [
+                            'name' => 'Admin',
+                            'pickup_location' => $booking->pickup_location,
+                            // 'dropOff_location' => $booking->dropOff_location,
+                            'pickup_date' => $booking->pickup_date,
+                            'pickup_time' => $booking->pickup_time,
+                            'instruction' => $booking->instruction,
+                            'distance' => $booking->distance,
+                            'total_amount' => $booking->total_amount,
+                            'duration_hours'=> $request->duration_hours,
+                            'trip_type'=> $booking->trip_type,
+                        ];
+                        try {
+                            Mail::to($user->email)->send(new UpdateRideNotifyChauffe($data1));
+                            Mail::to($customer->email)->send(new UpdateRideNofifyCustomer($data2));
+                            Mail::to('booking@blacksedans.ca')->send(new UpdateRideNofifyAdmin($data3));
+                        } catch (\Exception $e) {
+                            return $e->getMessage();
+                        }
+                    }
+                }else if ($booking->chauffer_id == NULL){
+                    // return $booking;
+                    $customer = User::find($booking->customer_id);
+                    if ($customer) {
+                        $data2 = [
+                            'name' => $customer->fname,
+                            'pickup_location' => $booking->pickup_location,
+                            'dropOff_location' => $booking->dropOff_location,
+                            'pickup_date' => $booking->pickup_date,
+                            'pickup_time' => $booking->pickup_time,
+                            'instruction' => $booking->instruction,
+                            'distance' => $booking->distance,
+                            'total_amount' => $booking->total_amount,
+                            'trip_type'=> $booking->trip_type,
+                            'duration_hours'=> $request->duration_hours,
+                        ];
+                        $data3 = [
+                            'name' => 'Admin',
+                            'pickup_location' => $booking->pickup_location,
+                            'dropOff_location' => $booking->dropOff_location,
+                            'pickup_date' => $booking->pickup_date,
+                            'pickup_time' => $booking->pickup_time,
+                            'instruction' => $booking->instruction,
+                            'distance' => $booking->distance,
+                            'total_amount' => $booking->total_amount,
+                            'trip_type'=> $booking->trip_type,
+                            'duration_hours'=> $request->duration_hours,
+                        ];
+                        try {
+                            Mail::to($customer->email)->send(new UpdateRideNofifyCustomer($data2));
+                            // return $booking;
+                            Mail::to('booking@blacksedans.ca')->send(new UpdateRideNofifyAdmin($data3));
+                        } catch (\Exception $e) {
+                            return $e->getMessage();
+                        }
+                    }
+
+                }
+                return redirect()->back();
+            }
+        } catch (ValidationException $e) {
+            return redirect()->back()->withErrors($e->errors())->withInput();
+        } catch (\Exception $e) {
+            return redirect()->back()->with(['status' => false, 'error' => $e->getMessage()]);
+        }
+    }
     public function cancleRide(Request $request)
-{
-    try {
-        DB::beginTransaction(); // Start transaction
+    {
+        try {
+            DB::beginTransaction(); // Start transaction
 
-        $booking = Booking::find($request->ride_id);
+            $booking = Booking::find($request->ride_id);
 
-        if (!$booking) {
+            if (!$booking) {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Booking not found',
+                ], 404);
+            }
+
+            $booking->update(['status' => 'cancelled']);
+
+            DB::commit(); // Commit transaction
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Ride cancelled successfully',
+            ]);
+        } catch (\Exception $e) {
+            DB::rollBack(); // Rollback transaction on error
+
             return response()->json([
                 'status' => 'error',
-                'message' => 'Booking not found',
-            ], 404);
+                'message' => 'Something went wrong',
+                'error' => $e->getMessage(),
+            ], 500);
         }
-
-        $booking->update(['status' => 'cancelled']);
-
-        DB::commit(); // Commit transaction
-
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Ride cancelled successfully',
-        ]);
-    } catch (\Exception $e) {
-        DB::rollBack(); // Rollback transaction on error
-
-        return response()->json([
-            'status' => 'error',
-            'message' => 'Something went wrong',
-            'error' => $e->getMessage(),
-        ], 500);
     }
-}
 
 
     public function registerCustomer(Request $request)
@@ -383,69 +703,69 @@ class CustomerController extends Controller
 
     //add credit card details
 
-public function addCreditCard(Request $request)
-{
-    $validator = Validator::make($request->all(), [
-        'card_name' => 'required|string|max:255',
-        'card_number' => 'required|string|max:255',
-        'expiry_date' => 'required|string|max:255',
-        'cvv'        => 'required|string|max:255',
-    ]);
+    public function addCreditCard(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'card_name' => 'required|string|max:255',
+            'card_number' => 'required|string|max:255',
+            'expiry_date' => 'required|string|max:255',
+            'cvv'        => 'required|string|max:255',
+        ]);
 
-    if ($validator->fails()) {
-        return response()->json(['errors' => $validator->errors()], 422);
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+
+        $user = Auth::user();
+
+        $user->creditCardDetail()->create([
+            'name' => $request->card_name,
+            'card_number' => $request->card_number,
+            'expiry_date' => $request->expiry_date,
+            'cvv'        => $request->cvv,
+            'save_later' => $request->save_later,
+        ]);
+
+        return response()->json(['message' => 'Credit card details added successfully!']);
+
     }
 
-    $user = Auth::user();
+    //update create credit card details
 
-    $user->creditCardDetail()->create([
-        'name' => $request->card_name,
-        'card_number' => $request->card_number,
-        'expiry_date' => $request->expiry_date,
-        'cvv'        => $request->cvv,
-        'save_later' => $request->save_later,
-    ]);
+    public function updateCreditCard(Request $request)
+    {
+        // return $request;
+        $validator = Validator::make($request->all(), [
+            'card_name' => 'required|string|max:255',
+            // 'card_number' => 'required|string|max:255|unique:credit_cards,card_number',
+            'expiry_date' => 'required|string|max:255',
+            'cvv'        => 'required|string|max:255',
+        ]);
 
-    return response()->json(['message' => 'Credit card details added successfully!']);
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
 
-}
+        $user = Auth::user();
+        
+        // User ka card get karna (Agar ek user ka ek hi card hai)
+        $card = $user->creditCardDetail()->first();
 
-//update create credit card details
+        if (!$card) {
+            return response()->json(['error' => 'No credit card found for this user'], 404);
+        }
 
-public function updateCreditCard(Request $request)
-{
-    // return $request;
-    $validator = Validator::make($request->all(), [
-        'card_name' => 'required|string|max:255',
-        // 'card_number' => 'required|string|max:255|unique:credit_cards,card_number',
-        'expiry_date' => 'required|string|max:255',
-        'cvv'        => 'required|string|max:255',
-    ]);
+        // Update credit card details
+        $card->update([
+            'name' => $request->card_name,
+            'card_number' => $request->card_number,
+            'expiry_date' => $request->expiry_date,
+            'cvv'        => $request->cvv,
+            'save_later'        => $request->save_later,
+        ]);
 
-    if ($validator->fails()) {
-        return response()->json(['errors' => $validator->errors()], 422);
+        return response()->json(['message' => 'Credit card details updated successfully!']);
     }
-
-    $user = Auth::user();
-    
-    // User ka card get karna (Agar ek user ka ek hi card hai)
-    $card = $user->creditCardDetail()->first();
-
-    if (!$card) {
-        return response()->json(['error' => 'No credit card found for this user'], 404);
-    }
-
-    // Update credit card details
-    $card->update([
-        'name' => $request->card_name,
-        'card_number' => $request->card_number,
-        'expiry_date' => $request->expiry_date,
-        'cvv'        => $request->cvv,
-        'save_later'        => $request->save_later,
-    ]);
-
-    return response()->json(['message' => 'Credit card details updated successfully!']);
-}
 
 
 }

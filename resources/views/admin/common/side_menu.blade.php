@@ -23,7 +23,7 @@
             <li class="dropdown {{ request()->is('admin/chauffer*') ? 'active' : '' }}">
                 <a href="{{ route('chauffer.index') }}"
                     class="nav-link {{ request()->is('admin/chauffer*') ? 'active' : '' }}"><i
-                        class="fas fa-calendar-check"></i><span>Chauffers</span></a>
+                        class="fas fa-calendar-check"></i><span>Chauffeurs</span></a>
             </li>
             <li class="dropdown {{ request()->is('admin/customer*') ? 'active' : '' }}">
                 <a href="{{ route('customer.index') }}"
@@ -72,7 +72,7 @@
                         </div>
                     </a>
             </li>
-            <li class="dropdown {{ request()->is('admin/notification*') ? 'active' : '' }}">
+            {{-- <li class="dropdown {{ request()->is('admin/notification*') ? 'active' : '' }}">
                 <a href="{{route('notification.index')}}"
                     class="nav-link {{ request()->is('admin/notification*') ? 'active' : '' }}"><i
                         class="fas fa-history"></i><span>Notifications</span>
@@ -80,7 +80,7 @@
                             class="badge {{ request()->is('admin/notification*') ? 'bg-white text-dark' : 'bg-primary text-white' }} rounded-circle ">
                         </div>
                     </a>
-            </li>
+            </li> --}}
             {{-- <li class="dropdown {{ request()->is('admin/about*') ? 'active' : '' }}">
                 <a href="{{ route('about.index') }}" class="nav-link"><i class="fa fa-info-circle"></i><span>About
                         Us</span></a>

@@ -124,22 +124,34 @@
                             <input type="text" class="form-control" id="lastName" name="lname">
                         </div>
                     </div>
-
+     
                     <div class="row">
-                        <div class="col-md-6 form-group">
+                        <div class="input-filled col-lg-6 col-md-6 by-huor col-md-6 form-group" id="by-huor">
+                            <label>Duration (Hours)<span>*</span></label>
+                            <select class="wpcf7-form-control" name="duration_hours">
+                                <option value="" disabled selected>Select Duration</option>
+                                <!-- Generate options dynamically for hours using a Blade loop -->
+                                @for ($i = 2; $i <= 12; $i++)
+                                    <option value="{{ $i }}" {{ old('duration_hours') == $i ? 'selected' : '' }}>{{ $i }}</option>
+                                @endfor
+                            </select>
+                        </div>
+
+                        <div class="col-md-6 form-group pickup-location" id="pickup-location">
                             <label>Pickup Location:</label>
-                            <input type="text" class="form-control autocomplete" id="pickupLocation" name="pickup_location" readonly>
+                            <input type="text" class="form-control autocomplete" id="pickupLocation" name="pickup_location">
                             <input type="hidden" id="pickupLat" name="pickup_latitude">
                             <input type="hidden" id="pickupLng" name="pickup_longitude">
                         </div>
-                        <div class="col-md-6 form-group">
+
+                        <div class="col-md-6 form-group dropoff-location" id="dropoff-location">
                             <label>Dropoff Location:</label>
-                            <input type="text" class="form-control autocomplete" id="dropoffLocation" name="dropOff_location" readonly>
+                            <input type="text" class="form-control autocomplete" id="dropoffLocation" name="dropOff_location">
                             <input type="hidden" id="dropoffLat" name="dropoff_latitude">
                             <input type="hidden" id="dropoffLng" name="dropoff_longitude">
                         </div>
                     </div>
-
+                
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <label>Flight No:</label>
@@ -153,7 +165,7 @@
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <label>Pickup Date:</label>
-                            <input type="date" class="form-control" id="pickupdate" name="pickup_date" readonly>
+                            <input type="date" class="form-control" id="pickupdate" name="pickup_date">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Pickup Time:</label>
@@ -220,9 +232,20 @@
                             <h6 class="titles m-0">Pickup Location:</h6>
                             <p class="m-0 ml-3">{{$data->pickup_location}}</p>
                         </div>
+                        @if ($data->trip_type == 'one_way')
+                            <div class="d-flex align-items-center col-sm-6 mb-3 w-100">
+                                <h6 class="titles m-0">Dropoff Location:</h6>
+                                <p class="m-0 ml-3">{{$data->dropOff_location}}</p>
+                            </div>
+                        @elseif ($data->trip_type == 'by_hour')
+                            <div class="d-flex align-items-center col-sm-6 mb-3 w-100">
+                                <h6 class="titles m-0">Hours:</h6>
+                                <p class="m-0 ml-3">{{$data->duration_hours}}</p>
+                            </div>
+                        @endif
                         <div class="d-flex align-items-center col-sm-6 mb-3 w-100">
-                            <h6 class="titles m-0">Dropoff Location:</h6>
-                            <p class="m-0 ml-3">{{$data->dropOff_location}}</p>
+                            <h6 class="titles m-0">Trip Type:</h6>
+                            <p class="m-0 ml-3">{{$data->trip_type == 'one_way' ? 'One Way' : 'By Hour'}}</p>
                         </div>
                         <div class="d-flex align-items-center col-sm-6 mb-3 w-100">
                             <h6 class="titles m-0">Flight No:</h6>
@@ -346,36 +369,98 @@
 
 
     <script type="text/javascript"
-    src="https://maps.google.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&libraries=places"></script>
+    src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&libraries=places"></script>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-    const editButtons = document.querySelectorAll(".edit-ride-btn");
+        const editButtons = document.querySelectorAll(".edit-ride-btn");
 
-    editButtons.forEach(button => { 
-        button.addEventListener("click", function () {
-            let bookingData = JSON.parse(this.getAttribute("data-booking"));
+        function initAutocomplete() {
+            $(".autocomplete").each(function () {
+                let input = this;
+                let autocomplete = new google.maps.places.Autocomplete(input);
+                autocomplete.addListener("place_changed", function () { 
+                    let place = autocomplete.getPlace();
+                    if (!place.geometry) return;
 
-            document.getElementById("bookingId").value = bookingData.id;
-            document.getElementById("firstName").value = bookingData.first_name;
-            document.getElementById("lastName").value = bookingData.last_name;
-            document.getElementById("pickupLocation").value = bookingData.pickup_location;
-            document.getElementById("dropoffLocation").value = bookingData.dropOff_location;
-            document.getElementById("flightNumber").value = bookingData.flight_number;
-            document.getElementById("email").value = bookingData.email;
-            document.getElementById("phoneNumber").value = bookingData.phone_number;
-            document.getElementById("pickupdate").value = bookingData.pickup_date;
-            const pickupTime = bookingData.pickup_time?.slice(0, 5);
-            document.getElementById("pickuptime").value = pickupTime;
-            document.getElementById("instructions").value = bookingData.instruction;
+                    let lat = place.geometry.location.lat();
+                    let lng = place.geometry.location.lng();
 
-            // Show Bootstrap Modal
-            // Alternative Modal Show Method
-    document.getElementById("editRideModal").classList.add("show");
-    document.getElementById("editRideModal").style.display = "block";
+                    if (input.id === "pickupLocation") {
+                        $("#pickupLat").val(lat);
+                        $("#pickupLng").val(lng);
+                    } else if (input.id === "dropoffLocation") {
+                        $("#dropoffLat").val(lat);
+                        $("#dropoffLng").val(lng);
+                    }
+                });
+            });
+        }
+
+        editButtons.forEach(button => {
+            button.addEventListener("click", function () {
+                let bookingData = JSON.parse(this.getAttribute("data-booking"));
+                let trip_type = bookingData.trip_type;
+
+                document.getElementById("bookingId").value = bookingData.id;
+                document.getElementById("firstName").value = bookingData.first_name;
+                document.getElementById("lastName").value = bookingData.last_name;
+
+                document.getElementById("pickupLocation").value = bookingData.pickup_location;
+                document.getElementById("pickupLat").value = bookingData.pickup_latitude;
+                document.getElementById("pickupLng").value = bookingData.pickup_longitude;
+
+                document.getElementById("flightNumber").value = bookingData.flight_number;
+                document.getElementById("email").value = bookingData.email;
+                document.getElementById("phoneNumber").value = bookingData.phone_number;
+                document.getElementById("pickupdate").value = bookingData.pickup_date;
+                document.getElementById("instructions").value = bookingData.instruction;
+                document.getElementById("pickuptime").value = bookingData.pickup_time?.slice(0, 5);
+
+                const byHourDiv = document.getElementById("by-huor");
+                const dropoffDiv = document.getElementById("dropoff-location");
+
+                if (trip_type === 'by_hour') {
+                    byHourDiv.classList.remove("d-none");
+                    dropoffDiv.classList.add("d-none");
+                    // Set duration_hours dropdown value
+                    const durationSelect = document.querySelector('select[name="duration_hours"]');
+                    if (durationSelect) {
+                        durationSelect.value = bookingData.duration_hours;
+                    }
+                } else if (trip_type === 'one_way') {
+                    byHourDiv.classList.add("d-none");
+                    dropoffDiv.classList.remove("d-none");
+
+                    document.getElementById("dropoffLocation").value = bookingData.dropOff_location;
+                    document.getElementById("dropoffLat").value = bookingData.dropoff_latitude;
+                    document.getElementById("dropoffLng").value = bookingData.dropoff_longitude;
+                } else {
+                    byHourDiv.classList.remove("d-none");
+                    dropoffDiv.classList.remove("d-none");
+                }
+
+                // Show modal
+                const modal = document.getElementById("editRideModal");
+                modal.classList.add("show");
+                modal.style.display = "block";
+                modal.setAttribute("aria-modal", "true");
+                modal.removeAttribute("aria-hidden");
+
+                // Initialize Google Places
+                initAutocomplete();
+            });
+        });
+
+        $(".close").on("click", function () {
+            const modal = document.getElementById("editRideModal");
+            modal.classList.remove("show");
+            modal.style.display = "none";
+            modal.removeAttribute("aria-modal");
+            modal.setAttribute("aria-hidden", "true");
         });
     });
-});
+
 
 $(".close").on("click", function () {
     document.getElementById("editRideModal").classList.remove("show");
@@ -399,135 +484,7 @@ $(".close").on("click", function () {
             $(".autocomplete").each(function() {
                 let input = this;
                 let autocomplete = new google.maps.places.Autocomplete(input);
-
-                autocomplete.addListener("place_changed", function () {
-                    let place = autocomplete.getPlace();
-                    if (!place.geometry) return;
-
-                    let lat = place.geometry.location.lat();
-                    let lng = place.geometry.location.lng();
-
-                    if (input.id === "pickupLocation") {
-                        $("#pickupLat").val(lat);
-                        $("#pickupLng").val(lng);
-                    } else if (input.id === "dropoffLocation") {
-                        $("#dropoffLat").val(lat);
-                        $("#dropoffLng").val(lng);
-                    }
-                });
-            });
-        }
-        initAutocomplete();
-    });
-
-    document.addEventListener("DOMContentLoaded", function () {
-        const editButtons = document.querySelectorAll(".edit-ride-btn");
-
-        editButtons.forEach(button => { 
-            button.addEventListener("click", function () {
-                let bookingData = JSON.parse(this.getAttribute("data-booking"));
-
-                document.getElementById("bookingId").value = bookingData.id;
-                document.getElementById("firstName").value = bookingData.first_name;
-                document.getElementById("lastName").value = bookingData.last_name;
-                document.getElementById("pickupLocation").value = bookingData.pickup_location;
-                document.getElementById("dropoffLocation").value = bookingData.dropOff_location;
-                document.getElementById("flightNumber").value = bookingData.flight_number;
-                document.getElementById("email").value = bookingData.email;
-                document.getElementById("phoneNumber").value = bookingData.phone_number;
-                document.getElementById("instructions").value = bookingData.instruction;
-
-                // Show Bootstrap Modal
-                // Alternative Modal Show Method
-                document.getElementById("editRideModal").classList.add("show");
-                document.getElementById("editRideModal").style.display = "block";
-            });
-        });
-    });
-
-    $(".close").on("click", function () {
-        document.getElementById("editRideModal").classList.remove("show");
-        document.getElementById("editRideModal").style.display = "none";
-    });
-
-    function confirmCancelRide(event, element) {
-        event.preventDefault(); // Prevent immediate navigation
-    
-        if (confirm("Are you sure you want to cancel this ride?")) {
-            window.location.href = element.href; // Navigate to cancel ride route
-        }
-    }
-
-    document.addEventListener("DOMContentLoaded", function () {
-        let rideId = null;
-    
-        // Open the confirmation modal when "Cancel Ride" button is clicked
-        document.querySelectorAll(".cancel-ride").forEach(button => {
-            button.addEventListener("click", function () {
-                rideId = this.getAttribute("data-id"); // Get ride ID
-                const modal = new bootstrap.Modal(document.getElementById("cancelRideModal"));
-                modal.show();
-            });
-        });
-    
-        // On "Yes, Cancel" button click, send AJAX request
-        document.getElementById("confirmCancelRide").addEventListener("click", function () {
-            if (!rideId) return;
-    
-            fetch("{{ route('cancelRideIndex', ':id') }}".replace(':id', rideId), {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    "X-CSRF-TOKEN": "{{ csrf_token() }}" // Laravel CSRF Protection
-                },
-                body: JSON.stringify({ ride_id: rideId })
-            })
-            .then(response => response.json())
-            .then(data => {
-    if (data.status === "success") {
-        toastr.success("Ride cancelled successfully!");
-        const modal = new bootstrap.Modal(document.getElementById("cancelRideModal"));
-        modal.hide();
-        location.reload(); // Reload page to update UI
-    } else {
-        toastr.error(data.message || "Failed to cancel the ride.");
-    }
-})
-.catch(error => {
-    console.error("Error:", error);
-
-    if (error.response && error.response.data) {
-        // Show error message from server response
-        toastr.error(error.response.data.message || "An unexpected error occurred.");
-    } else {
-        toastr.error("Something went wrong. Please try again.");
-    }
-});
-
-        });
-    });
-
-    $(document).ready(function() {
-        $('.magnific-popup').magnificPopup({
-            type: 'image',
-            gallery: {
-                enabled: true
-            }
-        });
-    });
-
-    // Remove or comment out the problematic script
-    // <script src="https://google.com/pagead/form-data/1003091628?gtm=45be53d3za200&gcd=13l3l3l3l1l1&dma=0&tag_exp=102482433~102587591~102717422~102788824~102813109~102814060~102825837~102879719&npa=0&frm=0&auid=1656482691.1739533329&uaa=x86&uab=64&uafvl=Chromium%3B134.0.6998.89%7CNot%253AA-Brand%3B24.0.0.0%7CGoogle%2520Chrome%3B134.0.6998.89&uamb=0&uam=&uap=Windows&uapv=10.0.0&uaw=0"></script>
-</script>
-<script type="text/javascript"
-src="https://maps.google.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&libraries=places"></script>
-<script>
-    $('#editRideModal').on('shown.bs.modal', function() {
-        function initAutocomplete() {
-            $(".autocomplete").each(function() {
-                let input = this;
-                let autocomplete = new google.maps.places.Autocomplete(input);
-
+                
                 autocomplete.addListener("place_changed", function () {
                     let place = autocomplete.getPlace();
                     if (!place.geometry) return;

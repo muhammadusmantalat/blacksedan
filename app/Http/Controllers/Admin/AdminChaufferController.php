@@ -36,6 +36,7 @@ class AdminChaufferController extends Controller
             Mail::to($user->email)->send(new RequestStatus($data));
             $user->request_status = 2;
             $user->save();
+            User::destroy($id);
             return redirect()->back()->with(['status' => true, 'message' => 'Status Updated successfully']);
         }
     }   

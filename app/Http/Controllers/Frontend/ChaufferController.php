@@ -118,7 +118,7 @@ class ChaufferController extends Controller
             ]);
 
             // Update password
-            User::where('email', $request->email)->update([
+            Chauffer::where('email', $request->email)->update([
                 'password' => bcrypt($request->password)
             ]);
 
@@ -200,6 +200,7 @@ class ChaufferController extends Controller
             ]);
             $data['name'] = $user->fname;
             Mail::to($user->email)->send(new RegistrationMail($data));
+            User::where('email', $request->email)->delete();
             return response()->json([
                 'message'  => $user->wasRecentlyCreated ? 'Registration successful!' : 'User updated successfully!',
                 'user'     => $user,
@@ -310,8 +311,9 @@ class ChaufferController extends Controller
             if ($request->status == '2') {
                 $booking->status = 'Completed';
             }elseif($request->status == '1') {
-                $data['name'] = $booking->first_name;
+                $data['name'] = $booking->first_name . ' ' . $booking->last_name; // Fixed: showing first + last name
                 $data['phone'] = Auth::guard('chauffeur')->user()->phone;
+                $data['chaffeur_name'] = Auth::guard('chauffeur')->user()->fname . ' ' . Auth::guard('chauffeur')->user()->lname; // Added space and fixed typo
                 $data['vehicle'] = $booking->vehicle->name;
                 $booking->status = 'On The Way';
                 Mail::to($booking->email)->send(new CustomerRideOnTheWayMail($data));

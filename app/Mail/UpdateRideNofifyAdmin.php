@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class UpdateRideNotifyChauffe extends Mailable
+class UpdateRideNofifyAdmin extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -17,9 +17,11 @@ class UpdateRideNotifyChauffe extends Mailable
      * @return void
      */
     Protected $data = [];
+
     public function __construct($data)
     {
         $this->data =  $data;
+
     }
 
     /**
@@ -28,7 +30,7 @@ class UpdateRideNotifyChauffe extends Mailable
      * @return $this
      */
     public function build()
-    {  
-        return $this->markdown('emails.UpdateRideNotifyChauffer')->with('data',$this->data)->subject('Updated Ride Details – Change Made by Customer');
+    {
+        return $this->markdown('emails.UpdateRideNotifyAdmin')->with('data',$this->data)->subject('Updated Ride Details – Change Made by Customer');
     }
 }

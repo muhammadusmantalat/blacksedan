@@ -583,7 +583,7 @@
                 new google.maps.LatLng(48.999647, -118.088306), // Southwest corner of Alberta
                 new google.maps.LatLng(60.000848, -110.001746) // Northeast corner of Alberta
             );
-
+ 
             // One Way Pickup
             var pickupInput = document.getElementById('pickup_autocomplete');
             var pickupAutocomplete = new google.maps.places.Autocomplete(pickupInput, {

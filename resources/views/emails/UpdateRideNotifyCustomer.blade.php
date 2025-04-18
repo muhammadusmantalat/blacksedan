@@ -8,9 +8,9 @@
     <p>Dear {{ $data['name'] }},</p>
 </div>
 <div>  
-    <p>I hope this email finds you well.
+    <p>We hope this email finds you well.
         <br>
-        Please be informed that the customer has made some changes to their upcoming ride details. Kindly see the updated information below:
+        Please be informed that you change ride infromation. Kindly see the updated information below:
         </p>
         <p>
             Updated Ride Details:
@@ -27,8 +27,11 @@
             <li><strong>New Date:</strong> {{ $data['pickup_date'] }}</li>
             <li><strong>New Time:</strong> {{ $data['pickup_time'] }}</li>
             <li><strong>Special Instructions:</strong> {{ $data['instruction'] }}</li>
+            @if ($data['trip_type'] == 'one_way')
+                <li><strong>Distance:</strong> {{ $data['distance'] }}</li>
+            @endif
+            <li><strong>Total Amount:</strong> {{ $data['total_amount'] }}</li>
         </ul>
-       <p>Please make sure to follow the new details when performing the ride.</p>
        <p>Thank you for your attention to this matter, and let us know if you have any questions.</p>
     </div>
 

@@ -68,14 +68,8 @@
     <!-- Additional Information Form -->
     <form id="additionalForm" style="background-color: black; display: none;" class="text-white p-4 rounded auth-form">
         <div class="form-group">
-            <label for="full_name" class="mb-1">Full Name</label>
-            <div class="d-flex">
-                <select class="form-select rounded" id="salutation" name="salutation" style="width: 30%;">
-                    <option>Mr.</option>
-                    <option>Mrs.</option>
-                </select>
-                <input type="text" class="form-control ml-2" id="full_name" name="full_name" placeholder="Enter full name" value="{{$user->fname ? $user->fname : ''}}">
-            </div>
+            <label for="full_name" class="mb-1">First Name</label>
+            <input type="text" class="form-control" id="full_name" name="full_name" placeholder="Enter first name" value="{{$user->fname ? $user->fname : ''}}">
             <span id="full_name-error" class="error-message"></span>
         </div>
         <div class="form-group">

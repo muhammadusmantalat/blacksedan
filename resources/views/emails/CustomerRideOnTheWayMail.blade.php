@@ -9,9 +9,8 @@
     </div>
     <div>
         <p>
-            We are pleased to inform you that {{ $data['name'] }}, your
-            chauffeur is currently en route to your location and will arrive
-            shortly.
+            We are pleased to inform you that {{ $data['chaffeur_name'] }}, your
+            chauffeur is currently en route to your location.
         </p>
     </div>
     <div>

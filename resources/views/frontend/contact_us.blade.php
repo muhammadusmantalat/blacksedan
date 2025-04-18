@@ -209,10 +209,10 @@ if($check){
                                                                 <div class="input-filled col-lg-4 col-md-4">
                                                                     <label>CVV<span></span></label>
                                                                     <input class="wpcf7-form-control" 
-                                                                           placeholder="---"
+                                                                           placeholder="----"
                                                                            name="cvv"
                                                                            type="number"
-                                                                           maxlength="3"
+                                                                           maxlength="4"
                                                                            value="{{ isset($card) && $card ? $card->cvv : '' }}"
                                                                            oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
                                                                     
