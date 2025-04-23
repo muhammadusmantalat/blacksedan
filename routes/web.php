@@ -143,6 +143,27 @@ Route::get('/our-services', [HeaderPagesController::class, 'services'])->name('o
 Route::get('/fleet', [HeaderPagesController::class, 'fleet'])->name('fleet');
 Route::get('/contact-us', [HeaderPagesController::class, 'contact'])->name('contact-us');
 
+Route::get('/limo-services-in-airdrie', [HeaderPagesController::class, 'airdrie'])->name('airdrie');
+Route::get('/airport-transfer-service-in-calgary', [HeaderPagesController::class, 'airportTransfer'])->name('airportTransfer');
+Route::get('/limo-services-in-banff', [HeaderPagesController::class, 'inBaff'])->name('inBaff');
+Route::get('/banff-travel-services-in-calgary', [HeaderPagesController::class, 'banffTravel'])->name('banffTravel');
+Route::get('/limo-services-in-calgary', [HeaderPagesController::class, 'calgary'])->name('calgary');
+Route::get('/calgary-limo-rentals-online-booking', [HeaderPagesController::class, 'calgaryRental'])->name('calgaryRental');
+Route::get('/limo-services-in-canmore', [HeaderPagesController::class, 'canmore'])->name('canmore');
+Route::get('/city-tours-in-calgary', [HeaderPagesController::class, 'cityTour'])->name('cityTour');
+Route::get('/limo-services-in-cochrane', [HeaderPagesController::class, 'cochrane'])->name('cochrane');
+Route::get('/corporate-limo-service-in-calgary', [HeaderPagesController::class, 'limoServices'])->name('limoServices');
+Route::get('/limo-services-in-edmonton', [HeaderPagesController::class, 'edmonton'])->name('edmonton');
+Route::get('/limo-services-in-fort-saskatchewan', [HeaderPagesController::class, 'fort'])->name('fort');
+Route::get('/limo-services-in-high-river', [HeaderPagesController::class, 'river'])->name('river');
+Route::get('/how-to-make-a-reservation-on-calgary-limo', [HeaderPagesController::class, 'calgaryLimo'])->name('calgaryLimo');
+Route::get('/limo-services-in-lake-louise', [HeaderPagesController::class, 'lake'])->name('lake');
+Route::get('/limo-services-in-lethbridge', [HeaderPagesController::class, 'lethbridge'])->name('lethbridge');
+Route::get('/limo-services-in-okotoks', [HeaderPagesController::class, 'okotos'])->name('okotos');
+Route::get('/online-limo-services-alberta', [HeaderPagesController::class, 'alberta'])->name('alberta');
+Route::get('/limousine-services-in-calgary', [HeaderPagesController::class, 'premierLimo'])->name('premierLimo');
+
+
 // Contact us
 Route::get('getContact', [BlackSedaanController::class, 'getContact'])->name('getContact');
 Route::post('confrim-booking', [BookingController::class, 'confirmBooking'])->name('contactUs');
