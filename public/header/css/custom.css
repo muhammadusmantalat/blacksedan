@@ -179,11 +179,17 @@ body {
 .navbar {
     font-family: "Lato", sans-serif;
 }
+.navbar-bottom-section {
+    width: 78%;
+}
+
 .navbar .navbar-logo-section {
+    width: 26rem;
+    padding-right: 3rem;
+    justify-content: end;
     background-color: var(--gray-color);
-    width: 22rem;
-    height: 8rem;
     border-right: 1px solid #d3d3d3;
+    height: 8rem;
 }
 .navbar .navbar-logo {
     width: 13.25rem;
@@ -1036,12 +1042,33 @@ label[for="menu_checkbox"] div {
     transform: translateY(0);
 }
 
+@media (max-width: 1440px) {
+    .navbar-bottom-section {
+        width: 83%;
+    }
+
+    .navbar .navbar-logo-section {
+        width: 18rem;
+        padding-right: 0rem;
+        justify-content: start;
+    }
+}
+@media (max-width: 1319px) {
+    .navbar-bottom-section {
+        width: 95%;
+    }
+}
+
 @media (min-width: 1200px) {
     header .navbar-expand-xl .navbar-collapse {
         display: none !important;
     }
 }
 @media screen and (max-width: 1199px) {
+    .navbar-bottom-section {
+        width: 91%;
+    }
+
     header .navbar-expand-xl .navbar-collapse {
         display: block !important;
     }
@@ -1055,7 +1082,7 @@ label[for="menu_checkbox"] div {
         border-right: 0;
     }
     .navbar .navbar-logo {
-        width: 100%;
+        width: 13.25rem;
         object-fit: contain;
     }
 
@@ -1111,6 +1138,17 @@ label[for="menu_checkbox"] div {
     }
 }
 @media (max-width: 991px) {
+    .navbar .navbar-logo-section {
+        background-color: white;
+        width: 11rem !important;
+        height: 5rem;
+        border-right: 0;
+    }
+    .navbar .navbar-logo {
+        width: 11rem !important;
+        object-fit: contain;
+    }
+
     .custom-flex .service-card {
         flex: 1 1 calc(50% - 1rem); /* Two cards per row on medium screens */
     }
