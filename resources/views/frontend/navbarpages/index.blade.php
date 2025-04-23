@@ -8,6 +8,7 @@
   $signIn = $chaufferCheck || $customerCheck;
   // dd($chaufferCheck);
   // dd($customerCheck);
+  $booknow = route('getBlackSeedan');
   @endphp
 
 <div>
@@ -17,7 +18,7 @@
         PRIVATE CHAUFFEUR SERVICE IN CALGARY
       </h1>
       <div class="d-flex pb-2 justify-content-center mt-3 fade-in-delayed">
-        <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal' }}" 
+        <a href="{{ $signIn ? $booknow : '#bookNowModal' }}" 
             data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" 
             class="btn-4 rounded">
             <span class="fw-bold">Book Now</span>
@@ -53,7 +54,7 @@
                   <div class="d-flex flex-column inner-section">
                       <p class="text-white mt-4 card-content font-lato">Travel to and from Calgary International Airport (YYC) in luxury and comfort with our professional and proficient chauffeurs.</p>
                       <div class="mt-auto">
-                        <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal' }}" 
+                        <a href="{{ $signIn ? $booknow : '#bookNowModal' }}" 
                           data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" 
                           class="btn-4-white rounded">
                           <span class="fw-bold">Book Now</span>
@@ -71,7 +72,7 @@
               <div class="d-flex flex-column inner-section">
                   <p class="text-white mt-4 card-content font-lato">Black Sedan has experienced chauffeurs that can guide you through the scenic Rocky ountains in your cozy and comfortable limo on your way to one of the world’s most popular vacation destinations.</p>
                   <div class="mt-auto">
-                    <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal' }}" 
+                    <a href="{{ $signIn ? $booknow : '#bookNowModal' }}" 
                     data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" 
                     class="btn-4-white rounded">
                     <span class="fw-bold">Book Now</span>
@@ -87,7 +88,7 @@
               <div class="d-flex flex-column inner-section">
                   <p class="text-white mt-4 card-content font-lato">Tour the city of Calgary and its famous landmarks in our luxurious and clean cars, where our experienced chauffeurs can take you to your hotel or residence.</p>
                   <div class="mt-auto">
-                    <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal' }}" 
+                    <a href="{{ $signIn ? $booknow : '#bookNowModal' }}" 
                     data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" 
                     class="btn-4-white rounded">
                     <span class="fw-bold">Book Now</span>
@@ -103,7 +104,7 @@
               <div class="d-flex flex-column inner-section">
                   <p class="text-white mt-4 card-content font-lato">Black Sedan understands the importance of time and offers priority limo service to existing and long-lasting corporate partners. Experience executive and exclusive limo service on your next corporate get together or business meeting by using our services.</p>
                   <div class="mt-auto">
-                    <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal' }}" 
+                    <a href="{{ $signIn ? $booknow : '#bookNowModal' }}" 
                     data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" 
                     class="btn-4-white rounded">
                     <span class="fw-bold">Book Now</span>
@@ -119,7 +120,7 @@
               <div class="d-flex flex-column inner-section">
                   <p class="text-white mt-4 card-content font-lato">Add grace to all your important events with Black Sedan. We make sure the transportation is effortless and your weddings, graduation, anniversaries and more are memorable.</p>
                   <div class="mt-auto">
-                    <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal' }}" 
+                    <a href="{{ $signIn ? $booknow : '#bookNowModal' }}" 
                     data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" 
                     class="btn-4-white rounded">
                     <span class="fw-bold">Book Now</span>
@@ -135,7 +136,7 @@
               <div class="d-flex flex-column inner-section">
                   <p class="text-white mt-4 card-content font-lato">We cater to all your needs. Travel to and from Calgary to other locations such as Lethbridge, Edmonton, Red Deer, Medicine Hat, and more!</p>
                   <div class="mt-auto">
-                       <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal' }}" 
+                       <a href="{{ $signIn ? $booknow : '#bookNowModal' }}" 
                           data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" 
                           class="btn-4-white rounded">
                           <span class="fw-bold">Book Now</span>
@@ -167,7 +168,7 @@
             </ul>
             <p class="mb-0 fw-bold">...</p>
             <div class="mt-4">
-              <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal' }}" 
+              <a href="{{ $signIn ? $booknow : '#bookNowModal' }}" 
               data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" 
               class="btn-4 rounded">
               <span class="fw-bold">Book Now</span>
@@ -191,7 +192,7 @@
             </ul>
             <p class="mb-0 fw-bold">...</p>
             <div class="mt-4">
-              <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal' }}" 
+              <a href="{{ $signIn ? $booknow : '#bookNowModal' }}" 
               data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" 
               class="btn-4 rounded">
               <span class="fw-bold">Book Now</span>
@@ -215,7 +216,7 @@
             </ul>
             <p class="mb-0 fw-bold">...</p>
             <div class="mt-4">
-              <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal' }}" 
+              <a href="{{ $signIn ? $booknow : '#bookNowModal' }}" 
               data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" 
               class="btn-4 rounded">
               <span class="fw-bold">Book Now</span>
@@ -239,7 +240,7 @@
             </ul>
             <p class="mb-0 fw-bold">...</p>
             <div class="mt-4">
-              <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal' }}" 
+              <a href="{{ $signIn ? $booknow : '#bookNowModal' }}" 
               data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" 
               class="btn-4 rounded">
               <span class="fw-bold">Book Now</span>
@@ -263,7 +264,7 @@
             </ul>
             <p class="mb-0 fw-bold">...</p>
             <div class="mt-4">
-              <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal' }}" 
+              <a href="{{ $signIn ? $booknow : '#bookNowModal' }}" 
               data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" 
               class="btn-4 rounded">
               <span class="fw-bold">Book Now</span>
@@ -287,7 +288,7 @@
             </ul>
             <p class="mb-0 fw-bold">...</p>
             <div class="mt-4">
-              <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal' }}" 
+              <a href="{{ $signIn ? $booknow : '#bookNowModal' }}" 
               data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" 
               class="btn-4 rounded">
               <span class="fw-bold">Book Now</span>
@@ -316,11 +317,11 @@
                 <strong>In Guest Booking</strong> you don't need to create an account. <br> <strong>In Login to Book</strong> You will have history of all your bookings.
               </p>
               <div class="py-2 mb-3 d-flex gap-3 justify-content-center align-items-center flex-wrap">
-                <a href="https://ranglerzbeta.in/bs-reservation/" style="width: 10rem;"  class="py-3 btn bg-black text-white">
+                <a href="https://ranglerzbeta.in/bs-reservation/booknow" style="width: 10rem;"  class="py-3 btn bg-black text-white">
                       <span style="font-size:3rem" class="fa-solid fa-user"></span>
                       <p style="line-height: normal;" class="m-0 mt-2 p-0">Continue as guest</p>
                 </a>
-                  <a href="https://ranglerzbeta.in/bs-reservation/customer-sign-in" style="width: 10rem;" class="py-3 btn bg-black text-white">
+                  <a href="https://ranglerzbeta.in/bs-reservation/booknowcustomer-sign-in" style="width: 10rem;" class="py-3 btn bg-black text-white">
                       <span style="font-size:3rem" class="fa-solid fa-car"></span>
                       <p style="line-height: normal;" class="m-0 mt-2 p-0">Login to Book</p>
                   </a>

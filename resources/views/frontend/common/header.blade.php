@@ -124,7 +124,7 @@ $signIn = $chaufferCheck || $customerCheck;
                                             </li>
                                             <li id="menu-item-7240"
                                                 class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7240">
-                                                <a href="{{url('/')}}"><span>Fare
+                                                <a href="{{url('/booknow')}}"><span>Fare
                                                         Estimator</span></a>
                                             </li>
                                             <li id="menu-item-4965"
@@ -142,6 +142,7 @@ $signIn = $chaufferCheck || $customerCheck;
                             $chaufferCheck = Auth::guard('chauffeur')->check();
                             $customerCheck = Auth::guard('web')->check();
                             $signIn = $chaufferCheck || $customerCheck;
+                        
                             // dd($chaufferCheck);
                             // dd($customerCheck);
                             @endphp
@@ -175,7 +176,7 @@ $signIn = $chaufferCheck || $customerCheck;
                                 <div class="elementor-widget-container">
                                     <div id="ct_button-58e1b26"
                                         class="ct-button-wrapper ct-button-layout1 icon- btn--inline ">
-                                        <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal' }}" 
+                                        <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/booknow' : '#bookNowModal' }}" 
                                         data-toggle="{{ !$signIn ? 'modal' : '' }}" 
                                     class="btn btn-effect2 icon-active btn-inline-block" 
                                     data-wow-delay="ms">
@@ -232,7 +233,7 @@ $signIn = $chaufferCheck || $customerCheck;
                         <div class="elementor-widget-container">
                             <div id="ct_button-58e1b26" class="ct-button-wrapper ct-button-layout1 icon- btn--inline ">
  
-                                <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal' }}" 
+                                <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/booknow' : '#bookNowModal' }}" 
                                 data-toggle="{{ !$signIn ? 'modal' : '' }}" 
                                     class="btn btn-effect2 icon-active btn-inline-block"
                                     data-wow-delay="ms">
@@ -300,7 +301,7 @@ $signIn = $chaufferCheck || $customerCheck;
                     <strong>In Login to Book</strong> you will have history of all your bookings.
                 </p>
                 <div class="d-flex flex-wrap align-items-center py-2 mb-3">
-                <a  style="text-decoration: none; color:#fff" href="{{url('/')}}" type="button" class="py-3 btn btn-primary"><span style="font-size:3rem" class="fa-solid fa-user"></span><p style="line-height: normal;" class="m-0 mt-2 p-0">Continue as guest</p></a>
+                <a  style="text-decoration: none; color:#fff" href="{{url('/booknow')}}" type="button" class="py-3 btn btn-primary"><span style="font-size:3rem" class="fa-solid fa-user"></span><p style="line-height: normal;" class="m-0 mt-2 p-0">Continue as guest</p></a>
                 <a  style="text-decoration: none; color:#fff" href="{{route('customer.login')}}" type="button" class="mt-3 mt-sm-0 ml-sm-3 py-3 btn btn-primary"><span style="font-size:3rem" class="fa-solid fa-car"></span><p style="line-height: normal;" class="m-0 mt-2 p-0">Login to Book</p></a>
                 </div>
             </div>

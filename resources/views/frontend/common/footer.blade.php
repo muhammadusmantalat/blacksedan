@@ -3,6 +3,7 @@ $flage = Auth::guard('chauffeur')->user();
 $chaufferCheck = Auth::guard('chauffeur')->check();
 $customerCheck = Auth::guard('web')->check();
 $signIn = $chaufferCheck || $customerCheck;
+$booknow = route('getBlackSeedan');
 @endphp
 <footer id="colophon" class="site-footer-custom">
             <div class="footer-custom-inner">
@@ -142,7 +143,7 @@ $signIn = $chaufferCheck || $customerCheck;
                                                                         <h4 class="item--title"></h4>
                                                                         <div class="item--content"> <a href="mailto:info@blacksedans.ca">info@blacksedans.ca</a> </div>
                                                                     </div> <a class="ct-contact-link" href="info@blacksedan.com"></a>
-                                                                </div> <br> <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal' }}" 
+                                                                </div> <br> <a href="{{ $signIn ? $booknow : '#bookNowModal' }}" 
                                                                         data-toggle="{{ !$signIn ? 'modal' : '' }}"
                                                                 data-wow-delay="ms" class="btn btn-effect2 icon-active btn-inline-block"> <span>Book Now</span> </a>
                                                             </div>

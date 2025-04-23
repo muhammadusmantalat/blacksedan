@@ -8,6 +8,7 @@ $customerCheck = Auth::guard('web')->check();
 $signIn = $chaufferCheck || $customerCheck;
 // dd($chaufferCheck);
 // dd($customerCheck);
+$booknow = route('getBlackSeedan');
 @endphp
 <div>
     <div class="d-flex justify-content-center align-items-center home-page-hero fleet-page-hero hero-section">
@@ -16,7 +17,7 @@ $signIn = $chaufferCheck || $customerCheck;
             SOPHISTICATION ON WHEELS, DESIGNED FOR YOU
           </h1>
           <div class="d-flex pb-2 justify-content-center mt-3 fade-in-delayed">
-            <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal' }}" 
+            <a href="{{ $signIn ? $booknow : '#bookNowModal' }}" 
             data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" 
             class="btn-4 rounded">
             <span class="fw-bold">Book Now</span>
@@ -65,7 +66,7 @@ $signIn = $chaufferCheck || $customerCheck;
                 </ul>
                 <p class="mb-0 fw-bold">...</p>
                 <div class="mt-4">
-                  <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal' }}" 
+                  <a href="{{ $signIn ? $booknow : '#bookNowModal' }}" 
                   data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" 
                   class="btn-4 rounded">
                   <span class="fw-bold">Book Now</span>
@@ -89,7 +90,7 @@ $signIn = $chaufferCheck || $customerCheck;
                 </ul>
                 <p class="mb-0 fw-bold">...</p>
                 <div class="mt-4">
-                  <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal' }}" 
+                  <a href="{{ $signIn ? $booknow : '#bookNowModal' }}" 
                   data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" 
                   class="btn-4 rounded">
                   <span class="fw-bold">Book Now</span>
@@ -113,7 +114,7 @@ $signIn = $chaufferCheck || $customerCheck;
                 </ul>
                 <p class="mb-0 fw-bold">...</p>
                 <div class="mt-4">
-                  <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal' }}" 
+                  <a href="{{ $signIn ? $booknow : '#bookNowModal' }}" 
                   data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" 
                   class="btn-4 rounded">
                   <span class="fw-bold">Book Now</span>
@@ -137,7 +138,7 @@ $signIn = $chaufferCheck || $customerCheck;
                 </ul>
                 <p class="mb-0 fw-bold">...</p>
                 <div class="mt-4">
-                  <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal' }}" 
+                  <a href="{{ $signIn ? $booknow : '#bookNowModal' }}" 
                   data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" 
                   class="btn-4 rounded">
                   <span class="fw-bold">Book Now</span>
@@ -161,7 +162,7 @@ $signIn = $chaufferCheck || $customerCheck;
                 </ul>
                 <p class="mb-0 fw-bold">...</p>
                 <div class="mt-4">
-                  <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal' }}" 
+                  <a href="{{ $signIn ? $booknow : '#bookNowModal' }}" 
             data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" 
             class="btn-4 rounded">
             <span class="fw-bold">Book Now</span>
@@ -191,7 +192,7 @@ $signIn = $chaufferCheck || $customerCheck;
                 <strong>In Guest Booking</strong> you don't need to create an account. <br> <strong>In Login to Book</strong> You will have history of all your bookings.
               </p>
               <div class="py-2 mb-3 d-flex gap-3 justify-content-center align-items-center flex-wrap">
-                <a href="{{url('/')}}" style="width: 10rem;"  class="py-3 btn bg-black text-white">
+                <a href="{{url('/booknow')}}" style="width: 10rem;"  class="py-3 btn bg-black text-white">
                       <span style="font-size:3rem" class="fa-solid fa-user"></span>
                       <p style="line-height: normal;" class="m-0 mt-2 p-0">Continue as guest</p>
                 </a>

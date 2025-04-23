@@ -43,7 +43,7 @@ Admin routes
  * */
 
 Route::get('/', function () {
-    return redirect()->route('/');
+    return redirect('/home');
 });
 
 
@@ -130,7 +130,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 });
 
 // BLACK SEDAN ROUTES 
-Route::get('/', [BlackSedaanController::class, 'index'])->name('getBlackSeedan');
+Route::get('/booknow', [BlackSedaanController::class, 'index'])->name('getBlackSeedan');
 Route::get('bookingDetail', [BlackSedaanController::class, 'creditCard'])->name('creditCard');
 Route::get('bookingComplete', [BlackSedaanController::class, 'complete'])->name('bookingComplete');
 Route::post('booking', [BookingController::class, 'store'])->name('booking');

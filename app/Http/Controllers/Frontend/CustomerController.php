@@ -335,7 +335,8 @@ class CustomerController extends Controller
                             try {
                                 Mail::to($user->email)->send(new UpdateRideNotifyChauffe($data1));
                                 Mail::to($customer->email)->send(new UpdateRideNofifyCustomer($data2));
-                                Mail::to('booking@blacksedans.ca')->send(new UpdateRideNofifyAdmin($data3));
+                                $recipients = ['alam.black.sedan@gmail.com','sundas.aftab@gmail.com'];
+                                Mail::to($recipients)->send(new UpdateRideNofifyAdmin($data3)); 
                             } catch (\Exception $e) {
                                 return $e->getMessage();
                             }
@@ -367,7 +368,8 @@ class CustomerController extends Controller
                             ];
                             try {
                                 Mail::to($customer->email)->send(new UpdateRideNofifyCustomer($data2));
-                                Mail::to('booking@blacksedans.ca')->send(new UpdateRideNofifyAdmin($data3));
+                                $recipients = ['alam.black.sedan@gmail.com','sundas.aftab@gmail.com'];
+                                Mail::to($recipients)->send(new UpdateRideNofifyAdmin($data3));
                             } catch (\Exception $e) {
                                 return $e->getMessage();
                             }
@@ -465,7 +467,8 @@ class CustomerController extends Controller
                         try {
                             Mail::to($user->email)->send(new UpdateRideNotifyChauffe($data1));
                             Mail::to($customer->email)->send(new UpdateRideNofifyCustomer($data2));
-                            Mail::to('booking@blacksedans.ca')->send(new UpdateRideNofifyAdmin($data3));
+                            $recipients = ['alam.black.sedan@gmail.com','sundas.aftab@gmail.com'];
+                            Mail::to($recipients)->send(new UpdateRideNofifyAdmin($data3));
                         } catch (\Exception $e) {
                             return $e->getMessage();
                         }
@@ -501,7 +504,8 @@ class CustomerController extends Controller
                         try {
                             Mail::to($customer->email)->send(new UpdateRideNofifyCustomer($data2));
                             // return $booking;
-                            Mail::to('booking@blacksedans.ca')->send(new UpdateRideNofifyAdmin($data3));
+                            $recipients = ['alam.black.sedan@gmail.com','sundas.aftab@gmail.com'];
+                            Mail::to($recipients)->send(new UpdateRideNofifyAdmin($data3));
                         } catch (\Exception $e) {
                             return $e->getMessage();
                         }

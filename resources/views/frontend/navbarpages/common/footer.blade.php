@@ -3,6 +3,7 @@ $flage = Auth::guard('chauffeur')->user();
 $chaufferCheck = Auth::guard('chauffeur')->check();
 $customerCheck = Auth::guard('web')->check();
 $signIn = $chaufferCheck || $customerCheck;
+$booknow = route('getBlackSeedan');
 @endphp
 <footer class="footer">
     <div class="footer-upper-portion">
@@ -43,7 +44,7 @@ $signIn = $chaufferCheck || $customerCheck;
                                     </div>
                                 </div>
                                 <div class="mt-4 pt-2">
-                                    <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal' }}" 
+                                    <a href="{{ $signIn ? $booknow : '#bookNowModal' }}" 
                                     data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" 
                                     class="btn-4 rounded">
                                     <span class="fw-bold">Book Now</span>

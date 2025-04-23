@@ -6,6 +6,7 @@
   $chaufferCheck = Auth::guard('chauffeur')->check();
   $customerCheck = Auth::guard('web')->check();
   $signIn = $chaufferCheck || $customerCheck;
+  $booknow = route('getBlackSeedan');
   @endphp
 <div>
   <div class="d-flex justify-content-center align-items-center home-page-hero fleet-page-hero about-hero hero-section">
@@ -14,7 +15,7 @@
         WHERE ELEGANCE MEETS AFFORDABILITY
       </h1>
       <div class="d-flex pb-2 justify-content-center mt-3 fade-in-delayed">
-        <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal' }}" 
+        <a href="{{ $signIn ? $booknow : '#bookNowModal' }}" 
               data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" 
               class="btn-4 rounded">
               <span class="fw-bold">Book Now</span>

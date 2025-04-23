@@ -53,7 +53,7 @@ $signIn = $chaufferCheck || $customerCheck;
           </div> 
           @endif
 
-          <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal1' }}" 
+          <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/booknow' : '#bookNowModal1' }}" 
             data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" 
             class="btn-4 rounded">
             <span class="fw-bold">Book Now</span>
@@ -100,7 +100,7 @@ $signIn = $chaufferCheck || $customerCheck;
             >
           </li>
           <li class="nav-item border-bottom py-3">
-            <a class="p-0 nav-link" aria-current="page" href="#"
+            <a class="p-0 nav-link" aria-current="page" href="{{route('getBlackSeedan')}}"
               >Far Estimator</a
             >
           </li>
@@ -183,7 +183,7 @@ $signIn = $chaufferCheck || $customerCheck;
             </div>
             @endif
             
-              <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/' : '#bookNowModal1' }}" 
+              <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/booknow' : '#bookNowModal1' }}" 
                   data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" 
                   class="btn-4 rounded">
                   <span class="fw-bold">Book Now</span>
@@ -247,7 +247,7 @@ $signIn = $chaufferCheck || $customerCheck;
                 <strong>In Guest Booking</strong> you don't need to create an account. <br> <strong>In Login to Book</strong> You will have history of all your bookings.
               </p>
               <div class="py-2 mb-3 d-flex gap-3 justify-content-center align-items-center flex-wrap">
-                <a href="{{url('/')}}" style="width: 10rem;"  class="py-3 btn bg-black text-white">
+                <a href="{{url('/booknow')}}" style="width: 10rem;"  class="py-3 btn bg-black text-white">
                       <span style="font-size:3rem" class="fa-solid fa-user"></span>
                       <p style="line-height: normal;" class="m-0 mt-2 p-0">Continue as guest</p>
                 </a>
