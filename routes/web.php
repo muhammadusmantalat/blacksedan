@@ -42,9 +42,9 @@ Route::get('/store-session-db', function () {
 Admin routes
  * */
 
-Route::get('/', function () {
-    return redirect('/home');
-});
+// Route::get('/', function () {
+//     return redirect('/home');
+// });
 
 
 Route::get('/admin', [AuthController::class, 'getLoginPage']);
@@ -137,7 +137,7 @@ Route::post('booking', [BookingController::class, 'store'])->name('booking');
 Route::post('confirmBooking', [BookingController::class, 'storeCreditcard'])->name('confirmBooking');
 
 //header pages
-Route::get('/home', [HeaderPagesController::class, 'home'])->name('home');
+Route::get('/', [HeaderPagesController::class, 'home'])->name('home');
 Route::get('/about-us', [HeaderPagesController::class, 'about'])->name('aboutus');
 Route::get('/our-services', [HeaderPagesController::class, 'services'])->name('our-services');
 Route::get('/fleet', [HeaderPagesController::class, 'fleet'])->name('fleet');

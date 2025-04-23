@@ -107,7 +107,7 @@ $signIn = $chaufferCheck || $customerCheck;
                                             class="align-items-center ct-main-menu sub-hover children-plus clearfix">
                                             <li id="menu-item-4988"
                                                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-4988">
-                                                <a href="{{url('/home')}}"><span>Home</span></a>
+                                                <a href="{{url('/')}}"><span>Home</span></a>
                                             </li>
                                             <li id="menu-item-4968"
                                                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4968">
