@@ -42,8 +42,14 @@ $booknow = route('getBlackSeedan');
                 <ul class="px-3 mb-0">
                   <li>3 pieces of luggage</li>
                   <li>up-to 3 passengers maximum</li>
+                  <li>black exterior</li>
+                  <li>black leather interior</li>
+                  <li>charging port available</li>
                 </ul>
-                <p class="mb-0 fw-bold">...</p>
+                {{-- <p class="mb-0 fw-bold">...</p> --}}
+                        <br>
+                        <br>
+                        <br>
                 <div class="mt-4">
                   <a href="#bookNowModal" data-bs-toggle="modal" class="btn-4 rounded fleet-btn"><span class="fw-bold">Book Now</span>
                   </a>
@@ -63,14 +69,20 @@ $booknow = route('getBlackSeedan');
                 <ul class="px-3 mb-0">
                   <li>3 pieces of luggage</li>
                   <li>up-to 3 passengers maximum</li>
+                  <li>black exterior</li>
+                  <li>black leather interior</li>
+                  <li>electric</li>
+                  <li>charging port available</li>
                 </ul>
-                <p class="mb-0 fw-bold">...</p>
+                {{-- <p class="mb-0 fw-bold">...</p> --}}
+                <br>
+                        <br>
                 <div class="mt-4">
                   <a href="{{ $signIn ? $booknow : '#bookNowModal' }}" 
                   data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" 
                   class="btn-4 rounded">
                   <span class="fw-bold">Book Now</span>
-              </a>
+                </a>
                 </div>
               </div>
             </div>
@@ -87,8 +99,14 @@ $booknow = route('getBlackSeedan');
                 <ul class="px-3 mb-0">
                   <li>6 pieces of luggage</li>
                   <li>up-to 6 passengers maximum</li>
+                  <li>black exterior</li>
+                  <li>black leather interior</li>
+                  <li>free wifi</li>
+                  <li>charging port available</li>
                 </ul>
-                <p class="mb-0 fw-bold">...</p>
+                {{-- <p class="mb-0 fw-bold">...</p> --}}
+                <br>
+                        <br>
                 <div class="mt-4">
                   <a href="{{ $signIn ? $booknow : '#bookNowModal' }}" 
                   data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" 
@@ -111,8 +129,14 @@ $booknow = route('getBlackSeedan');
                 <ul class="px-3 mb-0">
                   <li>6 pieces of luggage</li>
                   <li>up-to 6 passengers maximum</li>
+                  <li>black exterior</li>
+                  <li>black leather interior</li>
+                  <li>charging port available</li>
                 </ul>
-                <p class="mb-0 fw-bold">...</p>
+                {{-- <p class="mb-0 fw-bold">...</p> --}}
+                <br>
+                <br>
+                <br>
                 <div class="mt-4">
                   <a href="{{ $signIn ? $booknow : '#bookNowModal' }}" 
                   data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" 
@@ -135,8 +159,13 @@ $booknow = route('getBlackSeedan');
                 <ul class="px-3 mb-0">
                   <li>8 pieces of luggage</li>
                   <li>up-to 10 passengers maximum</li>
+                  <li>black exterior</li>
+                  <li>grey interior</li>
                 </ul>
-                <p class="mb-0 fw-bold">...</p>
+                <br>
+                <br>
+                <p class="mb-0 font-600">Please note: 2 days in advance booking and advance payment required!
+                </p>
                 <div class="mt-4">
                   <a href="{{ $signIn ? $booknow : '#bookNowModal' }}" 
                   data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" 
@@ -159,8 +188,12 @@ $booknow = route('getBlackSeedan');
                 <ul class="px-3 mb-0">
                   <li>half ton of luggage</li>
                   <li>up-to 15 passengers maximum</li>
+                  <li>black exterior</li>
+                  <li>black leather interior</li>
+                  <li>black interior</li>
                 </ul>
-                <p class="mb-0 fw-bold">...</p>
+                <p class="mb-0 font-600">Please note: 2 days in advance booking and advance payment required!
+                </p>
                 <div class="mt-4">
                   <a href="{{ $signIn ? $booknow : '#bookNowModal' }}" 
             data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" 
