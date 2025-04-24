@@ -82,4 +82,34 @@ class HeaderPagesController extends Controller
     public function premierLimo(){
         return view('frontend.navbarpages.premier_limo');
     }
+    public function acrossAlberta(){
+        return view('frontend.navbarpages.across_alberta');
+    }
+    public function priddis(){
+        return view('frontend.navbarpages.priddis');
+    }
+    public function redDeer(){
+        return view('frontend.navbarpages.red_deer');
+    }
+    public function sherwood(){
+        return view('frontend.navbarpages.sherwood');
+    }
+    public function spurce(){
+        return view('frontend.navbarpages.spurce');
+    }
+    public function albert(){
+        return view('frontend.navbarpages.albert');
+    }
+    public function stony(){
+        return view('frontend.navbarpages.stony');
+    }
+    public function strathmore(){
+        return view('frontend.navbarpages.strathmore');
+    }
+    public function sylvan(){
+        return view('frontend.navbarpages.sylvan');
+    }
+    public function limoService(){
+        return view('frontend.navbarpages.limo_service');
+    }
 }

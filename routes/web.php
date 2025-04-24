@@ -162,6 +162,15 @@ Route::get('/limo-services-in-lethbridge', [HeaderPagesController::class, 'lethb
 Route::get('/limo-services-in-okotoks', [HeaderPagesController::class, 'okotos'])->name('okotos');
 Route::get('/online-limo-services-alberta', [HeaderPagesController::class, 'alberta'])->name('alberta');
 Route::get('/limousine-services-in-calgary', [HeaderPagesController::class, 'premierLimo'])->name('premierLimo');
+Route::get('/premium-limo-services-across-alberta', [HeaderPagesController::class, 'acrossAlberta'])->name('acrossAlberta');
+Route::get('/limo-services-in-priddis', [HeaderPagesController::class, 'priddis'])->name('priddis');
+Route::get('/limo-services-in-red-deer', [HeaderPagesController::class, 'redDeer'])->name('redDeer');
+Route::get('/limo-services-in-sherwood-park', [HeaderPagesController::class, 'sherwood'])->name('sherwood');
+Route::get('/limo-services-in-spruce-grove', [HeaderPagesController::class, 'spurce'])->name('spurce');
+Route::get('/limo-services-in-st-albert', [HeaderPagesController::class, 'albert'])->name('albert');
+Route::get('/limo-services-in-stony-plain', [HeaderPagesController::class, 'stony'])->name('stony');
+Route::get('/limo-services-in-sylvan-lake', [HeaderPagesController::class, 'sylvan'])->name('sylvan');
+Route::get('/why-choose-black-sedan-limousine-services', [HeaderPagesController::class, 'limoService'])->name('limoService');
 
 
 // Contact us
