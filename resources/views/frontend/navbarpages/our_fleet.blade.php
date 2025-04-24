@@ -1,5 +1,25 @@
 @extends('frontend.navbarpages.layout.app')
-@section('title', 'Our Fleet')
+@section('title', 'Black Sedan Fleet | Calgary Airport Limo | Vancouver Airport Limousine')
+@section('meta')
+    <meta name="description"
+        content="When it comes to reserving a limo ride, Black Sedan is the name which you can trust. Weprovided with the highest level of quality service" />
+    <link rel="canonical" href="https://ranglerzbeta.in/blacksedans/our-fleet/" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Black Sedan Fleet | Calgary Airport Limo | Vancouver Airport Limousine" />
+    <meta property="og:description"
+        content="When it comes to reserving a limo ride, Black Sedan is the name which you can trust. Weprovided with the highest level of quality service" />
+    <meta property="og:url" content="https://ranglerzbeta.in/blacksedans/our-fleet/" />
+    <meta property="og:site_name" content="Black Sedan Limousine Services" />
+    <meta property="article:publisher" content="https://www.facebook.com/profile.php?id=61567240215147" />
+    <meta property="article:modified_time" content="2025-01-23T13:56:59+00:00" />
+    <meta property="og:image"
+        content="https://ranglerzbeta.in/blacksedans/wp-content/uploads/2025/01/lincoln-aviator-sedan-500x315.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@blacksedaninc" />
+    <meta name="twitter:label1" content="Est. reading time" />
+    <meta name="twitter:data1" content="2 minutes" />
+@endsection
 @section('content')
     @php
         $flage = Auth::guard('chauffeur')->user();
