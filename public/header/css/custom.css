@@ -1242,6 +1242,13 @@ label[for="menu_checkbox"] div {
     }
 }
 @media screen and (max-width: 575px) {
+    .navbar .navbar-logo-section {
+        width: 8rem !important;
+    }
+    .navbar .navbar-logo {
+        width: 8rem !important;
+    }
+
     .dropdown-btn {
         width: 2rem;
         height: 2rem;

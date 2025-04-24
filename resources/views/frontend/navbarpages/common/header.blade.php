@@ -5,9 +5,6 @@
     $signIn = $chaufferCheck || $customerCheck;
 @endphp
 
-<style>
-
-</style>
 
 <header id="mainHeader" class="scroll-header bg-white">
     <nav class="navbar navbar-expand-xl navbar-light p-0 m-0">
@@ -53,13 +50,13 @@
                     @endif
 
                     <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/booknow' : '#bookNowModal1' }}"
-                        data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" class="btn-4 rounded">
+                        data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" class="d-none d-sm-block btn-4 rounded">
                         <span class="fw-bold">Book Now</span>
                     </a>
 
                     @if (!$signIn)
                         <a href="#signinModal" data-bs-toggle="modal" class="btn-4 rounded">
-                            <span class="fw-bold">Sign In</span>
+                            <span class="fw-bold sign-in-text">Sign In</span>
                         </a>
                     @endif
 
