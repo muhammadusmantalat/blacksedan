@@ -3,13 +3,13 @@
 @section('meta')
     <meta name="description"
         content="When it comes to reserving a limo ride, Black Sedan is the name which you can trust. Weprovided with the highest level of quality service" />
-    <link rel="canonical" href="https://ranglerzbeta.in/blacksedans/about-us/" />
+    <link rel="canonical" href="https://blacksedans.ca/blacksedans/about-us/" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="About Us | Calgary Airport Limo | Toronto Airport Limo" />
     <meta property="og:description"
         content="When it comes to reserving a limo ride, Black Sedan is the name which you can trust. Weprovided with the highest level of quality service" />
-    <meta property="og:url" content="https://ranglerzbeta.in/blacksedans/about-us/" />
+    <meta property="og:url" content="https://blacksedans.ca/blacksedans/about-us/" />
     <meta property="og:site_name" content="Black Sedan Limousine Services" />
     <meta property="article:publisher" content="https://www.facebook.com/profile.php?id=61567240215147" />
     <meta property="article:modified_time" content="2025-01-27T11:53:30+00:00" />

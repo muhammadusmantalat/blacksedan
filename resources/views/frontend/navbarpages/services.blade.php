@@ -3,13 +3,13 @@
 @section('meta')
     <meta name="description"
         content="When it comes to reserving a limo ride, Black Sedan is the name which you can trust. Weprovided with the highest level of quality service" />
-    <link rel="canonical" href="https://ranglerzbeta.in/blacksedans/our-services/" />
+    <link rel="canonical" href="https://blacksedans.ca/blacksedans/our-services/" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="Black Sedan Services | Vancouver Airport Limousine | Toronto Airport Limo" />
     <meta property="og:description"
         content="When it comes to reserving a limo ride, Black Sedan is the name which you can trust. Weprovided with the highest level of quality service" />
-    <meta property="og:url" content="https://ranglerzbeta.in/blacksedans/our-services/" />
+    <meta property="og:url" content="https://blacksedans.ca/blacksedans/our-services/" />
     <meta property="og:site_name" content="Black Sedan Limousine Services" />
     <meta property="article:publisher" content="https://www.facebook.com/profile.php?id=61567240215147" />
     <meta property="article:modified_time" content="2025-01-22T14:37:50+00:00" />
@@ -96,7 +96,8 @@
                     <p class="fw-medium font-lato service-para animate-from-bottom">Over the years, Black Sedan has
                         <strong>built strong professional relationships</strong> with existing corporate partners. Black
                         Sedan offers drive as directed car service, <strong>provides special rates</strong> to corporate
-                        partners, and caters towards the needs of corporate events whether inside the city or outside.</p>
+                        partners, and caters towards the needs of corporate events whether inside the city or outside.
+                    </p>
                     <a href="{{ $signIn ? $booknow : '#bookNowModal' }}" data-bs-toggle="{{ !$signIn ? 'modal' : '' }}"
                         class="btn-4 rounded pointer animate-from-bottom">
                         <span class="fw-bold">Book Now</span>
@@ -126,7 +127,8 @@
                     <h3 class="font-600 mb-4 font-lato text-black animate-from-bottom">Special Events</h3>
                     <p class="fw-medium font-lato service-para animate-from-bottom">Black Sedan helps <strong>create
                             unforgettable moments,</strong> without the price tag at your special events, whether it’s a
-                        <strong>wedding, graduation, anniversary or more!</strong></p>
+                        <strong>wedding, graduation, anniversary or more!</strong>
+                    </p>
                     <a href="{{ $signIn ? $booknow : '#bookNowModal' }}" data-bs-toggle="{{ !$signIn ? 'modal' : '' }}"
                         class="btn-4 rounded pointer animate-from-bottom">
                         <span class="fw-bold">Book Now</span>
@@ -142,7 +144,8 @@
                     <p class="text-white fw-medium font-lato service-para animate-from-bottom">Black Sedan has
                         <strong>experienced chauffeurs</strong> that can guide you through the <strong>scenic Rocky
                             Mountains</strong> in your cozy and comfortable limo on your way to one of the <strong>world’s
-                            most popular vacation destinations.</strong></p>
+                            most popular vacation destinations.</strong>
+                    </p>
                     <a href="{{ $signIn ? $booknow : '#bookNowModal' }}" data-bs-toggle="{{ !$signIn ? 'modal' : '' }}"
                         class="btn-4-white rounded pointer animate-from-bottom">
                         <span class="fw-bold">Book Now</span>
