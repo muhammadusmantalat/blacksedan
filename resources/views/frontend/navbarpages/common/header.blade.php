@@ -49,7 +49,7 @@
                         </div>
                     @endif
 
-                    <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/booknow' : '#bookNowModal1' }}"
+                    <a href="{{ $signIn ? 'https://blacksedans.ca/booknow' : '#bookNowModal1' }}"
                         data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" class="d-none d-sm-block btn-4 rounded">
                         <span class="fw-bold">Book Now</span>
                     </a>
@@ -162,7 +162,7 @@
                         </div>
                     @endif
 
-                    <a href="{{ $signIn ? 'https://ranglerzbeta.in/bs-reservation/booknow' : '#bookNowModal1' }}"
+                    <a href="{{ $signIn ? 'https://blacksedans.ca/booknow' : '#bookNowModal1' }}"
                         data-bs-toggle="{{ !$signIn ? 'modal' : '' }}" class="btn-4 rounded">
                         <span class="fw-bold">Book Now</span>
                     </a>

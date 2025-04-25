@@ -322,12 +322,12 @@
                             Book</strong> You will have history of all your bookings.
                     </p>
                     <div class="py-2 mb-3 d-flex gap-3 justify-content-center align-items-center flex-wrap">
-                        <a href="https://ranglerzbeta.in/bs-reservation/booknow" style="width: 10rem;"
+                        <a href="https://blacksedans.ca/booknow" style="width: 10rem;"
                             class="py-3 btn bg-black text-white">
                             <span style="font-size:3rem" class="fa-solid fa-user"></span>
                             <p style="line-height: normal;" class="m-0 mt-2 p-0">Continue as guest</p>
-                        </a>
-                        <a href="https://ranglerzbeta.in/bs-reservation/booknowcustomer-sign-in" style="width: 10rem;"
+                        </a> 
+                        <a href="https://blacksedans.ca/customer-sign-in" style="width: 10rem;"
                             class="py-3 btn bg-black text-white">
                             <span style="font-size:3rem" class="fa-solid fa-car"></span>
                             <p style="line-height: normal;" class="m-0 mt-2 p-0">Login to Book</p>

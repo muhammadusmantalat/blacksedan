@@ -186,7 +186,7 @@
                             Book</strong> You will have history of all your bookings.
                     </p>
                     <div class="py-2 mb-3 d-flex gap-3 justify-content-center align-items-center flex-wrap">
-                        <a href="{{ url('/') }}" style="width: 10rem;" class="py-3 btn bg-black text-white">
+                        <a href="{{ url('/booknow') }}" style="width: 10rem;" class="py-3 btn bg-black text-white">
                             <span style="font-size:3rem" class="fa-solid fa-user"></span>
                             <p style="line-height: normal;" class="m-0 mt-2 p-0">Continue as guest</p>
                         </a>

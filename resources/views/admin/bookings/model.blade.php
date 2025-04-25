@@ -89,6 +89,10 @@
                         <td>{{ $booking->dropOff_location ?? 'No Data Found!' }}</td>
                     </tr>
                     <tr>
+                        <th scope="col">Flight Number</th>
+                        <td>{{ $booking->flight_number ?? 'No Data Found!' }}</td>
+                    </tr>
+                    <tr>
                         <th scope="col">Cardholder Name</th>
                         <td>{{ $booking->card_holder_number ?? 'No Data Found!' }}</td>
                     </tr>
